@@ -1,0 +1,7 @@
+.nav__container {
+  border-right: 2px solid var(--color-secondary);
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

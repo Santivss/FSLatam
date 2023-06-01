@@ -1,0 +1,32 @@
+.account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----------account__container---------- */
+
+.account__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 90%;
+  height: 3rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #f55d21;
+  transition: 300ms ease;
+  border: 1px solid transparent;
+  background: var(--background-border);
+}
+
+/* ----------icons---------- */
+
+.bookmark_icon,
+.notification_icon,
+.upload_icon,
+.account_icon {
+  width: 1.5rem;
+  aspect-ratio: 1;
+  cursor: pointer;
+}

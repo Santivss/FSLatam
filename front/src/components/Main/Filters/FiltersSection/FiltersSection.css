@@ -1,0 +1,36 @@
+.filters__sections {
+  display: flex;
+  gap: 2rem;
+}
+
+.button_filter {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  width: 8rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: 1px solid var(--color-secondary);
+  transition: 300ms ease;
+  opacity: 30%;
+}
+
+.active__button-filter {
+  opacity: 100%;
+  box-shadow: 0px 0px 10px #f55d21;
+  transition: 300ms ease;
+  background: var(--background-border);
+}
+
+.button_filter:hover {
+  box-shadow: 0px 0px 15px #f59421;
+  background: var(--background-border-hover);
+}
+
+.icon__filters-section {
+  width: 1.1rem;
+  aspect-ratio: 1;
+}

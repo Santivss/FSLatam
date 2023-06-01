@@ -1,0 +1,12 @@
+import test1 from "./test1.png";
+import test2 from "./test2.png";
+import test3 from "./test3.png";
+import test4 from "./test4.png";
+import test5 from "./test5.png";
+import test6 from "./test6.png";
+import test7 from "./test7.png";
+import test8 from "./test8.png";
+
+const imagenes = [test1, test2, test3, test4, test5, test6, test7, test8];
+
+export { imagenes };

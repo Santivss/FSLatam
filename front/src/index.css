@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  /* FontsStyle */
+  --yellowAndOrange-degrade: linear-gradient(
+    90deg,
+    #ede527 4.17%,
+    #fe401c 91.67%
+  ); /* background: linear-gradient(90deg, #ede527 4.17%, #fe401c 91.67%); */
+  --background-border: linear-gradient(rgb(51, 50, 41), rgb(51, 47, 41))
+      no-repeat padding-box,
+    linear-gradient(90deg, #ede527 4.17%, #fe401c 91.67%) border-box;
+  --background-border-hover: linear-gradient(rgb(80, 76, 39), rgb(75, 61, 41))
+      no-repeat padding-box,
+    linear-gradient(90deg, #ede527 4.17%, #fe401c 91.67%) border-box;
+  --shadow: drop-shadow(0px 0px 3px #f59421);
+  --text-shadow: 0px 0px 3px #f59421;
+  /* Container */
+  --container-filter: drop-shadow(0px 0px 2px #f59421);
+  --bg-levels: linear-gradient(
+    90deg,
+    rgba(254, 64, 28, 0.1) 0%,
+    rgba(237, 229, 39, 0.1) 0.01%,
+    rgba(254, 64, 28, 0.1) 100%
+  );
+
+  /* Colours */
+  --color-body: #11100f;
+  --color-btn-bg: #1b1c20;
+  --color-yellow: #ede527;
+  --color-orange: #fe401c;
+  --color-secondary: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  background-color: var(--color-body);
+  color: white;
+  font-family: "Poppins", sans-serif;
+  transition: 300ms ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  /* Utilizando la propiedad reset */
+  all: reset;
+
+  /* Utilizando la propiedad unset */
+  all: unset;
+}
+
+/* Barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 6px; /* Ancho de la barra */
+}
+
+/* Track (fondo de la barra) */
+::-webkit-scrollbar-track {
+}
+
+/* Thumb (el botón de arrastre) */
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Cambiar el color del botón de arrastre cuando se pasa el ratón por encima */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--yellowAndOrange-degrade); /* Color del botón de arrastre */
+}

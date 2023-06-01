@@ -1,0 +1,6 @@
+.filters__container {
+  margin: 1rem;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 5fr 1fr 1fr;
+}

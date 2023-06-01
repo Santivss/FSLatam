@@ -1,0 +1,23 @@
+.socials__container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0 0.4rem;
+  padding: 0 2rem;
+  border-top: 1px solid var(--color-secondary);
+  background: var(--bg-levels);
+}
+
+.socials__icon {
+  width: 40px; /* Ajusta el tamaño según tus necesidades */
+  height: 40px; /* Ajusta el tamaño según tus necesidades */
+  margin: 1rem;
+  opacity: 20%;
+  transition: 200ms ease;
+}
+
+.socials__icon:hover {
+  opacity: 100%;
+}

@@ -1,0 +1,25 @@
+.game__icon-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* -------------game__icon-container------------- */
+
+.fs22__icon,
+.fs19__icon {
+  width: 3rem;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+button {
+  transition: opacity 0.3s ease;
+}
+
+button.inactive {
+  opacity: 0.3;
+}
+
+button.active {
+  opacity: 1;
+}

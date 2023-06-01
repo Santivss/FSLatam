@@ -1,0 +1,19 @@
+.icon-container {
+}
+
+.fc_icon {
+  width: 40rem;
+  aspect-ratio: 1;
+  font-size: 50px;
+  animation: spin 3s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
