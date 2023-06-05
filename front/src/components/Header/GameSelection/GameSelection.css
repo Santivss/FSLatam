@@ -9,6 +9,7 @@
 
 .fs22__icon,
 .fs19__icon {
+  user-select: none;
   width: 3.3rem;
   aspect-ratio: 1;
   cursor: pointer;

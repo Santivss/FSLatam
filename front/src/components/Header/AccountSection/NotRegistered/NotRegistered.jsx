@@ -1,10 +1,17 @@
-import "./NotRegistered.css";
+import React from "react";
+import Login from "./Login/Login";
+import SignUp from "./SignUp/SignUp";
+import ToggleComponent from "../../../../utils/ToggleComponent";
 
 const NotRegistered = () => {
   return (
     <div className="notRegistered__container">
-      <button className="login__container">Login</button>
-      <button className="signup__container">Sign Up</button>
+      <ToggleComponent buttonText="Login">
+        <Login />
+      </ToggleComponent>
+      <ToggleComponent buttonText="SignUp">
+        <SignUp />
+      </ToggleComponent>
     </div>
   );
 };

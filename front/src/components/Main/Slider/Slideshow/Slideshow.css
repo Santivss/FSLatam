@@ -8,10 +8,11 @@
 }
 
 .swiper_container {
+  z-index: 0;
+  width: 100%;
 }
 
 .slides__image {
-  width: 100%;
   aspect-ratio: 16/9;
   height: auto;
   object-fit: cover;
@@ -25,12 +26,12 @@
   -webkit-tap-highlight-color: transparent;
   touch-action: none;
 }
-
+/* 
 .slides__image {
   filter: blur(3px);
   transition: filter 0.8s ease;
   border-radius: 1rem;
-}
+} */
 
 .swiper-slide-active .slides__image {
   filter: none;
