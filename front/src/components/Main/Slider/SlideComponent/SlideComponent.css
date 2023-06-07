@@ -7,15 +7,31 @@
 }
 
 .slide__container {
-  width: 60rem;
-  height: 30rem;
+  margin: 1rem 0 0 0;
+  width: 70rem;
+  max-height: 35rem;
   border-radius: 1rem;
   overflow: hidden;
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr 5rem;
+  grid-template-rows: 5rem 1fr;
+  transition: 300ms ease;
+  border: 1px solid transparent;
+  background-color: var(--color-secondary);
 }
+
+.slide__container:hover {
+  box-shadow: 0px 0px 15px #f596216d;
+  border: 1px solid #f59421;
+}
+
+/* ----------------slide__container---------------- */
 
 .image__slide-container {
   position: relative;
+  grid-column: 1/3;
+  grid-row: 1/3;
   z-index: 1;
 }
 
@@ -25,16 +41,91 @@
   height: auto;
 }
 
-.info {
-  padding: 0.5rem;
+.stats__container {
   width: 100%;
   height: 5rem;
-  background-color: lightslategray;
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(3px);
+  display: grid;
+  grid-template-columns: 1fr 0.3fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.title__mod {
+  font-size: 2rem;
+}
+
+.downloads__container {
+  position: relative;
+  grid-column: 2/3;
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.downloads__stats-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  padding: 0 1rem;
+}
+
+.downloads__count-number {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.downloads__icon {
+  width: 1.8rem;
+}
+
+.compatibility__icon-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.compatibility__icon,
+.compatibility__icon {
+  width: 1.3rem;
+}
+
+.dateVersion__container {
+  display: flex;
+  gap: 1rem;
+}
+
+.version__title,
+.date__title {
+  color: var(--color-secondary);
+  color: rgb(224, 224, 224);
+  font-weight: 400;
+}
+
+/* ----------------stars__container---------------- */
+
+.stars__container {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  z-index: 1;
+  border-radius: 0 0 0 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.star__icon {
+  width: 2.5rem;
 }

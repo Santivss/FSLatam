@@ -5,6 +5,9 @@ import new_icon_amarillo from "./new_icon_amarillo.svg";
 import top_icon from "./top_icon.svg";
 import top_icon_amarillo from "./top_icon_amarillo.svg";
 import triangle_icon from "./triangle_icon.svg";
+import pc_icon from "./pc_icon.svg";
+import star_icon_stroke from "./star_icon_stroke.svg";
+import download_icon from "./download_icon.svg";
 
 const icons = [
   {
@@ -28,4 +31,4 @@ const icons = [
   },
 ];
 
-export { icons };
+export { icons, pc_icon, star_icon_stroke, download_icon };
