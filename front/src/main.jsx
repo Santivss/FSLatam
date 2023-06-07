@@ -3,11 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Home } from "./routes/Home/Home.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Loading from "./components/Loading/Loading";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <Home />,
+    errorElement: <h1>Hubo un error</h1>,
+  },
+  {
+    path: "/*",
+    element: <Loading />,
     errorElement: <h1>Hubo un error</h1>,
   },
 ]);

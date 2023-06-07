@@ -1,4 +1,3 @@
-import Loading from "../../Loading/Loading";
 import "./ListItems.css";
 
 const ListItems = () => {
