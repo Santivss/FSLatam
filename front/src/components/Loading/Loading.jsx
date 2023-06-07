@@ -1,5 +1,5 @@
 import "./Loading.css";
-import fc_icon from "../../assets/uiIcons/fc_icon.png";
+import fc_icon from "../../assets/uiIcons/wheel_icon.png";
 
 const Loading = () => {
   return (

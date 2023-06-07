@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: 275px 1fr;
   grid-template-rows: 10% 90%;
+  position: relative;
 }
 
 /* --------------------nav__container-------------------- */
@@ -41,4 +42,33 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
   }
+}
+
+.bubbles__container {
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.burbujas {
+  top: 0;
+  left: 10px;
+  width: 20rem;
+  height: 20rem;
+  background-color: #fa661e;
+  border-radius: 50%;
+  filter: blur(270px);
+}
+
+.burbujas2 {
+  position: absolute;
+  top: -110px;
+  right: 50px;
+  width: 12rem;
+  height: 12rem;
+  background-color: #fa661e;
+  border-radius: 50%;
+  filter: blur(120px);
 }

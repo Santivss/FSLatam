@@ -9,6 +9,10 @@ export const Home = () => {
       <Nav />
       <Header />
       <Main />
+      <div className="bubbles__container">
+        <div class="burbujas"></div>
+        <div class="burbujas2"></div>
+      </div>
     </div>
   );
 };
