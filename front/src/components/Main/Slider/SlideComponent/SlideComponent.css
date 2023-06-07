@@ -45,11 +45,15 @@
   width: 100%;
   height: 5rem;
   position: absolute;
+  bottom: 0; /* Posicionar en la parte inferior */
+  left: 0; /* Posicionar en el extremo izquierdo */
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(3px);
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 0.3fr;
   grid-template-rows: 1fr 1fr;
+  padding: 0 1rem;
 }
 
 .title__mod {
@@ -91,7 +95,6 @@
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
-  padding: 0 1rem;
 }
 
 .compatibility__icon,
