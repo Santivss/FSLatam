@@ -8,6 +8,7 @@ import "./Slider.css";
 import { imagenes } from "../../../assets/index";
 import { icons } from "../../../assets/uiIcons";
 import SlideComponent from "./SlideComponent/SlideComponent";
+import { piston_icon } from "../../../assets/uiIcons";
 
 const Slider = () => {
   return (
@@ -41,13 +42,13 @@ const Slider = () => {
         ))}
         <div className="slider-controler">
           <img
-            src={icons[0].icon}
+            src={piston_icon}
             alt=""
             className="swiper-button-prev slider-arrow arrow-back-outline"
           />
           {/* -------------------------- */}
           <img
-            src={icons[1].icon}
+            src={piston_icon}
             alt=""
             className="swiper-button-next slider-arrow arrow-forward-outline"
           />

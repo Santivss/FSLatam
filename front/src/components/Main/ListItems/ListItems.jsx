@@ -1,4 +1,12 @@
-import { add_icon_blanco, star_icon_stroke } from "../../../assets/uiIcons";
+import {
+  add_icon_blanco,
+  date_icon,
+  download_icon,
+  pc_icon,
+  star_icon_stroke,
+  version_icon,
+  console_icon,
+} from "../../../assets/uiIcons";
 import "./ListItems.css";
 
 const ListItems = ({ image }) => {
@@ -7,22 +15,36 @@ const ListItems = ({ image }) => {
       <div className="mod__icon-container">
         <img src={image} alt="" className="mod__icon" />
       </div>
-      {/* <div className="top__options-container">
-        <img src={add_icon_blanco} alt="" className="addMod__icon" />
-        <div className="starMod__container">
-          <img src={star_icon_stroke} alt="" className="starMod__icon" />
-        </div>
-      </div> */}
+      <div className="top__options-container">
+        <img src={pc_icon} alt="" className="pc__icon" />
+        <img src={add_icon_blanco} alt="" className="add_icon" />
+        <img src={console_icon} alt="" className="console__icon" />
+      </div>
       <div className="bottom__stats-container">
-        <h2 className="mod__title">Jhon Deere 4420</h2>
+        <h2 className="mod__title">Juan Bautista Alberdi (Argentina)</h2>
         <div className="bottom__info-container">
-          <span className="infoTest">23 Marzo</span>
+          <div className="individual__info-container">
+            <img src={date_icon} alt="" className="info__icon" />
+            <span className="infoTest">23/03/23</span>
+          </div>
+
+          {/* Line */}
           <span className="infoLine"></span>
-          <span className="infoTest">
-            Version <span>1.0.1</span>
-          </span>
+          {/* Line */}
+
+          <div className="individual__info-container">
+            <img src={version_icon} alt="" className="info__icon" />
+            <span className="infoTest">1.0.1</span>
+          </div>
+
+          {/* Line */}
           <span className="infoLine"></span>
-          <span className="infoTest">Downloads: 5.364</span>
+          {/* Line */}
+
+          <div className="individual__info-container">
+            <img src={download_icon} alt="" className="info__icon" />
+            <span className="infoTest">5.689</span>
+          </div>
         </div>
       </div>
     </div>

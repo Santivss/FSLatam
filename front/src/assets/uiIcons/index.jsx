@@ -10,6 +10,10 @@ import star_icon_stroke from "./star_icon_stroke.svg";
 import download_icon from "./download_icon.svg";
 import add_icon_amarillo from "./add_icon_amarillo.svg";
 import add_icon_blanco from "./add_icon_blanco.svg";
+import piston_icon from "./piston_icon.svg";
+import date_icon from "./date_icon.svg";
+import version_icon from "./version_icon.svg";
+import console_icon from "./console_icon.svg";
 
 const icons = [
   {
@@ -40,4 +44,8 @@ export {
   download_icon,
   add_icon_amarillo,
   add_icon_blanco,
+  piston_icon,
+  date_icon,
+  version_icon,
+  console_icon,
 };

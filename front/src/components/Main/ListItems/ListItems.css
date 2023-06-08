@@ -1,10 +1,10 @@
 .list__container {
-  width: 31rem;
+  width: 47rem;
   aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
   display: grid;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 0.5fr 3fr 0.7fr;
   transition: 300ms ease;
   border: 1px solid transparent;
   position: relative;
@@ -38,15 +38,26 @@
   border-bottom: 1px solid #f59421;
   border-left: 1px solid #f59421;
   border-right: 1px solid #f59421;
-  width: 15rem;
-  height: 100%;
+  width: 12rem;
+  min-height: 100%;
   margin: auto;
   border-radius: 0 0 2rem 2rem;
   padding: 0 0.5rem;
   text-align: center;
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.add_icon {
+  width: 2rem;
+  aspect-ratio: 1;
+}
+
+.pc__icon,
+.console__icon {
+  width: 1.5rem;
+  aspect-ratio: 1;
 }
 
 /* ---------------bottom__stats-container--------------- */
@@ -54,13 +65,12 @@
 .bottom__stats-container {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(3px);
-  border-top: 1px solid #f59421;
-  border-left: 1px solid #f59421;
-  border-right: 1px solid #f59421;
-
+  border-top: 1px solid #f5962162;
+  border-left: 1px solid #f5962162;
+  border-right: 1px solid #f5962162;
   grid-row: 3/4;
-  width: 22rem;
-  height: 100%;
+  width: 30rem;
+  min-height: 100%;
   margin: auto;
   border-radius: 2rem 2rem 0 0;
   padding: 0 0.5rem;
@@ -68,27 +78,38 @@
 }
 
 .mod__title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
 .bottom__info-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-}
-
-.infoTest {
-  font-size: 0.95rem;
-  font-weight: 200;
-  opacity: 60%;
 }
 
 .infoLine {
   display: inline-block;
   width: 1px;
-  height: 0.9rem;
+  height: 1.3rem;
   margin: auto;
   background-color: rgb(255, 255, 255);
+  opacity: 60%;
+}
+
+.info__icon {
+  width: 1.2rem;
+}
+
+.individual__info-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 0.6rem;
+}
+
+.infoTest {
+  font-size: 1.3rem;
+  font-weight: 200;
   opacity: 60%;
 }
