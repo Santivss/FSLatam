@@ -8,6 +8,8 @@ import triangle_icon from "./triangle_icon.svg";
 import pc_icon from "./pc_icon.svg";
 import star_icon_stroke from "./star_icon_stroke.svg";
 import download_icon from "./download_icon.svg";
+import add_icon_amarillo from "./add_icon_amarillo.svg";
+import add_icon_blanco from "./add_icon_blanco.svg";
 
 const icons = [
   {
@@ -31,4 +33,11 @@ const icons = [
   },
 ];
 
-export { icons, pc_icon, star_icon_stroke, download_icon };
+export {
+  icons,
+  pc_icon,
+  star_icon_stroke,
+  download_icon,
+  add_icon_amarillo,
+  add_icon_blanco,
+};
