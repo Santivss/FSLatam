@@ -27,10 +27,11 @@ const ListItems = ({ image }) => {
 
           <div className="top__options-container">
             <img src={ui_icons.pc_icon} alt="" className="pc__icon" />
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.05 }}
+              className="add_icon-button__container"
             >
               <img
                 src={ui_icons.add_icon}
@@ -38,7 +39,7 @@ const ListItems = ({ image }) => {
                 className="add_icon"
                 onClick={handleAddIconClick}
               />
-            </motion.button>
+            </motion.div>
 
             <img src={ui_icons.console_icon} alt="" className="console__icon" />
           </div>

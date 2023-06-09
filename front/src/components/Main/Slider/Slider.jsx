@@ -12,6 +12,14 @@ import { useIconsStore } from "../../../store/ui_icons_store";
 const Slider = () => {
   const { ui_icons } = useIconsStore();
 
+  const parteImages = [
+    imagenes[0],
+    imagenes[1],
+    imagenes[2],
+    imagenes[3],
+    imagenes[4],
+  ];
+
   return (
     <div className="swiper__container">
       <h2 className="slider__title">Features</h2>
@@ -36,7 +44,7 @@ const Slider = () => {
         modules={[Pagination, Navigation, Autoplay, EffectFade]}
         className="swiperComponent__container"
       >
-        {imagenes.map((imagen, index) => (
+        {parteImages.map((imagen, index) => (
           <SwiperSlide key={index}>
             <SlideComponent data={imagen} />
           </SwiperSlide>
