@@ -1,12 +1,9 @@
 import "./SocialsMedia.css";
-import { socials_info } from "../../../assets/socialsMedia/index";
-
-console.log(socials_info);
 
 export const SocialsMedia = () => {
   return (
     <div className="socials__container">
-      {socials_info.map((social) => (
+      {/*   {socials_info.map((social) => (
         <a
           key={social.id}
           href={social.link}
@@ -20,7 +17,7 @@ export const SocialsMedia = () => {
             className="socials__icon"
           />
         </a>
-      ))}
+      ))} */}
     </div>
   );
 };

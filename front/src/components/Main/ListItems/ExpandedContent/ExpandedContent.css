@@ -1,0 +1,27 @@
+.expandedContent__container {
+  width: 60rem;
+  height: 90vh;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--color-btn-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider__container2 {
+  width: 80%;
+  border: 1px solid red;
+}
+
+.swiperComponent__container2 {
+  border: 1px solid rgb(34, 255, 0);
+  width: 30rem;
+  aspect-ratio: 16/9;
+}
+
+.imageTest {
+  border: 1px solid rgb(255, 242, 0);
+
+  width: 100%;
+}

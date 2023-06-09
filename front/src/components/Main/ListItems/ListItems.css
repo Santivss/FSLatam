@@ -52,6 +52,11 @@
 .add_icon {
   width: 2rem;
   aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.add_icon:hover {
+  transform: scale(1.1);
 }
 
 .pc__icon,

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { icons } from "../../../../assets/uiIcons/index";
 import "./Filter_Antiquity_And_Size.css";
+import { useIconsStore } from "../../../../store/ui_icons_store";
 
 const Filter_Antiquity_And_Size = ({ time }) => {
+  const { ui_icons } = useIconsStore();
+
   // Estado para controlar si el contenedor está abierto o cerrado
   const [isAntiqueOpen, setIsAntiqueOpen] = useState(false);
   // Estado para almacenar la opción seleccionada
@@ -65,7 +67,7 @@ const Filter_Antiquity_And_Size = ({ time }) => {
       </span>
       {/* Icono que cambia de apariencia según si el contenedor está abierto o cerrado */}
       <img
-        src={icons[3].icon}
+        src={ui_icons.add_icon}
         alt=""
         className={`filter__antique-icon ${isAntiqueOpen ? "open" : ""}`}
       />

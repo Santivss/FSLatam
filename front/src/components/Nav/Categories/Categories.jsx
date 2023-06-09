@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Categories.css";
 import { categories } from "../../../assets/categorieIcons";
-import triangle__icon from "../../../assets/uiIcons/triangle_icon.svg";
-import arrow_icon from "../../../assets/uiIcons/arrow_icon.svg";
+import { useIconsStore } from "../../../store/ui_icons_store";
 
 export const Categories = () => {
+  const { ui_icons } = useIconsStore();
+
   const [expandedCategories, setExpandedCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeSubcategory, setActiveSubcategory] = useState(null);
@@ -57,7 +58,7 @@ export const Categories = () => {
                 </h5>
                 {category.subcategories.length > 0 && (
                   <img
-                    src={triangle__icon}
+                    src={ui_icons.triangle__icon}
                     alt=""
                     className={`triangle__icon ${
                       expandedCategories.includes(index) ? "expanded-icon" : ""
@@ -99,7 +100,7 @@ export const Categories = () => {
           </div>
         ))}
         <button onClick={scrollToTop} className="scroll-top-button">
-          <img src={arrow_icon} alt="" className="arrow__icon" />
+          <img src={ui_icons.arrow_icon} alt="" className="arrow__icon" />
         </button>
       </div>
     </>

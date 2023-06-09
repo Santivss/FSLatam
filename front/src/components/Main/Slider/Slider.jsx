@@ -6,11 +6,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./Slider.css";
 import { imagenes } from "../../../assets/index";
-import { icons } from "../../../assets/uiIcons";
 import SlideComponent from "./SlideComponent/SlideComponent";
-import { piston_icon } from "../../../assets/uiIcons";
+import { useIconsStore } from "../../../store/ui_icons_store";
 
 const Slider = () => {
+  const { ui_icons } = useIconsStore();
+
   return (
     <div className="swiper__container">
       <h2 className="slider__title">Features</h2>
@@ -42,13 +43,13 @@ const Slider = () => {
         ))}
         <div className="slider-controler">
           <img
-            src={piston_icon}
+            src={ui_icons.piston_icon}
             alt=""
             className="swiper-button-prev slider-arrow arrow-back-outline"
           />
           {/* -------------------------- */}
           <img
-            src={piston_icon}
+            src={ui_icons.piston_icon}
             alt=""
             className="swiper-button-next slider-arrow arrow-forward-outline"
           />
