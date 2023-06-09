@@ -15,6 +15,7 @@
   border-radius: 5px;
   border: 1px solid var(--color-secondary);
   transition: 300ms ease;
+  will-change: transform; /* Agrega esta propiedad */
 }
 
 .active__button-filter {
@@ -25,10 +26,9 @@
 
 .button_filter:hover {
   box-shadow: 0px 0px 10px #f55d21;
-  background: var(--background-border-hover);
 }
 
 .icon__filters-section {
-  width: 1.1rem;
+  width: 15px;
   aspect-ratio: 1;
 }

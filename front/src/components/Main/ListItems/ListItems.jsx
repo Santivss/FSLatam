@@ -5,6 +5,8 @@ import { useIconsStore } from "../../../store/ui_icons_store";
 import ExpandedContent from "./ExpandedContent/ExpandedContent";
 import ToggleComponent from "../../../utils/ToggleComponent";
 
+import { motion } from "framer-motion";
+
 const ListItems = ({ image }) => {
   const { ui_icons } = useIconsStore();
 
@@ -25,12 +27,19 @@ const ListItems = ({ image }) => {
 
           <div className="top__options-container">
             <img src={ui_icons.pc_icon} alt="" className="pc__icon" />
-            <img
-              src={ui_icons.add_icon}
-              alt=""
-              className="add_icon"
-              onClick={handleAddIconClick}
-            />
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.05 }}
+            >
+              <img
+                src={ui_icons.add_icon}
+                alt=""
+                className="add_icon"
+                onClick={handleAddIconClick}
+              />
+            </motion.button>
+
             <img src={ui_icons.console_icon} alt="" className="console__icon" />
           </div>
 
