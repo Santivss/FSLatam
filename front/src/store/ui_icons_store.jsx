@@ -53,6 +53,9 @@ import report_icon from "../assets/uiIcons/report_icon.svg";
 import report_icon_amarillo from "../assets/uiIcons/report_icon_amarillo.svg";
 import share_icon from "../assets/uiIcons/share_icon.svg";
 import share_icon_amarillo from "../assets/uiIcons/share_icon_amarillo.svg";
+import user_icon_test from "../assets/uiIcons/user_icon_test.jpg";
+import temperature_icon from "../assets/uiIcons/temperature_icon.svg";
+import aguja from "../assets/uiIcons/aguja.svg";
 
 export const useIconsStore = create((set) => ({
   ui_icons: {
@@ -111,5 +114,8 @@ export const useIconsStore = create((set) => ({
     report_icon_amarillo,
     share_icon,
     share_icon_amarillo,
+    user_icon_test,
+    temperature_icon,
+    aguja,
   },
 }));

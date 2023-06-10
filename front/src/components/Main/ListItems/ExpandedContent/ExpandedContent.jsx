@@ -6,12 +6,14 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./ExpandedContent.css";
 import { imagenes } from "../../../../assets";
-import { useIconsStore } from "../../../../store/ui_icons_store";
-import { motion } from "framer-motion";
+import TitleAndDownload from "./TitleAndDownload/TitleAndDownload";
+import CreatorInformation from "./CreatorInformation/CreatorInformation";
+import TemperatureGauges from "./TemperatureGauges/TemperatureGauges";
+import Description from "./Description/Description";
+import Comments from "./Comments/Comments";
+import RelatedMods from "./RelatedMods/RelatedMods";
 
 const ExpandedContent = () => {
-  const { ui_icons } = useIconsStore();
-
   const algunas = [
     imagenes[0],
     imagenes[1],
@@ -55,46 +57,12 @@ const ExpandedContent = () => {
             <div className="swiper-pagination"></div>
           </div>
         </Swiper>
-        <div className="titleAndDownload__container">
-          <div className="expandedContent__title-container">
-            <h1 className="expandedContent__title">House Polka Sesnotak </h1>
-          </div>
-          <div className="buttonsExpandedContent__container">
-            <div className="buttonSmall__container">
-              <button className="expandedContent__button">
-                <img
-                  src={ui_icons.star_icon_amarillo}
-                  alt=""
-                  className="expandedContent__img"
-                />
-              </button>
-              <button className="expandedContent__button">
-                <img
-                  src={ui_icons.report_icon_amarillo}
-                  alt=""
-                  className="expandedContent__img"
-                />
-              </button>
-              <button className="expandedContent__button">
-                <img
-                  src={ui_icons.share_icon_amarillo}
-                  alt=""
-                  className="expandedContent__img"
-                />
-              </button>
-            </div>
-
-            <motion.button
-              whileHover={{ scale: 1 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.1 }}
-            >
-              <button className="expandedContent__button-download">
-                Download
-              </button>
-            </motion.button>
-          </div>
-        </div>
+        <TitleAndDownload />
+        <CreatorInformation />
+        <TemperatureGauges />
+        <Description />
+        <Comments />
+        <RelatedMods />
       </div>
     </div>
   );

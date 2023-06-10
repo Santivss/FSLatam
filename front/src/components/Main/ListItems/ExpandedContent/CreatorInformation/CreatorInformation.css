@@ -1,0 +1,124 @@
+.creatorInformation__container {
+  width: 100%;
+  background-color: var(--color-body-variant);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+/* -----1-----userIcon__container-----1----- */
+
+.userIcon__container {
+  width: 3rem;
+  border: 2px solid;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 3px solid transparent;
+  background: var(--background-border);
+}
+
+.user__icon {
+  width: 100%;
+  cursor: pointer;
+  /* display: none; */
+  transition: 300ms ease;
+}
+
+/* .expandedContent__button-download {
+  background-color: var(--color-body);
+  will-change: transform;
+}
+
+  .expandedContent__button-download:hover {
+    box-shadow: 0px 0px 10px #f59421;
+    background: var(--background-border-hover);
+  } */
+
+/* -----2-----infoUser__container-----2----- */
+
+.infoUser__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.name__user-channel {
+  font-size: 1.4rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 0 0.5rem;
+}
+
+.userChannel__count-container {
+  width: 10rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.count__subs-user,
+.count__mods-user {
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 0 0.5rem;
+}
+
+.count__mods-user {
+  margin: auto;
+}
+
+.infoLine__user {
+  margin: auto;
+  width: 1px;
+  height: 0.9rem;
+  background-color: rgb(255, 255, 255);
+  opacity: 60%;
+}
+
+/* -----2-----btnSubscribe__container-----2----- */
+
+.btnSubscribe__container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 0 0.5rem;
+}
+
+.btnSubscribe {
+  width: 9rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  background-color: var(--color-body);
+  text-align: center;
+  transition: 300ms ease;
+  border: 1px solid transparent;
+  background: var(--background-border);
+  will-change: transform;
+  cursor: pointer;
+}
+
+.btnSubscribe:hover {
+  box-shadow: 0px 0px 10px #f59421;
+  background: var(--background-border-hover);
+}
+
+.notification__btn-channel__container {
+  display: flex;
+  align-items: center;
+}
+
+.notification__btn-channel {
+  width: 2.5rem;
+  padding: 0.5rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-secondary);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 300ms ease;
+}
+
+.notification__btn-channel:hover {
+  border: 1px solid rgb(255, 196, 0);
+}
