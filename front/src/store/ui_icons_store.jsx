@@ -49,6 +49,10 @@ import version_icon from "../assets/uiIcons/version_icon.svg";
 import version_icon_amarillo from "../assets/uiIcons/version_icon_amarillo.svg";
 import youtube_icon from "../assets/uiIcons/youtube_icon.svg";
 import youtube_icon_amarillo from "../assets/uiIcons/youtube_icon_amarillo.svg";
+import report_icon from "../assets/uiIcons/report_icon.svg";
+import report_icon_amarillo from "../assets/uiIcons/report_icon_amarillo.svg";
+import share_icon from "../assets/uiIcons/share_icon.svg";
+import share_icon_amarillo from "../assets/uiIcons/share_icon_amarillo.svg";
 
 export const useIconsStore = create((set) => ({
   ui_icons: {
@@ -103,5 +107,9 @@ export const useIconsStore = create((set) => ({
     version_icon_amarillo,
     youtube_icon,
     youtube_icon_amarillo,
+    report_icon,
+    report_icon_amarillo,
+    share_icon,
+    share_icon_amarillo,
   },
 }));

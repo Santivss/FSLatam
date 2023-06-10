@@ -26,7 +26,7 @@ const ListItems = ({ image }) => {
           </div>
 
           <div className="top__options-container">
-            <img src={ui_icons.pc_icon} alt="" className="pc__icon" />
+            <img src={ui_icons.pc_icon_amarillo} alt="" className="pc__icon" />
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -41,15 +41,23 @@ const ListItems = ({ image }) => {
               />
             </motion.div>
 
-            <img src={ui_icons.console_icon} alt="" className="console__icon" />
+            <img
+              src={ui_icons.console_icon_amarillo}
+              alt=""
+              className="console__icon"
+            />
           </div>
 
           <div className="bottom__stats-container">
             <h2 className="mod__title">Juan Bautista Alberdi (Argentina)</h2>
             <div className="bottom__info-container">
               <div className="individual__info-container">
-                <img src={ui_icons.date_icon} alt="" className="info__icon" />
-                <span className="infoTest">23/03/23</span>
+                <img
+                  src={ui_icons.date_icon_amarillo}
+                  alt=""
+                  className="info__icon"
+                />
+                <span className="infoTest">17/03/23</span>
               </div>
 
               {/* Line */}
@@ -58,11 +66,11 @@ const ListItems = ({ image }) => {
 
               <div className="individual__info-container">
                 <img
-                  src={ui_icons.version_icon}
+                  src={ui_icons.version_icon_amarillo}
                   alt=""
                   className="info__icon"
                 />
-                <span className="infoTest">1.0.1</span>
+                <span className="infoTest">0.0.9</span>
               </div>
 
               {/* Line */}
@@ -71,11 +79,24 @@ const ListItems = ({ image }) => {
 
               <div className="individual__info-container">
                 <img
-                  src={ui_icons.download_icon}
+                  src={ui_icons.star_icon_amarillo}
                   alt=""
                   className="info__icon"
                 />
-                <span className="infoTest">5.689</span>
+                <span className="infoTest">4.6</span>
+              </div>
+
+              {/* Line */}
+              <span className="infoLine"></span>
+              {/* Line */}
+
+              <div className="individual__info-container">
+                <img
+                  src={ui_icons.download_icon_amarillo}
+                  alt=""
+                  className="info__icon"
+                />
+                <span className="infoTest">9.459</span>
               </div>
             </div>
           </div>

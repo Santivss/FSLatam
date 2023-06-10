@@ -58,6 +58,10 @@
 .add_icon:hover {
 }
 
+.add_icon-button__container {
+  display: flex;
+}
+
 .pc__icon,
 .console__icon {
   width: 1.5rem;
@@ -88,7 +92,8 @@
 
 .bottom__info-container {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.25fr 0.1fr 0.75fr 0.1fr 0.75fr 0.1fr 1.25fr;
 }
 
 .infoLine {
@@ -105,15 +110,14 @@
 }
 
 .individual__info-container {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
-  gap: 0.6rem;
+  gap: 0.4rem;
 }
 
 .infoTest {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 200;
-  opacity: 60%;
+  opacity: 70%;
 }
