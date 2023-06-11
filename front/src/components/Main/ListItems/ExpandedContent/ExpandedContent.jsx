@@ -59,7 +59,6 @@ const ExpandedContent = () => {
         </Swiper>
         <TitleAndDownload />
         <CreatorInformation />
-        <TemperatureGauges />
         <Description />
         <Comments />
         <RelatedMods />

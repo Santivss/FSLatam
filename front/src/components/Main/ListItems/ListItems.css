@@ -8,6 +8,7 @@
   transition: 300ms ease;
   border: 1px solid transparent;
   position: relative;
+  cursor: pointer;
 }
 
 .list__container:hover {

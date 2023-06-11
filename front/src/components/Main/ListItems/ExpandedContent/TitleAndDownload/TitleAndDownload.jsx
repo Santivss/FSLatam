@@ -1,6 +1,7 @@
 import "./TitleAndDownload.css";
 import { useIconsStore } from "../../../../../store/ui_icons_store";
 import { motion } from "framer-motion";
+import BtnTapReusable from "../BtnTapReusable/BtnTapReusable";
 
 const TitleAndDownload = () => {
   const { ui_icons } = useIconsStore();
@@ -12,33 +13,20 @@ const TitleAndDownload = () => {
       </div>
       <div className="buttonsExpandedContent__container">
         <div className="buttonSmall__container">
-          <button className="expandedContent__button">
-            <img
-              src={ui_icons.star_icon_amarillo}
-              alt=""
-              className="expandedContent__img"
-            />
-          </button>
-          <button className="expandedContent__button">
-            <img
-              src={ui_icons.report_icon_amarillo}
-              alt=""
-              className="expandedContent__img"
-            />
-          </button>
-          <button className="expandedContent__button">
-            <img
-              src={ui_icons.share_icon_amarillo}
-              alt=""
-              className="expandedContent__img"
-            />
-          </button>
-          {/* Necesito crear un solo boton reutilizable */}
-          {/*  <motion.div
-            whileHover={{ scale: 1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.1 }}
-          ></motion.div> */}
+          <BtnTapReusable
+            icon={ui_icons.star_icon_amarillo}
+            alt={ui_icons.star_icon_amarillo}
+          />
+
+          <BtnTapReusable
+            icon={ui_icons.report_icon_amarillo}
+            alt={ui_icons.report_icon_amarillo}
+          />
+
+          <BtnTapReusable
+            icon={ui_icons.share_icon_amarillo}
+            alt={ui_icons.share_icon_amarillo}
+          />
         </div>
 
         <motion.div

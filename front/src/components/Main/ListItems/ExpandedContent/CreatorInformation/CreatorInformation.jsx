@@ -1,6 +1,7 @@
 import "./CreatorInformation.css";
 import { useIconsStore } from "../../../../../store/ui_icons_store";
 import { motion } from "framer-motion";
+import BtnTapReusable from "../BtnTapReusable/BtnTapReusable";
 
 const CreatorInformation = () => {
   const { ui_icons } = useIconsStore();
@@ -30,18 +31,10 @@ const CreatorInformation = () => {
           <button className="btnSubscribe">Subscribe</button>
         </motion.div>
 
-        <motion.div
-          whileHover={{ scale: 1 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.1 }}
-          className="notification__btn-channel__container"
-        >
-          <img
-            src={ui_icons.notification_icon_amarillo}
-            alt=""
-            className="notification__btn-channel"
-          />
-        </motion.div>
+        <BtnTapReusable
+          icon={ui_icons.notification_icon_amarillo}
+          alt={ui_icons.notification_icon_amarillo}
+        />
       </div>
     </div>
   );
