@@ -5,9 +5,13 @@ import { prisma } from "../db.js";
 const router = Router();
 
 router.get("/user", async (req, res) => {
-  const user = await prisma.user.findMany();
-
-  res.json(user);
+  try {
+    const user = await prisma.Users.findMany();
+    console.log(user);
+    res.json(user);
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 router.get("/user/:id", async (req, res) => {
@@ -21,11 +25,15 @@ router.get("/user/:id", async (req, res) => {
 });
 
 router.post("/user", async (req, res) => {
-  const newUser = await prisma.user.create({
-    data: req.body,
-  });
-
-  res.json(newUser);
+  try {
+    const newUser = await prisma.Users.create({
+      data: req.body,
+    });
+    console.log(req.body);
+    res.json(newUser);
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 export default router;

@@ -7,7 +7,11 @@ import { Header } from "../../components/Header/Header";
 import { Main } from "../../components/Main/Main";
 
 export const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  /* ------------Peticion------------ */
+
+  /* ------------Peticion------------ */
+
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     window.addEventListener("load", () => {

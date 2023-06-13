@@ -1,15 +1,15 @@
 -- CreateTable
-CREATE TABLE "User" (
+CREATE TABLE "Users" (
     "id" SERIAL NOT NULL,
-    "nickname" TEXT NOT NULL,
-    "fullName" TEXT,
+    "username" TEXT NOT NULL,
+    "fullName" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "icon_profile" TEXT NOT NULL DEFAULT 'default_icon_user',
+    "icon_profile" TEXT DEFAULT 'default_icon_user',
     "country" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Users_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -32,10 +32,10 @@ CREATE TABLE "Mods" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_nickname_key" ON "User"("nickname");
+CREATE UNIQUE INDEX "Users_username_key" ON "Users"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Mods_link_mod_key" ON "Mods"("link_mod");
 
 -- AddForeignKey
-ALTER TABLE "Mods" ADD CONSTRAINT "Mods_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Mods" ADD CONSTRAINT "Mods_userId_fkey" FOREIGN KEY ("userId") REFERENCES "Users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

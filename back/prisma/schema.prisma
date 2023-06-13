@@ -10,19 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+
+model users {
   id Int @id @default(autoincrement())
-  nickname String @unique
-  fullName String? 
+  username String @unique
+  fullName String 
   password String
   email String
-  icon_profile String @default("default_icon_user") 
+  icon_profile String? @default("default_icon_user") 
   country String?
   createdAt DateTime @default(now())
-  mods Mods[]
+  mods mods[]
 }
 
-model Mods {
+model mods {
   id Int @id @default(autoincrement())
   title String 
   description String
@@ -35,7 +36,7 @@ model Mods {
   stars_count Int
   compatibility String
   createdAt DateTime @default(now())
-  user User @relation(fields: [userId], references: [id])
+  user users @relation(fields: [userId], references: [id])
   userId Int
 }
 

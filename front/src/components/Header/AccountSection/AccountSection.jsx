@@ -1,6 +1,5 @@
 import "./AccountSection.css";
 import NotRegistered from "./NotRegistered/NotRegistered";
-
 import Registered from "./Registered/Registered";
 
 const AccountSection = () => {
