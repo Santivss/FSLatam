@@ -108,8 +108,6 @@ export const useIconsStore = create((set) => ({
     upload_icon_amarillo,
     version_icon,
     version_icon_amarillo,
-    version_icon,
-    version_icon_amarillo,
     youtube_icon,
     youtube_icon_amarillo,
     report_icon,
