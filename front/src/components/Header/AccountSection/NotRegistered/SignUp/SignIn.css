@@ -70,7 +70,7 @@
 }
 
 .boton:hover {
-  border: 1px solid rgb(255, 196, 0);
+  border: 1px solid #f59421;
 }
 
 /* ---------input__container--------- */
@@ -86,7 +86,7 @@
 .spanWatch {
   width: 65%;
   font-size: 0.8rem;
-  color: rgb(255, 196, 0);
+  color: #f59421;
   margin: 0.3rem 0 0 0;
 }
 
