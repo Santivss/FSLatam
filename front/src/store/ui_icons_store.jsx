@@ -58,6 +58,8 @@ import temperature_icon from "../assets/uiIcons/temperature_icon.svg";
 import aguja from "../assets/uiIcons/aguja.svg";
 import correct_icon from "../assets/uiIcons/correct_icon.svg";
 import incorrect_icon from "../assets/uiIcons/incorrect_icon.svg";
+import loading_icon from "../assets/uiIcons/loading_icon.svg";
+import question_mark_icon from "../assets/uiIcons/question_mark_icon.svg";
 
 export const useIconsStore = create((set) => ({
   ui_icons: {
@@ -119,5 +121,7 @@ export const useIconsStore = create((set) => ({
     aguja,
     correct_icon,
     incorrect_icon,
+    loading_icon,
+    question_mark_icon,
   },
 }));

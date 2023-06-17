@@ -1,19 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Mods` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Users` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "Mods" DROP CONSTRAINT "Mods_userId_fkey";
-
--- DropTable
-DROP TABLE "Mods";
-
--- DropTable
-DROP TABLE "Users";
-
 -- CreateTable
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,

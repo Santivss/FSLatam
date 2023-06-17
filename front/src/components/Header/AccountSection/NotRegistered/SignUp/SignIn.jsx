@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./SignIn.css";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -7,20 +7,53 @@ import { useIconsStore } from "../../../../../store/ui_icons_store";
 import validator from "validator";
 
 const SignIn = () => {
+  // Estado para controlar la carga del formulario
+  const [isLoading, setIsLoading] = useState(false);
+  // Estado para controlar si se ha enviado el formulario
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  // Obtener los íconos del estado global
   const { ui_icons } = useIconsStore();
 
+  // Configuración y estado del formulario usando react-hook-form
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const password = React.useRef({});
+  // Referencia a la contraseña para comparar con el campo de confirmación de contraseña
+  const password = useRef({});
   password.current = watch("password", "");
 
+  // Función que se ejecuta al enviar el formulario
   const onSubmit = (data) => {
-    console.log(data);
+    setIsFormSubmitted(true);
+    setIsLoading(true);
+
+    // Filtrar los datos necesarios para la solicitud
+    const { confirmPassword, ...requestData } = data;
+    const modifiedData = {
+      fullName: requestData.fullName,
+      username: requestData.userName,
+      email: requestData.email,
+      password: requestData.password,
+    };
+
+    // Hacer la solicitud POST a la API
+    axios
+      .post("http://localhost:3000/api/register", modifiedData)
+      .then((response) => {
+        // La petición se realizó con éxito
+        console.log(response.data);
+        reset();
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        // Ocurrió un error durante la petición
+        console.error(error);
+      });
   };
 
   // Objeto para almacenar los errores de los campos
@@ -34,7 +67,10 @@ const SignIn = () => {
 
   // Verificar si se deben mostrar los iconos correctos
   const shouldShowCorrectIcons = (fieldName) => {
-    return !!watch(fieldName) && !inputErrors[fieldName] && !errors[fieldName];
+    return (
+      (isFormSubmitted && !errors[fieldName] && !inputErrors[fieldName]) ||
+      (!isFormSubmitted && !errors[fieldName] && watch(fieldName))
+    );
   };
 
   return (
@@ -54,14 +90,13 @@ const SignIn = () => {
                 className="inputCheck__icon"
               />
             )}
-            {errors.fullName && (
+            {!shouldShowCorrectIcons("fullName") && errors.fullName && (
               <img
                 src={ui_icons.incorrect_icon}
                 alt=""
                 className="inputCheck__icon"
               />
             )}
-
             <input
               type="text"
               {...register("fullName", {
@@ -100,14 +135,13 @@ const SignIn = () => {
                 className="inputCheck__icon"
               />
             )}
-            {errors.userName && (
+            {errors.userName && !shouldShowCorrectIcons("userName") && (
               <img
                 src={ui_icons.incorrect_icon}
                 alt=""
                 className="inputCheck__icon"
               />
             )}
-
             <input
               type="text"
               {...register("userName", {
@@ -138,6 +172,7 @@ const SignIn = () => {
             </span>
           )}
         </div>
+
         {/* --------------Email-------------- */}
         <div className="input__container">
           <div className="input-wrapper">
@@ -148,14 +183,13 @@ const SignIn = () => {
                 className="inputCheck__icon"
               />
             )}
-            {errors.email && (
+            {errors.email && !shouldShowCorrectIcons("email") && (
               <img
                 src={ui_icons.incorrect_icon}
                 alt=""
                 className="inputCheck__icon"
               />
             )}
-
             <input
               type="text"
               {...register("email", {
@@ -186,14 +220,13 @@ const SignIn = () => {
                 className="inputCheck__icon"
               />
             )}
-            {errors.password && (
+            {errors.password && !shouldShowCorrectIcons("password") && (
               <img
                 src={ui_icons.incorrect_icon}
                 alt=""
                 className="inputCheck__icon"
               />
             )}
-
             <input
               type="password"
               {...register("password", {
@@ -203,7 +236,16 @@ const SignIn = () => {
               placeholder="Contraseña"
               className="signIn__input"
             />
+            <img
+              src={ui_icons.question_mark_icon}
+              alt=""
+              className="question_mark_icon"
+            />
+            <span className="question_mark_icon-text">
+              Las contraseñas se encriptan para garantizar mayor seguridad.
+            </span>
           </div>
+
           {errors.password && (
             <span className="spanWatch">
               {errors.password?.type === "required" && <p>Obligatorio.</p>}
@@ -224,14 +266,14 @@ const SignIn = () => {
                 className="inputCheck__icon"
               />
             )}
-            {errors.confirmPassword && (
-              <img
-                src={ui_icons.incorrect_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
-            )}
-
+            {errors.confirmPassword &&
+              !shouldShowCorrectIcons("confirmPassword") && (
+                <img
+                  src={ui_icons.incorrect_icon}
+                  alt=""
+                  className="inputCheck__icon"
+                />
+              )}
             <input
               type="password"
               {...register("confirmPassword", {
@@ -259,9 +301,20 @@ const SignIn = () => {
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.1 }}
         >
-          <input type="submit" value="Crear Cuenta" className="boton" />
+          <div className="button__create-container">
+            {isLoading ? (
+              <img
+                src={ui_icons.loading_icon}
+                alt=""
+                className="button__loadingIcon"
+              />
+            ) : (
+              <input type="submit" value="Crear Cuenta" className="boton" />
+            )}
+          </div>
         </motion.div>
         {/* --------------CreateAccount-------------- */}
+        {/* {isLoading ? <span>Has creado una cuenta!</span> : null} */}
       </form>
     </div>
   );

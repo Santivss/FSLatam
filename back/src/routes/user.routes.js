@@ -1,12 +1,11 @@
 import { Router } from "express";
-
 import { prisma } from "../db.js";
 
 const router = Router();
 
 router.get("/user", async (req, res) => {
   try {
-    const user = await prisma.Users.findMany();
+    const user = await prisma.users.findMany();
     console.log(user);
     res.json(user);
   } catch (error) {
@@ -15,7 +14,7 @@ router.get("/user", async (req, res) => {
 });
 
 router.get("/user/:id", async (req, res) => {
-  const user = await prisma.user.findFirst({
+  const user = await prisma.users.findFirst({
     where: {
       id: parseInt(req.params.id),
     },
@@ -26,13 +25,15 @@ router.get("/user/:id", async (req, res) => {
 
 router.post("/user", async (req, res) => {
   try {
-    const newUser = await prisma.Users.create({
+    const newUser = await prisma.users.create({
       data: req.body,
     });
-    console.log(req.body);
-    res.json(newUser);
+
+    res.status(200).json({ message: "Operación exitosa" });
+    /* console.log(req.body); */
   } catch (error) {
     console.log(error.message);
+    res.status(500).json({ error: "Ocurrió un error en el servidor" });
   }
 });
 
