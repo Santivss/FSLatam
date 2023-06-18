@@ -1,6 +1,8 @@
 import express, { json } from "express";
 import cors from "cors";
 
+import { key } from "./settings/keys.js";
+
 import modsRoutes from "./routes/mods.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import loginRoutes from "./routes/login.routes.js";
@@ -8,8 +10,9 @@ import registerRoutes from "./routes/register.routes.js";
 
 const app = express();
 
-app.use(cors());
+app.set("key", key.key);
 
+app.use(cors());
 app.use(json());
 
 app.use("/api", modsRoutes);

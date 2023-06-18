@@ -19,7 +19,6 @@ router.get("/user/:id", async (req, res) => {
       id: parseInt(req.params.id),
     },
   });
-
   return res.json(user);
 });
 
@@ -38,3 +37,4 @@ router.post("/user", async (req, res) => {
 });
 
 export default router;
+console.log("Los elentos que podemos ");

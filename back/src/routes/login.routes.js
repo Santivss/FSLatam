@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { prisma } from "../db.js";
 import bcrypt from "bcryptjs";
+import { generateToken } from "../controllers/auth.js";
 
 const router = Router();
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
@@ -23,7 +24,6 @@ router.get("/login", async (req, res) => {
 
     if (user.length === 0) {
       // Usuario no encontrado
-      console.log("Usuario no encontrado");
       res.status(404).send("Usuario no encontrado");
       return;
     }
@@ -40,8 +40,16 @@ router.get("/login", async (req, res) => {
 
       if (result) {
         // Las contraseñas coinciden
-        console.log("La contraseña es correcta");
-        res.status(200).send("La contraseña es correcta");
+        const payload = {
+          userId: user[0].id,
+          username: user[0].username,
+        };
+
+        const token = generateToken(payload);
+        res.status(200).json({
+          message: "La contraseña es correcta",
+          token,
+        });
       } else {
         // Las contraseñas no coinciden
         console.log("La contraseña es incorrecta");
@@ -52,8 +60,6 @@ router.get("/login", async (req, res) => {
     console.log(error.message);
     res.status(500).send("Error en el servidor");
   }
-
-  console.log(username, email, password);
 });
 
 export default router;
