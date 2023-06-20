@@ -24,7 +24,9 @@ router.post("/login", async (req, res) => {
 
     if (user.length === 0) {
       // Usuario no encontrado
-      res.status(404).send("Usuario no encontrado");
+      res.status(200).json({
+        message: "Usuario no encontrado",
+      });
       return;
     }
 
@@ -47,13 +49,13 @@ router.post("/login", async (req, res) => {
 
         const token = generateToken(payload);
         res.status(200).json({
-          message: "La contraseña es correcta",
+          message: "La contraseña es correcta, se creó el token",
           token,
         });
       } else {
-        // Las contraseñas no coinciden
-        console.log("La contraseña es incorrecta");
-        res.status(401).send("La contraseña es incorrecta");
+        res.status(200).json({
+          messge: "La contraseña es incorrecta",
+        });
       }
     });
   } catch (error) {

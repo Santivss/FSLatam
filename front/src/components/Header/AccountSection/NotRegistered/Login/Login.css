@@ -24,6 +24,20 @@
 }
 /* ------------------ */
 
+/* ---------individualInput__container--------- */
+.individualInput__container {
+  display: flex;
+  flex-direction: column;
+  height: 3rem;
+}
+
+.userTextError {
+  font-size: 0.8rem;
+  color: var(--color-orange);
+}
+
+/* ---------individualInput__container--------- */
+
 .login__email-input,
 .login__password-input {
   width: 15rem;

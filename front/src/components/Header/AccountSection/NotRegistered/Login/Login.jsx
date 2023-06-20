@@ -2,8 +2,11 @@ import "./Login.css";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useState } from "react";
+import { userInfoStore } from "../../../../../store/userInfoStore";
 
 const Login = () => {
+  const { setIsAuthenticated } = userInfoStore();
+
   const [responseMessage, setResponseMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -22,16 +25,16 @@ const Login = () => {
       .post("http://localhost:3000/api/login", data)
       .then((response) => {
         const token = response.data.token;
-        localStorage.setItem("SantiToken", token);
-        window.location.reload();
-      })
-      .catch((error) => {
-        if (error.response && error.response.data) {
-          setResponseMessage(error.response.data);
+
+        if (token) {
+          localStorage.setItem("token", token);
+          setIsAuthenticated(true);
+          window.location.reload();
         } else {
-          setResponseMessage("Error en la solicitud");
+          setResponseMessage(response.data.message);
         }
-      });
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (
@@ -40,7 +43,8 @@ const Login = () => {
         <span className="login__title">Member Login</span>
 
         {/* ---------User or Email--------- */}
-        <div className="">
+
+        <div className="individualInput__container">
           <input
             type="text"
             placeholder="User or Email"
@@ -54,7 +58,9 @@ const Login = () => {
               }
             }}
           />
-          <span className="userTextError">Mensaje</span>
+          {responseMessage ? (
+            <span className="userTextError">{responseMessage}</span>
+          ) : null}
         </div>
         {/* ---------password--------- */}
         <div>

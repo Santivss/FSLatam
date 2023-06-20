@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import cors from "cors";
 
-import { key } from "./settings/keys.js";
+const key = process.env.SECRET_KEY;
 
 import modsRoutes from "./routes/mods.routes.js";
 import userRoutes from "./routes/user.routes.js";
@@ -10,7 +10,7 @@ import registerRoutes from "./routes/register.routes.js";
 
 const app = express();
 
-app.set("key", key.key);
+app.set("key", key);
 
 app.use(cors());
 app.use(json());
