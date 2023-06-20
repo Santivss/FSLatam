@@ -45,16 +45,17 @@ router.post("/login", async (req, res) => {
         const payload = {
           userId: user[0].id,
           username: user[0].username,
+          useremail: user[0].email,
         };
 
         const token = generateToken(payload);
         res.status(200).json({
-          message: "La contraseña es correcta, se creó el token",
+          message: "Los datos se validaron correctamente",
           token,
         });
       } else {
         res.status(200).json({
-          messge: "La contraseña es incorrecta",
+          message: "La contraseña es incorrecta",
         });
       }
     });
