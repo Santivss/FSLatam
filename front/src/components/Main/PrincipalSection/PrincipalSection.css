@@ -1,0 +1,18 @@
+.principalSection__container {
+  width: 100%;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 2rem;
+}
+
+.slider__title {
+  font-size: 2rem;
+}
+
+.topModders__container,
+.topMods__container {
+  width: 100%;
+  text-align: center;
+  border-radius: 0.5rem;
+}

@@ -3,9 +3,14 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import { useState } from "react";
 import { userInfoStore } from "../../../../../store/userInfoStore";
+import jwtDecode from "jwt-decode";
 
 const Login = () => {
-  const { setIsAuthenticated } = userInfoStore();
+  const [token, setToken] = useState(null);
+  if (token) {
+    const newToken = jwtDecode(token);
+    console.log(newToken);
+  }
 
   const [responseMessage, setResponseMessage] = useState("");
   const [username, setUsername] = useState("");
@@ -28,8 +33,9 @@ const Login = () => {
 
         if (token) {
           localStorage.setItem("token", token);
-          setIsAuthenticated(true);
-          window.location.reload();
+          setToken(token);
+
+          /* window.location.reload(); */
         } else {
           setResponseMessage(response.data.message);
         }
