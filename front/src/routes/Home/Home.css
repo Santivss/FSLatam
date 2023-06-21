@@ -53,6 +53,7 @@
 }
 
 .burbujas {
+  display: none;
   top: 0;
   left: 10px;
   width: 20rem;
@@ -63,6 +64,7 @@
 }
 
 .burbujas2 {
+  display: none;
   position: absolute;
   top: -110px;
   right: 50px;

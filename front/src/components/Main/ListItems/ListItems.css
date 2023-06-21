@@ -1,5 +1,6 @@
 .list__container {
-  width: 47rem;
+  margin: 1rem;
+  width: 31rem;
   aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -21,7 +22,6 @@
 .mod__icon-container {
   position: absolute;
   width: 100%;
-  z-index: -1;
 }
 
 .mod__icon {
@@ -32,17 +32,16 @@
 /* ---------------top__options-container--------------- */
 
 .top__options-container {
-  background-color: limegreen;
   grid-row: 1/2;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(3px);
   border-bottom: 1px solid #f59421;
   border-left: 1px solid #f59421;
   border-right: 1px solid #f59421;
-  width: 12rem;
+  width: 30%;
   min-height: 100%;
   margin: auto;
-  border-radius: 0 0 2rem 2rem;
+  border-radius: 0 0 1rem 1rem;
   padding: 0 0.5rem;
   text-align: center;
   display: flex;
@@ -51,21 +50,20 @@
 }
 
 .add_icon {
-  width: 2rem;
+  width: 1.5rem;
   aspect-ratio: 1;
   cursor: pointer;
 }
 
-.add_icon:hover {
-}
-
 .add_icon-button__container {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pc__icon,
 .console__icon {
-  width: 1.5rem;
+  width: 1.2rem;
   aspect-ratio: 1;
 }
 
@@ -74,20 +72,19 @@
 .bottom__stats-container {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(3px);
-  border-top: 1px solid #f5962162;
-  border-left: 1px solid #f5962162;
-  border-right: 1px solid #f5962162;
+  border-top: 1px solid #f59421;
+  border-left: 1px solid #f59421;
+  border-right: 1px solid #f59421;
   grid-row: 3/4;
-  width: 30rem;
-  min-height: 100%;
+  width: 70%;
   margin: auto;
   border-radius: 2rem 2rem 0 0;
-  padding: 0 0.5rem;
+  padding: 0 0.5rem 0.1rem;
   text-align: center;
 }
 
 .mod__title {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -100,14 +97,14 @@
 .infoLine {
   display: inline-block;
   width: 1px;
-  height: 1.3rem;
+  height: 1rem;
   margin: auto;
   background-color: rgb(255, 255, 255);
   opacity: 60%;
 }
 
 .info__icon {
-  width: 1.2rem;
+  width: 1rem;
 }
 
 .individual__info-container {
@@ -118,7 +115,7 @@
 }
 
 .infoTest {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: 200;
-  opacity: 70%;
+  color: var(--color-text-secondary-2);
 }

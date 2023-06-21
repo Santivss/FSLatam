@@ -6,16 +6,20 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { useIconsStore } from "../../../../store/ui_icons_store";
 
 const SlideComponent = () => {
+  const { ui_icons } = useIconsStore();
+
   const data = [
     {
-      title: "Jhon deere 730",
+      title: "Jhon deere 730 1990 Version Argentine",
       compatibity: ["PC", "Console"],
       date: "23/05/23",
       version: "1.2.0",
       downloads: 3651,
       image: imagenes[0],
+      stars: 2.5,
     },
     {
       title: "Massey Fergusson 2020",
@@ -24,6 +28,7 @@ const SlideComponent = () => {
       version: "1.0.0",
       downloads: 613,
       image: imagenes[1],
+      stars: 4.5,
     },
     {
       title: "Case Storm 16",
@@ -32,38 +37,43 @@ const SlideComponent = () => {
       version: "1.0.0",
       downloads: 6423,
       image: imagenes[2],
+      stars: 4.2,
     },
     {
-      title: "Case Storm 16",
+      title: "Jhon Deere X16",
       compatibity: ["PC", "Console"],
       date: "28/09/23",
       version: "1.0.0",
       downloads: 6423,
       image: imagenes[3],
+      stars: 3.9,
     },
     {
-      title: "Case Storm 16",
+      title: "Harvester Old Antique 1970",
       compatibity: ["PC", "Console"],
       date: "28/09/23",
       version: "1.0.0",
       downloads: 6423,
       image: imagenes[4],
+      stars: 4,
     },
     {
-      title: "Case Storm 16",
+      title: "Fence Wood Storm",
       compatibity: ["PC", "Console"],
       date: "28/09/23",
       version: "1.0.0",
       downloads: 6423,
       image: imagenes[5],
+      stars: 3.9,
     },
     {
-      title: "Case Storm 16",
+      title: "House Polka Wola",
       compatibity: ["PC", "Console"],
       date: "28/09/23",
       version: "1.0.0",
       downloads: 6423,
       image: imagenes[6],
+      stars: 4.7,
     },
   ];
 
@@ -89,17 +99,52 @@ const SlideComponent = () => {
           <img src={item.image} alt="" className="mod__image-principal" />
           <div className="stats__container-principal">
             <span className="mod__title__principal">{item.title}</span>
+
             <div className="mod__stats-container__principal">
-              <div>
-                <span>{item.date}</span>
+              <div className="mod__stat-container">
+                <img
+                  src={ui_icons.date_icon_amarillo}
+                  alt=""
+                  className="mod__icon-stat"
+                />
+                <span className="mod__title-stat">{item.date}</span>
               </div>
 
-              <div>
-                <span>{item.downloads}</span>
+              <div className="line__decorative"></div>
+
+              <div className="mod__stat-container">
+                <img
+                  src={ui_icons.version_icon_amarillo}
+                  alt=""
+                  className="mod__icon-stat"
+                />
+                <span className="mod__title-stat">{item.version}</span>
               </div>
 
-              <div>
-                <span>{item.version}</span>
+              <div className="line__decorative"></div>
+
+              <div className="mod__stat-container">
+                <img
+                  src={ui_icons.pc_icon_amarillo}
+                  alt=""
+                  className="mod__icon-stat"
+                />
+                <img
+                  src={ui_icons.console_icon}
+                  alt=""
+                  className="mod__icon-stat"
+                />
+              </div>
+
+              <div className="line__decorative"></div>
+
+              <div className="mod__stat-container">
+                <img
+                  src={ui_icons.download_icon_amarillo}
+                  alt=""
+                  className="mod__icon-stat"
+                />
+                <span className="mod__title-stat">{item.downloads}</span>
               </div>
             </div>
           </div>

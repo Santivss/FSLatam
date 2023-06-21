@@ -16,16 +16,17 @@
   border: 1px solid var(--color-secondary);
   transition: 300ms ease;
   will-change: transform;
+  background-color: var(--color-body);
+}
+
+.button_filter:hover {
+  background-color: var(--color-secondary);
 }
 
 .active__button-filter {
   box-shadow: 0px 0px 10px #f55d21;
   transition: 300ms ease;
   background: var(--background-border);
-}
-
-.button_filter:hover {
-  box-shadow: 0px 0px 10px #f55d21;
 }
 
 .icon__filters-section {

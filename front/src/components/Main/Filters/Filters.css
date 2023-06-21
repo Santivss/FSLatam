@@ -1,6 +1,11 @@
 .filters__container {
-  margin: 1rem;
+  width: 100%;
   display: grid;
   align-items: center;
   grid-template-columns: 5fr 1fr 1fr;
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  z-index: 2;
+  background-color: var(--color-body);
 }

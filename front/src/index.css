@@ -32,6 +32,10 @@
   --color-yellow: #ede527;
   --color-orange: #fe401c;
   --color-secondary: rgba(255, 255, 255, 0.2);
+  --color-text-secondary-1: rgb(209, 209, 209);
+  --color-text-secondary-2: rgb(192, 192, 192);
+  --color-text-secondary-3: rgb(177, 177, 177);
+  --color-text-secondary-4: rgb(161, 161, 161);
 }
 
 body {
