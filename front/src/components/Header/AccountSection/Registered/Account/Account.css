@@ -12,28 +12,3 @@
   aspect-ratio: 1;
   cursor: pointer;
 }
-
-.account__sections-container {
-  position: absolute;
-  right: 5rem;
-  top: 2.6rem;
-  width: 10rem;
-  height: 0;
-  background-color: var(--color-btn-bg);
-  overflow: hidden;
-  transition: height 0.3s ease, opacity 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  opacity: 0;
-}
-
-.account__sections-container.visible {
-  height: 20rem;
-  opacity: 1;
-}
-
-.spantest:hover {
-  background-color: lightblue;
-}

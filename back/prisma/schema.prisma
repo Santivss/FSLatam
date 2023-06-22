@@ -14,9 +14,9 @@ datasource db {
 model users {
   id Int @id @default(autoincrement())
   username String @unique
-  fullName String 
+  fullname String 
   password String
-  email String
+  email String @unique
   icon_profile String? @default("default_icon_user") 
   country String?
   createdAt DateTime @default(now())

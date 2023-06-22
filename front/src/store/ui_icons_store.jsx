@@ -60,6 +60,9 @@ import correct_icon from "../assets/uiIcons/correct_icon.svg";
 import incorrect_icon from "../assets/uiIcons/incorrect_icon.svg";
 import loading_icon from "../assets/uiIcons/loading_icon.svg";
 import question_mark_icon from "../assets/uiIcons/question_mark_icon.svg";
+import logout_icon_amarillo from "../assets/uiIcons/logout_icon_amarillo.svg";
+import logout_icon from "../assets/uiIcons/logout_icon.svg";
+import user_icon from "../assets/uiIcons/user_icon.png";
 
 export const useIconsStore = create((set) => ({
   ui_icons: {
@@ -123,5 +126,8 @@ export const useIconsStore = create((set) => ({
     incorrect_icon,
     loading_icon,
     question_mark_icon,
+    logout_icon_amarillo,
+    logout_icon,
+    user_icon,
   },
 }));

@@ -1,6 +1,6 @@
 import "./NotRegistered.css";
 import Login from "./Login/Login";
-import SignUp from "./SignUp/SignIn";
+import SignUp from "./SignIn/SignIn";
 import ToggleComponent from "../../../../utils/ToggleComponent";
 
 const NotRegistered = () => {

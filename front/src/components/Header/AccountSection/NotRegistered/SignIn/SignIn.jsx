@@ -1,18 +1,16 @@
 import React, { useState, useRef } from "react";
 import "./SignIn.css";
 import axios from "axios";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useIconsStore } from "../../../../../store/ui_icons_store";
 import validator from "validator";
 
 const SignIn = () => {
-  // Estado para controlar la carga del formulario
   const [isLoading, setIsLoading] = useState(false);
-  // Estado para controlar si se ha enviado el formulario
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  // Obtener los íconos del estado global
   const { ui_icons } = useIconsStore();
+  const [responseMessage, setResponseMessage] = useState(null);
 
   // Configuración y estado del formulario usando react-hook-form
   const {
@@ -35,7 +33,7 @@ const SignIn = () => {
     // Filtrar los datos necesarios para la solicitud
     const { confirmPassword, ...requestData } = data;
     const modifiedData = {
-      fullName: requestData.fullName,
+      fullname: requestData.fullname,
       username: requestData.userName,
       email: requestData.email,
       password: requestData.password,
@@ -45,10 +43,11 @@ const SignIn = () => {
     axios
       .post("http://localhost:3000/api/register", modifiedData)
       .then((response) => {
-        // La petición se realizó con éxito
-        console.log(response.data);
+        setResponseMessage(response.data.message);
+        localStorage.setItem("token", response.data.token);
         reset();
         setIsLoading(false);
+        window.location.reload();
       })
       .catch((error) => {
         // Ocurrió un error durante la petición
@@ -83,14 +82,14 @@ const SignIn = () => {
         {/* --------------Fullname-------------- */}
         <div className="input__container">
           <div className="input-wrapper">
-            {shouldShowCorrectIcons("fullName") && (
+            {shouldShowCorrectIcons("fullname") && (
               <img
                 src={ui_icons.correct_icon}
                 alt=""
                 className="inputCheck__icon"
               />
             )}
-            {!shouldShowCorrectIcons("fullName") && errors.fullName && (
+            {!shouldShowCorrectIcons("fullname") && errors.fullName && (
               <img
                 src={ui_icons.incorrect_icon}
                 alt=""
@@ -99,7 +98,7 @@ const SignIn = () => {
             )}
             <input
               type="text"
-              {...register("fullName", {
+              {...register("fullname", {
                 required: true,
                 maxLength: 30,
                 minLength: 5,
@@ -109,16 +108,16 @@ const SignIn = () => {
               className="signIn__input"
             />
           </div>
-          {errors.fullName && (
+          {errors.fullname && (
             <span className="spanWatch">
-              {errors.fullName?.type === "required" && <p>Obligatorio.</p>}
-              {errors.fullName?.type === "maxLength" && (
+              {errors.fullname?.type === "required" && <p>Obligatorio.</p>}
+              {errors.fullname?.type === "maxLength" && (
                 <p>30 caracteres max.</p>
               )}
-              {errors.fullName?.type === "minLength" && (
+              {errors.fullname?.type === "minLength" && (
                 <p>5 caracteres min.</p>
               )}
-              {errors.fullName?.type === "pattern" && (
+              {errors.fullname?.type === "pattern" && (
                 <p>Solo se permiten letras.</p>
               )}
             </span>
@@ -314,7 +313,7 @@ const SignIn = () => {
           </div>
         </motion.div>
         {/* --------------CreateAccount-------------- */}
-        {/* {isLoading ? <span>Has creado una cuenta!</span> : null} */}
+        {responseMessage ? <span>{responseMessage}</span> : null}
       </form>
     </div>
   );

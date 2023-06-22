@@ -6,16 +6,17 @@ import { userInfoStore } from "../../../../../store/userInfoStore";
 import jwtDecode from "jwt-decode";
 
 const Login = () => {
-  const [token, setToken] = useState(null);
-  if (token) {
-    const newToken = jwtDecode(token);
-    console.log(newToken);
-  }
-
   const [responseMessage, setResponseMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const reset = () => {
+    setUsername("");
+    setPassword("");
+    setEmail("");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,21 +27,22 @@ const Login = () => {
       email,
     };
 
+    setIsLoading(true);
+
     axios
       .post("http://localhost:3000/api/login", data)
       .then((response) => {
-        const token = response.data.token;
-
-        if (token) {
-          localStorage.setItem("token", token);
-          setToken(token);
-
-          /* window.location.reload(); */
-        } else {
-          setResponseMessage(response.data.message);
-        }
+        setResponseMessage(response.data.message);
+        const newToken = response.data.token;
+        localStorage.setItem("token", newToken);
+        reset();
+        setIsLoading(false);
+        window.location.reload();
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        console.log(err.message);
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -55,6 +57,7 @@ const Login = () => {
             type="text"
             placeholder="User or Email"
             className="login__email-input"
+            autoComplete="username"
             onChange={(e) => {
               const value = e.target.value.trim();
               if (value.includes("@")) {
@@ -74,6 +77,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
             className="login__password-input"
+            autoComplete="current-password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -93,7 +97,6 @@ const Login = () => {
         </motion.div>
 
         <div className="login__check-container">
-          <input type="checkbox" className="checkbox__element" />
           <span className="check__text">Remember</span>
           <button className="forgotPassword">Forgot password?</button>
         </div>

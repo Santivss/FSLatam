@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const hashedPassword = user[0].password; // Suponiendo que la propiedad de la contraseña en la base de datos es 'password'
+    const hashedPassword = user[0].password;
 
     bcrypt.compare(password, hashedPassword, (err, result) => {
       if (err) {
@@ -44,8 +44,6 @@ router.post("/login", async (req, res) => {
         // Las contraseñas coinciden
         const payload = {
           userId: user[0].id,
-          username: user[0].username,
-          useremail: user[0].email,
         };
 
         const token = generateToken(payload);
