@@ -3,38 +3,37 @@
   right: -1rem;
   top: 3rem;
   min-width: 12rem;
-  /* height: 0; */
+  max-height: 0;
   background-color: var(--color-btn-bg);
-  overflow: hidden;
-  transition: height 0.3s ease, opacity 0.3s ease;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
   display: flex;
   flex-direction: column;
-  /* opacity: 0; */
+  opacity: 0;
   gap: 0.5rem;
   padding: 0.5rem 0;
   border-radius: 0.5rem;
   border: 1px solid var(--color-secondary);
+  visibility: hidden;
+  transition: 300ms all ease;
 }
 
-.account__options-container {
-  display: flex;
-  flex-direction: column;
+.options__active {
+  visibility: visible;
+  max-height: 20rem;
+  opacity: 1;
 }
 
-.account__options-title {
-  padding: 0.5rem;
-  border-radius: 0 0.5rem 0.5rem 0;
-  display: flex;
-  align-content: center;
-  gap: 0.7rem;
-  border-radius: 0 1rem 1rem 0;
+.button__toggle-component {
+  width: 1.5rem;
+  position: absolute;
+  bottom: -0.35rem;
+  right: -0.35rem;
   cursor: pointer;
+  transform-origin: center;
+  transition: 100ms all ease;
+  will-change: transform;
 }
 
-.account__options-title:hover {
-  background-color: var(--color-secondary);
-}
-
-.account__options-icon {
-  width: 2rem;
+.button__toggle-component:hover {
+  transform: scale(1.1);
 }

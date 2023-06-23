@@ -1,0 +1,53 @@
+[33mcommit 9293accf9b48e29519e9f5fa4f6aeb39f69e8cdd[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Thu Jun 1 07:24:11 2023 -0300
+
+    first commit
+
+[33mcommit 5fe7a7fefef9889afe89a099da80f2d250fd9aa8[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Sun Jun 4 05:15:02 2023 -0300
+
+    creando la app de node
+
+[33mcommit 260dd9085e77f568699ea4cfb4cbae612da507d6[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Mon Jun 5 07:07:32 2023 -0300
+
+    creando componentes para registrarse
+
+[33mcommit 71a2b42840b9447ca773471945bbbde697850f13[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Mon Jun 5 14:58:02 2023 -0300
+
+    agregado el sistema de portal para posicioanar el elemento por delante de todos
+
+[33mcommit 14fcb66cb3ed13fd28bc47488a52a092facfd0a3[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Wed Jun 7 03:58:52 2023 -0300
+
+    test
+
+[33mcommit 96b9c9e94e5f8bd75f1eef4da724aa200b198b36[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Wed Jun 7 06:13:14 2023 -0300
+
+    trabajando en el componente principal del slider
+
+[33mcommit 1fff9c267062c8a8230f2ea980d60ee53b043b80[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Wed Jun 7 08:23:30 2023 -0300
+
+    animacion de carga
+
+[33mcommit 1f42e7cfae24161f23b6ec53ef18155c79fa0bfc[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Wed Jun 7 14:07:20 2023 -0300
+
+    test
+
+[33mcommit 8ff63353163d42dd7f9171044b0ccc2402830eec[m
+Author: unknown <RuckingFS@outlook.es>
+Date:   Thu Jun 8 05:18:29 2023 -0300
+
+    estilos cards items

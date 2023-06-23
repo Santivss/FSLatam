@@ -1,3 +1,14 @@
+.uploadMod__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.uploadMod__container:hover {
+  background-color: var(--color-secondary);
+}
+
 .upload_icon {
   width: 1.5rem;
   aspect-ratio: 1;

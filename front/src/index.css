@@ -39,6 +39,7 @@
 }
 
 body {
+  background-color: rgb(212, 212, 212);
   background-color: var(--color-body);
   color: white;
   font-family: "Poppins", sans-serif;

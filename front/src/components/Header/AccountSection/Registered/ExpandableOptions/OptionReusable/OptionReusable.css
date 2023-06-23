@@ -1,0 +1,18 @@
+.account__options-title {
+  padding: 0.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.7rem;
+  border-radius: 0 1rem 1rem 0;
+  cursor: pointer;
+}
+
+.account__options-title:hover {
+  background-color: var(--color-secondary);
+}
+
+.account__options-icon {
+  width: 2rem;
+}

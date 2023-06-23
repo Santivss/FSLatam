@@ -63,9 +63,14 @@ import question_mark_icon from "../assets/uiIcons/question_mark_icon.svg";
 import logout_icon_amarillo from "../assets/uiIcons/logout_icon_amarillo.svg";
 import logout_icon from "../assets/uiIcons/logout_icon.svg";
 import user_icon from "../assets/uiIcons/user_icon.png";
+import account_settings_icon from "../assets/uiIcons/account_settings_icon.svg";
+import close_icon from "../assets/uiIcons/close_icon.svg";
+import mods_icon from "../assets/uiIcons/mods_icon.svg";
 
 export const useIconsStore = create((set) => ({
   ui_icons: {
+    mods_icon,
+    close_icon,
     add_icon,
     add_icon_amarillo,
     arrow_icon_navigation,
@@ -129,5 +134,6 @@ export const useIconsStore = create((set) => ({
     logout_icon_amarillo,
     logout_icon,
     user_icon,
+    account_settings_icon,
   },
 }));
