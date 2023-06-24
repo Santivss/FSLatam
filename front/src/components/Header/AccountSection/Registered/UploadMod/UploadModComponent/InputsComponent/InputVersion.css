@@ -1,0 +1,80 @@
+.uploadMod__title-version__container {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-secondary);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transition: 300ms ease;
+}
+
+/* ------------------estilos generales de los textos------------------ */
+
+.uploadmodinput__title,
+.uploadmodinput__version {
+  background-color: var(--color-body);
+  height: 2rem;
+  border-radius: 0.4rem;
+  border: 1px solid transparent;
+  outline: none;
+  transition: 300ms ease;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-secondary-1);
+  padding: 0 0.5rem;
+}
+
+.uploadmodinput__title {
+  width: 30rem;
+}
+
+.uploadmodinput__title:focus,
+.uploadmodinput__version:focus {
+  border: 1px solid rgb(255, 196, 0);
+}
+
+.uploadmod__title,
+.uploadmod__version,
+.uploadMod__input-title {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-right: 0.7rem;
+}
+
+.uploadmod__errormessage-title,
+.uploadmod__errormessage-version {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  color: var(--color-orange);
+}
+
+/* ------------------uploadMod__title-container------------------ */
+.uploadMod__title-container {
+  display: flex;
+  align-items: center;
+}
+/* ------------------uploadMod__version-container------------------ */
+
+.uploadMod__version-container {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: 300ms ease;
+}
+
+.uploadmodinput__version {
+  width: 2rem;
+  text-align: center;
+}
+
+.uploadMod__versionInput-toggle {
+  opacity: 40%;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ------------------uploadMod__beta-container------------------ */
+
+.uploadMod__beta-container {
+  display: flex;
+  align-items: center;
+}

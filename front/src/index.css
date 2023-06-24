@@ -83,8 +83,8 @@ button {
 }
 
 /* Track (fondo de la barra) */
-::-webkit-scrollbar-track {
-}
+/* ::-webkit-scrollbar-track {
+} */
 
 /* Thumb (el botón de arrastre) */
 ::-webkit-scrollbar-thumb {

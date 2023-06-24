@@ -22,13 +22,17 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-secondary);
+  width: 30rem;
+  margin: 0 auto;
   border-radius: 0.5rem;
   gap: 3rem;
   padding: 1rem;
   transition: 300ms ease;
-  /* border: 1px solid transparent;
+  border: 1px solid transparent;
   box-shadow: 0px 0px 15px #f5962195;
-  border: 1px solid #f59421; */
+
+  border: 1px solid #f59421;
+  /* display: none; */
 }
 
 .advertise_title {
@@ -48,115 +52,9 @@
   will-change: transform;
   cursor: pointer;
   border: 1px solid var(--color-secondary);
-
   transition: 300ms ease;
 }
 
 .buttonConfirm__container:hover {
   border: 1px solid rgb(255, 196, 0);
-}
-
-/* ----------uploadMod__title-container---------- */
-
-.uploadMod__title-container {
-  display: grid;
-  grid-template-columns: 0.5fr 3fr 0.5fr 2fr;
-  grid-template-rows: 1fr 0.1fr;
-  align-items: center;
-  justify-items: left;
-  background-color: var(--color-secondary);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  transition: 300ms ease;
-}
-
-.uploadmodinput__title,
-.uploadmodinput__version {
-  background-color: var(--color-body);
-  height: 2rem;
-  border-radius: 0.4rem;
-  border: 1px solid transparent;
-  outline: none;
-  transition: 300ms ease;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-text-secondary-1);
-
-  padding: 0 0.5rem;
-}
-
-.uploadmodinput__title {
-  width: 90%;
-}
-
-.uploadmodinput__title:focus,
-.uploadmodinput__version:focus {
-  /* box-shadow: 0px 0px 15px #f5962195; */
-  border: 1px solid rgb(255, 196, 0);
-}
-
-.uploadmod__title,
-.uploadmod__version {
-  font-weight: 500;
-  font-size: 1.5rem;
-  margin-right: 0.7rem;
-}
-
-.uploadmod__errormessage-title,
-.uploadmod__errormessage-version {
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
-  color: var(--color-orange);
-}
-
-/* Positions */
-
-.uploadmod__title {
-  grid-column: 1/2;
-}
-
-.uploadmodinput__title {
-  grid-column: 2/3;
-}
-
-.uploadmod__errormessage-title {
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
-
-.uploadmod__version {
-  grid-column: 3/4;
-}
-
-.uploadmodinput__version {
-  grid-column: 4/5;
-}
-
-.uploadmod__errormessage-version {
-  grid-column: 4/5;
-  grid-row: 2/3;
-}
-
-/* -------gameSelection__container------- */
-
-.gameSelection__container {
-  background-color: var(--color-secondary);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  transition: 300ms ease;
-  display: grid;
-  grid-template-columns: 86% 7% 7%;
-  align-items: center;
-}
-
-.gameSelection__icon {
-  width: 3rem;
-  aspect-ratio: 1;
-  margin: auto;
-  cursor: pointer;
-}
-
-.gameSelection__title {
-  font-weight: 500;
-  font-size: 1.5rem;
 }
