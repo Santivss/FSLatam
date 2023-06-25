@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useIconsStore } from "../../../../../../store/ui_icons_store";
 import InputVersion from "./InputsComponent/InputVersion";
 import InputDescription from "./InputsComponent/InputDescription";
+import Categories from "./Categories/Categories";
 
 const UploadModComponent = () => {
   const { ui_icons } = useIconsStore();
@@ -32,6 +33,31 @@ const UploadModComponent = () => {
       <InputVersion />
 
       <InputDescription />
+
+      <Categories />
+
+      <div>
+        <span>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est rem iste
+          totam sint. Velit minus nobis fugiat obcaecati similique tempore
+          omnis, qui pariatur iste fuga nisi, ab accusamus mollitia consequatur
+          ad distinctio quaerat dignissimos neque illo aliquam dicta officiis?
+          Eius animi quos dolores, ad recusandae inventore sapiente sint fugiat
+          est quo ipsam nihil enim aspernatur ducimus expedita officia
+          distinctio impedit eum necessitatibus voluptate laborum quibusdam.
+          Vero debitis totam quibusdam odit, at animi ad sed dolores eveniet
+          officiis consequuntur cum vel! Quaerat iusto sed nesciunt possimus
+          tenetur eaque perspiciatis! Dicta maiores odit, sit in perspiciatis
+          nulla consequatur rerum aperiam, earum reiciendis excepturi laboriosam
+          nam. Ea laudantium minima similique animi sed dolor exercitationem
+          enim officiis deleniti incidunt, et possimus quia maiores praesentium
+          voluptatibus iusto ducimus, in quos consequatur culpa sint sequi ut.
+          Cumque pariatur neque esse est repudiandae consequuntur, doloremque
+          aliquam eum totam! Rem quaerat nisi fugiat obcaecati recusandae optio
+          quae libero.
+        </span>
+      </div>
+
       {/*  <div>
         <motion.button
           whileHover={{ scale: 1 }}
