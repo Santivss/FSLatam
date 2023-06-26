@@ -48,8 +48,6 @@ import weight_icon from "./weight_icon.svg";
 import production_icon from "./production_icon.svg";
 import windrowers_icon from "./windrowers_icon.svg";
 
-
-
 const categories = [
   {
     category: "Tractors",
@@ -107,11 +105,11 @@ const categories = [
         icon: europe_icon,
       },
       {
-        name: "N America",
+        name: "North America",
         icon: north_america_icon,
       },
       {
-        name: "S America",
+        name: "South America",
         icon: south_america_icon,
       },
       {
