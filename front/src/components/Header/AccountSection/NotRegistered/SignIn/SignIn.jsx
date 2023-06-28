@@ -33,7 +33,6 @@ const SignIn = () => {
     // Filtrar los datos necesarios para la solicitud
     const { confirmPassword, ...requestData } = data;
     const modifiedData = {
-      fullname: requestData.fullname,
       username: requestData.userName,
       email: requestData.email,
       password: requestData.password,
@@ -57,7 +56,6 @@ const SignIn = () => {
 
   // Objeto para almacenar los errores de los campos
   const inputErrors = {
-    fullName: errors.fullName,
     userName: errors.userName,
     email: errors.email,
     password: errors.password,
@@ -79,50 +77,6 @@ const SignIn = () => {
         className="signInElements__container"
       >
         <span className="signIn__title">Crear una cuenta</span>
-        {/* --------------Fullname-------------- */}
-        <div className="input__container">
-          <div className="input-wrapper">
-            {shouldShowCorrectIcons("fullname") && (
-              <img
-                src={ui_icons.correct_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
-            )}
-            {!shouldShowCorrectIcons("fullname") && errors.fullName && (
-              <img
-                src={ui_icons.incorrect_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
-            )}
-            <input
-              type="text"
-              {...register("fullname", {
-                required: true,
-                maxLength: 30,
-                minLength: 5,
-                pattern: /^[A-Za-z\s]+$/,
-              })}
-              placeholder="Nombre completo"
-              className="signIn__input"
-            />
-          </div>
-          {errors.fullname && (
-            <span className="spanWatch">
-              {errors.fullname?.type === "required" && <p>Obligatorio.</p>}
-              {errors.fullname?.type === "maxLength" && (
-                <p>30 caracteres max.</p>
-              )}
-              {errors.fullname?.type === "minLength" && (
-                <p>5 caracteres min.</p>
-              )}
-              {errors.fullname?.type === "pattern" && (
-                <p>Solo se permiten letras.</p>
-              )}
-            </span>
-          )}
-        </div>
 
         {/* --------------UserName-------------- */}
         <div className="input__container">
@@ -149,7 +103,7 @@ const SignIn = () => {
                 minLength: 5,
                 pattern: /^[a-zA-Z0-9_.-]+$/,
               })}
-              placeholder="Usuario"
+              placeholder="Nombre de Usuario"
               className="signIn__input"
             />
           </div>

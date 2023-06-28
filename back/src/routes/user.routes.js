@@ -5,16 +5,17 @@ const router = Router();
 
 router.get("/user", async (req, res) => {
   try {
-    const user = await prisma.users.findMany();
-    console.log(user);
-    res.json(user);
+    const users = await prisma.User.findMany({});
+    res.json(users);
   } catch (error) {
-    console.log(error.message);
+    res.send(500).json({
+      messge: "Server error",
+    });
   }
 });
 
 router.get("/user/:id", async (req, res) => {
-  const user = await prisma.users.findFirst({
+  const user = await prisma.Usuario.findFirst({
     where: {
       id: parseInt(req.params.id),
     },
@@ -24,7 +25,7 @@ router.get("/user/:id", async (req, res) => {
 
 router.post("/user", async (req, res) => {
   try {
-    const newUser = await prisma.users.create({
+    const newUser = await prisma.Usuario.create({
       data: req.body,
     });
 
@@ -36,5 +37,22 @@ router.post("/user", async (req, res) => {
   }
 });
 
+router.post("/users", async (req, res) => {
+  try {
+    const data = req.body;
+    const user = await prisma.Usuario.findFirst({
+      where: {
+        username: data.username,
+      },
+    });
+    user
+      ? res.status(200).json({
+          user,
+        })
+      : res.status(200).json({
+          message: "Usuario no encontrado",
+        });
+  } catch (error) {}
+});
+
 export default router;
-console.log("Los elentos que podemos ");

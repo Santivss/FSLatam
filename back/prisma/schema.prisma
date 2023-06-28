@@ -10,34 +10,102 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// schema.prisma
 
-model users {
-  id Int @id @default(autoincrement())
-  username String @unique
-  fullname String 
-  password String
-  email String @unique
-  icon_profile String? @default("default_icon_user") 
-  country String?
-  createdAt DateTime @default(now())
-  mods mods[]
+model User {
+  user_id     Int       @id @default(autoincrement())
+  user_name   String
+  email       String    @unique
+  password    String?
+  country_id  Int?
+  country     Country?   @relation(fields: [country_id], references: [country_id])
+  mods        Mod[]
 }
 
-model mods {
-  id Int @id @default(autoincrement())
-  title String 
-  description String
-  version String @default("1.0.0")
-  image_high String
-  image_low String
-  preview_video String?
-  link_mod String @unique
-  downloads_count Int
-  stars_count Int
-  compatibility String
-  createdAt DateTime @default(now())
-  user users @relation(fields: [userId], references: [id])
-  userId Int
+model Country {
+  country_id    Int      @id @default(autoincrement())
+  country_name  String
+  country_icon  String
+  users         User[]
 }
+
+model PrincipalCategory {
+  principal_category_id   Int                 @id @default(autoincrement())
+  principal_category_name String
+  principal_category_icon String
+  subcategories           Subcategory[]
+}
+
+model Subcategory {
+  subcategory_id         Int                @id @default(autoincrement())
+  subcategory_name       String
+  subcategory_icon       String
+  principal_category_id  Int
+  principal_category     PrincipalCategory  @relation(fields: [principal_category_id], references: [principal_category_id])
+  mods                   Mod[]
+}
+
+model Mod {
+  mod_id            Int          @id @default(autoincrement())
+  mod_title         String
+  mod_description   String
+  consoles          Boolean
+  multiplayer       Boolean
+  mod_link          String
+  subcategory_id    Int
+  subcategory       Subcategory  @relation(fields: [subcategory_id], references: [subcategory_id])
+  antiquity_id      Int
+  antiquity         Antiquity    @relation(fields: [antiquity_id], references: [antiquity_id])
+  game_id           Int
+  game              Game         @relation(fields: [game_id], references: [game_id])
+  image_icon        String
+  images            Image[]
+  sizes             Size[]       @relation("ModSize")
+  brands            Brand[]      @relation("ModBrand")
+  user_id Int
+  user User @relation(fields: [user_id],references: [user_id])
+}
+
+model Antiquity {
+  antiquity_id    Int       @id @default(autoincrement())
+  antiquity_name  String
+  mods            Mod[]
+}
+
+model Game {
+  game_id       Int       @id @default(autoincrement())
+  game_name     String
+  mods          Mod[]
+}
+
+model Image {
+  image_id     Int       @id @default(autoincrement())
+  image_link   String
+  mod_id       Int
+  mod          Mod       @relation(fields: [mod_id], references: [mod_id])
+}
+
+model Size {
+  size_id     Int       @id @default(autoincrement())
+  size_name   String
+  mods        Mod[]     @relation("ModSize")
+}
+
+model Brand {
+  brand_id     Int       @id @default(autoincrement())
+  brand_name   String
+  mods         Mod[]     @relation("ModBrand")
+}
+
+				
+			
+
+
+
+
+
+
+
+
 
 
