@@ -1,8 +1,8 @@
 export const BoxAnimation = {
-  initial: { opacity: 0, scale: 0.2 },
+  initial: { opacity: 0.7, scale: 0.5 },
   animate: { opacity: 1, scale: 1 },
   transition: {
-    duration: 1,
+    duration: 2,
     ease: [0, 0.71, 0.2, 1.01],
     scale: {
       type: "tween",

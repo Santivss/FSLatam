@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 import Portal from "./Portal";
 import { motion } from "framer-motion";
 import { BoxAnimation } from "./Animations/BoxAnimatonConfig";
@@ -36,10 +37,7 @@ const ToggleComponent = ({ children, buttonText }) => {
       <button onClick={handleToggle}>{buttonText}</button>
       {showComponent && (
         <Portal>
-          <motion.div
-            ref={componentRef}
-            {...BoxAnimation} // Utiliza la animación importada
-          >
+          <motion.div ref={componentRef} {...BoxAnimation}>
             {children}
           </motion.div>
         </Portal>

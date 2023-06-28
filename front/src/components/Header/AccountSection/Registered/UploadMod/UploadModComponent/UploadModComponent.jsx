@@ -1,13 +1,21 @@
-import { useState } from "react";
 import "./UploadModComponent.css";
 import { motion } from "framer-motion";
 import { useIconsStore } from "../../../../../../store/ui_icons_store";
 import InputVersion from "./InputsComponent/InputVersion";
 import InputDescription from "./InputsComponent/InputDescription";
 import Categories from "./Categories/Categories";
+import { useEffect } from "react";
+import axios from "axios";
 
-const UploadModComponent = () => {
+const UploadModComponent = ({ onConfirm }) => {
   const { ui_icons } = useIconsStore();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/categories")
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log(err));
+  });
 
   return (
     <form className="uploadModComponent__container">
