@@ -1,6 +1,8 @@
 import { create } from "zustand";
 
-export const CloseConfirmationComponentStore = create((set) => ({
-  showConfirmation: false,
-  setShowConfirmation: (value) => set({ showConfirmation: value }),
+const closeConfirmationComponentStore = create((set) => ({
+  confirmAction: null,
+  setConfirmAction: (callback) => set(() => ({ confirmAction: callback })),
 }));
+
+export default closeConfirmationComponentStore;

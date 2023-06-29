@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import ReactDOM from "react-dom";
 import Portal from "./Portal";
 import { motion } from "framer-motion";
 import { BoxAnimation } from "./Animations/BoxAnimatonConfig";
+import closeConfirmationComponentStore from "../store/CloseConfirmationComponentStore";
 
 const ToggleComponent = ({ children, buttonText }) => {
   const [showComponent, setShowComponent] = useState(false);

@@ -4,10 +4,10 @@ import { useIconsStore } from "../../../../../../store/ui_icons_store";
 import InputVersion from "./InputsComponent/InputVersion";
 import InputDescription from "./InputsComponent/InputDescription";
 import Categories from "./Categories/Categories";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-const UploadModComponent = ({ onConfirm }) => {
+const UploadModComponent = () => {
   const { ui_icons } = useIconsStore();
 
   useEffect(() => {
