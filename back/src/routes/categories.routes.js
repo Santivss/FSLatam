@@ -5,12 +5,39 @@ const router = Router();
 
 router.get("/categories", async (req, res) => {
   try {
-    const categories = await prisma.principalCategory.findMany({});
+    const gamesPromise = prisma.game.findMany();
+    const principalCategoriesPromise = prisma.principalCategory.findMany();
+    const subcategoriesPromise = prisma.subcategory.findMany();
+    const sizePromise = prisma.size.findMany();
+    const antiquityPromise = prisma.antiquity.findMany();
+    /* const brandsPromise = prisma.brand.findMany(); */
+
+    // Ejecutar todas las consultas en paralelo
+    const [games, principalCategories, subcategories, size, antiquity, brands] =
+      await Promise.all([
+        gamesPromise,
+        principalCategoriesPromise,
+        subcategoriesPromise,
+        sizePromise,
+        antiquityPromise,
+        /* brandsPromise, */
+      ]);
+
     res.status(200).json({
-      message: "This is",
-      categories,
+      message: "Success",
+      games,
+      principalCategories,
+      subcategories,
+      size,
+      antiquity,
+      brands,
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({
+      message: "Error",
+      error: error.message,
+    });
+  }
 });
 
 export default router;

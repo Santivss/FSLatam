@@ -75,6 +75,7 @@ model Antiquity {
 model Game {
   game_id       Int       @id @default(autoincrement())
   game_name     String
+  game_icon     String
   mods          Mod[]
 }
 

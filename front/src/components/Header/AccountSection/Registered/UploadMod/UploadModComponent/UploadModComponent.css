@@ -23,7 +23,7 @@
   justify-content: space-between;
   background-color: var(--color-secondary);
   width: 30rem;
-  margin: 0 auto;
+  margin: auto;
   border-radius: 0.5rem;
   gap: 3rem;
   padding: 1rem;
@@ -57,4 +57,10 @@
 
 .buttonConfirm__container:hover {
   border: 1px solid rgb(255, 196, 0);
+}
+
+.uploadModComponent__elements-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
