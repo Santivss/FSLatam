@@ -14,7 +14,7 @@ export const SwitchAnimated = ({ onSwitchChange }) => {
 
   const spring = {
     type: "spring",
-    stiffness: 700,
+    stiffness: 900,
     damping: 30,
   };
 
