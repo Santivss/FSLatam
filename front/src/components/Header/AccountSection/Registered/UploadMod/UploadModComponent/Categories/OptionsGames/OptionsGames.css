@@ -1,0 +1,97 @@
+.optionsGames__container {
+  width: 12rem;
+}
+
+.optionsGames__title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgb(255, 196, 0);
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  transition: 300ms ease;
+  cursor: pointer;
+  background-color: var(--color-body);
+}
+
+.optionsGames__title-container:hover {
+  border: 1px solid rgb(255, 196, 0);
+}
+
+.optionsTriangle__icon {
+  width: 1rem;
+  aspect-ratio: 1;
+  transition: 300ms ease;
+  opacity: 40%;
+}
+
+.optionsGamesActive {
+  transform: rotate(180deg);
+  opacity: 100%;
+}
+
+.optionsContainer {
+  position: absolute;
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-body);
+  border: 1px solid var(--color-secondary);
+  top: 2.5rem;
+  right: 0;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: height 200ms ease, opacity 300ms ease;
+}
+
+.optionsContainerActive {
+  opacity: 1;
+}
+
+.optionIndividual__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  cursor: pointer;
+  transition: 300ms ease;
+  height: 2.5rem;
+  color: var(--color-text-secondary-4);
+  opacity: 0.4;
+}
+
+.optionIndividualActive {
+  background-color: var(--color-secondary);
+  opacity: 1;
+}
+
+.optionIndividual__container:hover {
+  background-color: var(--color-secondary);
+}
+
+.optionIndividual__title {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  color: white;
+}
+
+.optionIndividual__icon {
+  width: 1.5rem;
+  aspect-ratio: 1;
+}
+
+.selectedOption__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}

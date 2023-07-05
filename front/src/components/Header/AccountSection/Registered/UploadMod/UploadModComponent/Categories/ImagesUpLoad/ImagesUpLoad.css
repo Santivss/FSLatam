@@ -1,0 +1,55 @@
+.imagesUpLoad__container {
+  width: 100%;
+  background-color: var(--color-secondary);
+  min-height: 20rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.imagesUpLoad__conditions-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.imagesUpLoad__title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 5rem 0 0;
+}
+
+.imagesConditions__title {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-text-secondary-3);
+}
+
+.imagesLine {
+  width: 1px;
+  background-color: var(--color-text-secondary-3);
+  height: 1rem;
+}
+
+.imagesUpLoad__input {
+  width: 100%;
+  border: none;
+  background-color: var(--color-body);
+  padding: 1rem;
+}
+
+.imagesUpLoad__container-img {
+  border: 1px solid olive;
+  padding: 1rem;
+  position: relative;
+}
+
+.imagesUpLoad__image {
+  width: 10rem;
+  border-radius: 0.5rem;
+}
+
+.imagesUpLoad__delete-button {
+  background-color: lightblue;
+  position: absolute;
+  z-index: 1;
+}

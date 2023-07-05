@@ -6,6 +6,7 @@ import InputDescription from "./InputsComponent/InputDescription";
 import Categories from "./Categories/Categories";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ImagesUpLoad from "./Categories/ImagesUpLoad/ImagesUpLoad";
 
 const UploadModComponent = () => {
   const { ui_icons } = useIconsStore();
@@ -69,6 +70,7 @@ const UploadModComponent = () => {
           className="uploadModComponent__elements-container"
         >
           <h1 className="uploadComponent__title">Subir mod</h1>
+          <ImagesUpLoad />
           <InputVersion />
           <InputDescription />
           <Categories categories={categoriesData} />

@@ -1,7 +1,7 @@
 import "./Categories.css";
 import { useIconsStore } from "../../../../../../../store/ui_icons_store";
-import OptionsReusable from "./OptionsReusable/OptionsReusable";
-import React, { useState, useEffect, useRef } from "react";
+import OptionsGames from "./OptionsGames/OptionsGames";
+import { useState, useEffect, useRef } from "react";
 import { SwitchAnimated } from "../../../../../../../utils/Animations/SwitchAnimated/SwitchAnimated";
 
 const Categories = ({ categories }) => {
@@ -11,7 +11,7 @@ const Categories = ({ categories }) => {
 
   return (
     <div className="categories__options-container">
-      <OptionsReusable />
+      <OptionsGames categories={categories} />
     </div>
   );
 };
