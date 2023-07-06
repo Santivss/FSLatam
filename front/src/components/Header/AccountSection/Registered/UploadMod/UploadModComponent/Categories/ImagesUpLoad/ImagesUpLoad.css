@@ -30,11 +30,39 @@
   height: 1rem;
 }
 
-.imagesUpLoad__input {
+.imagesUpLoad__input-container {
   width: 100%;
+  height: 15rem;
   border: none;
   background-color: var(--color-body);
   padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.imagesUpLoad__title-button__container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagesUpLoad__title-button {
+  left: 0;
+  top: 0;
+  font-size: 2.5rem;
+}
+
+.imagesUpLoad__input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 
 .imagesUpLoad__container-img {

@@ -72,13 +72,20 @@ const ImagesUpLoad = () => {
         </span>
       </div>
       {selectedImages.length < maxImages && (
-        <input
-          type="file"
-          accept=".jpg, .png"
-          multiple
-          onChange={handleImageChange}
-          className="imagesUpLoad__input"
-        />
+        <div className="imagesUpLoad__input-container">
+          <div className="imagesUpLoad__title-button__container">
+            <span className="imagesUpLoad__title-button">
+              Arrastrar y soltar las imagenes
+            </span>
+          </div>
+          <input
+            type="file"
+            accept=".jpg, .png"
+            multiple
+            onChange={handleImageChange}
+            className="imagesUpLoad__input"
+          />
+        </div>
       )}
       <div className="imagesUpLoad__container-img">
         {selectedImages.map((image, index) => (
