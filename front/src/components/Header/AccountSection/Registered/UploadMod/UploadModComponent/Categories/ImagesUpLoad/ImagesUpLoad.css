@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin: 0 0 1rem 0;
 }
 
 .imagesUpLoad__title {
@@ -35,27 +36,30 @@
   height: 15rem;
   border: none;
   background-color: var(--color-body);
-  padding: 1rem;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 1rem 0;
-  position: relative;
 }
 
 .imagesUpLoad__title-button__container {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 80%;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 0.2rem dashed var(--color-secondary);
+}
+
+.error-message {
+  font-size: 2rem;
+  color: red;
 }
 
 .imagesUpLoad__title-button {
-  left: 0;
-  top: 0;
   font-size: 2.5rem;
 }
 
@@ -63,21 +67,45 @@
   width: 100%;
   height: 100%;
   opacity: 0;
+  cursor: pointer;
 }
 
 .imagesUpLoad__container-img {
-  border: 1px solid olive;
+  background-color: var(--color-body);
+  border-radius: 0.5rem;
+  margin: 0 0 1rem 0;
+  min-height: 10rem;
   padding: 1rem;
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.imagePreview__container {
+  width: 17rem;
+  aspect-ratio: 16/9;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .imagesUpLoad__image {
-  width: 10rem;
-  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.imagesUpLoad__delete-button {
-  background-color: lightblue;
+.deleteImage__icon {
   position: absolute;
-  z-index: 1;
+  right: 0.4rem;
+  top: 0.4rem;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  opacity: 60%;
+  cursor: pointer;
+  transition: 300ms ease;
+}
+
+.deleteImage__icon:hover {
+  opacity: 100%;
 }

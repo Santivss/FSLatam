@@ -11,8 +11,6 @@ const OptionsGames = ({ categories }) => {
   const [selectedGame, setSelectedGame] = useState(null);
   const containerRef = useRef(null);
 
-  console.log(selectedGame);
-
   const getIconByName = (icon) => {
     if (icon === "fs19_icon") {
       return fs19_icon;
@@ -89,7 +87,7 @@ const OptionsGames = ({ categories }) => {
           containerVisibility ? "optionsContainerActive" : ""
         }`}
       >
-        {categories.games.map((item, index) => {
+        {categories.games.map((item) => {
           const isSelected = selectedOption === item;
 
           return (

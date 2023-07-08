@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
 import "./ImagesUpLoad.css";
+import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 
 const ImagesUpLoad = () => {
+  const { ui_icons } = useIconsStore();
   const [selectedImages, setSelectedImages] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const imageCountRef = useRef(0);
@@ -12,7 +14,7 @@ const ImagesUpLoad = () => {
     const files = event.target.files;
     const imageArray = [];
 
-    const remainingSlots = maxImages - imageCountRef.current;
+    const remainingSlots = maxImages - selectedImages.length;
     const numImagesToAdd = Math.min(remainingSlots, files.length);
 
     if (numImagesToAdd === 0) {
@@ -33,14 +35,17 @@ const ImagesUpLoad = () => {
         imageArray.push({ file, imageURL });
         imageCountRef.current += 1;
       } else {
-        setErrorMessage(`Invalid file format: ${file.name}`);
+        setErrorMessage(`El formato es incorrecto`);
         setTimeout(() => {
           setErrorMessage("");
-        }, 5000);
+        }, 3000);
       }
     }
 
-    setSelectedImages((prevImages) => [...prevImages, ...imageArray]);
+    setSelectedImages((prevImages) => [
+      ...prevImages,
+      ...imageArray.slice(0, remainingSlots),
+    ]);
   };
 
   const handleImageDelete = (index) => {
@@ -51,12 +56,6 @@ const ImagesUpLoad = () => {
       imageCountRef.current -= 1;
       return updatedImages;
     });
-  };
-
-  const handleReset = () => {
-    setSelectedImages([]);
-    imageCountRef.current = 0;
-    setErrorMessage("");
   };
 
   return (
@@ -74,9 +73,13 @@ const ImagesUpLoad = () => {
       {selectedImages.length < maxImages && (
         <div className="imagesUpLoad__input-container">
           <div className="imagesUpLoad__title-button__container">
-            <span className="imagesUpLoad__title-button">
-              Arrastrar y soltar las imagenes
-            </span>
+            {errorMessage ? (
+              <p className="error-message">{errorMessage}</p>
+            ) : (
+              <span className="imagesUpLoad__title-button">
+                Click o Arrastrar y soltar.
+              </span>
+            )}
           </div>
           <input
             type="file"
@@ -89,30 +92,22 @@ const ImagesUpLoad = () => {
       )}
       <div className="imagesUpLoad__container-img">
         {selectedImages.map((image, index) => (
-          <>
+          <div className="imagePreview__container">
             <img
               key={index}
               src={image.imageURL}
               alt={`Selected ${index + 1}`}
               className="imagesUpLoad__image"
             />
-            <button
-              className="imagesUpLoad__delete-button"
-              type="button"
+            <img
+              src={ui_icons.incorrect_icon}
+              alt=""
               onClick={() => handleImageDelete(index)}
-            >
-              Delete
-            </button>
-          </>
+              className="deleteImage__icon"
+            />
+          </div>
         ))}
       </div>
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      {selectedImages.length > 0 && (
-        <button type="button" onClick={handleReset}>
-          Reset
-        </button>
-      )}
     </div>
   );
 };
