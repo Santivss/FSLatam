@@ -1,15 +1,14 @@
-import "./PrincipalCategories.css";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 import { useEffect, useRef, useState } from "react";
 
-const PrincipalCategories = ({ categories }) => {
+const Subcategories = ({ subcategories }) => {
   const containerRef = useRef(null);
   const { ui_icons, principalCategories_icons } = useIconsStore();
-  const [principalCategoriesVilibity, setPrincipalCategoriesVilibity] =
-    useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+
   const handleVisibilityContainer = () => {
-    setPrincipalCategoriesVilibity(!principalCategoriesVilibity);
+    setSubcategoriesVisibility(!subcategoriesVisibility);
   };
 
   useEffect(() => {
@@ -18,7 +17,7 @@ const PrincipalCategories = ({ categories }) => {
         containerRef.current &&
         !containerRef.current.contains(event.target)
       ) {
-        setPrincipalCategoriesVilibity(false);
+        setSubcategoriesVisibility(false);
       }
     };
 
@@ -29,8 +28,8 @@ const PrincipalCategories = ({ categories }) => {
     };
   }, []);
 
-  const handleCategorySelection = (category) => {
-    setSelectedCategory(category);
+  const handleSubcategorySelection = (subcategory) => {
+    setSelectedSubcategory(subcategory);
   };
 
   return (
@@ -40,16 +39,14 @@ const PrincipalCategories = ({ categories }) => {
         className="principalCategories__title-container"
         ref={containerRef}
       >
-        {selectedCategory ? (
+        {selectedSubcategory ? (
           <div className="selectedCategory__container">
             <span className="selectedCategory__title">
-              {selectedCategory.principal_category_name}
+              {selectedSubcategory.subcategory_name}
             </span>
             <img
               src={
-                principalCategories_icons[
-                  selectedCategory.principal_category_icon
-                ]
+                principalCategories_icons[selectedSubcategory.subcategory_icon]
               }
               alt=""
               className="selectedCategory__icon"
@@ -57,7 +54,7 @@ const PrincipalCategories = ({ categories }) => {
           </div>
         ) : (
           <>
-            <span>Categories</span>
+            <span>Subcategories</span>
           </>
         )}
 
@@ -65,30 +62,30 @@ const PrincipalCategories = ({ categories }) => {
           src={ui_icons.triangle_icon}
           alt=""
           className={`principalCategories__triangle-icon ${
-            principalCategoriesVilibity ? "PrincipalCategoriesActive" : ""
+            subcategoriesVisibility ? "PrincipalCategoriesActive" : ""
           }`}
         />
       </div>
       <div
         className={`principalCategoriesOption__container ${
-          principalCategoriesVilibity ? "principalCategoriesOptionActive" : ""
+          subcategoriesVisibility ? "principalCategoriesOptionActive" : ""
         }`}
       >
-        {categories.map((item) => {
-          const iconName = item.principal_category_icon;
+        {subcategories.map((item) => {
+          const iconName = item.subcategory_icon;
           const icon = principalCategories_icons[iconName];
-          const isHighlighted = selectedCategory === item;
+          const isHighlighted = selectedSubcategory === item; // Verifica si el elemento actual está seleccionado
 
           return (
             <div
-              key={item.principal_category_id}
+              key={item.subcategory_id}
               className={`principalCategoriesOptionIndividual__container ${
                 isHighlighted ? "highlighted" : ""
               }`}
-              onClick={() => handleCategorySelection(item)}
+              onClick={() => handleSubcategorySelection(item)}
             >
               <span className="principalCateogoryOption__title">
-                {item.principal_category_name}
+                {item.subcategory_name}
               </span>
               <img
                 src={icon}
@@ -103,4 +100,4 @@ const PrincipalCategories = ({ categories }) => {
   );
 };
 
-export default PrincipalCategories;
+export default Subcategories;

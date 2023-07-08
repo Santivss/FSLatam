@@ -8,3 +8,9 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
+
+.switchOption__container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
