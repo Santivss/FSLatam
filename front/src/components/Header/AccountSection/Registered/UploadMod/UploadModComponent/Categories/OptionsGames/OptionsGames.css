@@ -48,10 +48,12 @@
   gap: 0.5rem;
   opacity: 0;
   transition: height 200ms ease, opacity 300ms ease;
+  pointer-events: none;
 }
 
 .optionsContainerActive {
   opacity: 1;
+  pointer-events: all;
 }
 
 .optionIndividual__container {
@@ -77,7 +79,7 @@
 
 .optionIndividual__title {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   color: var(--color-secondary);
   color: white;

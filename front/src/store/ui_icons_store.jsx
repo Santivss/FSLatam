@@ -66,6 +66,57 @@ import user_icon from "../assets/uiIcons/user_icon.png";
 import account_settings_icon from "../assets/uiIcons/account_settings_icon.svg";
 import close_icon from "../assets/uiIcons/close_icon.svg";
 import mods_icon from "../assets/uiIcons/mods_icon.svg";
+/* -------------------------principalCategories_icons----------------------------- */
+import auger_wagon_icon from "../assets/categorieIcons/auger_wagon_icon.svg";
+import bale_trailer_icon from "../assets/categorieIcons/bale_trailer_icon.svg";
+import bale_icon from "../assets/categorieIcons/bales_icon.svg";
+import car_icon from "../assets/categorieIcons/car_icon.svg";
+import cow_icon from "../assets/categorieIcons/cow_icon.svg";
+import implement_icon from "../assets/categorieIcons/implements_icon.svg";
+import cultivators_icon from "../assets/categorieIcons/cultivators_icon.svg";
+import decoration_icon from "../assets/categorieIcons/decoration_icon.svg";
+import disc_harrow_icon from "../assets/categorieIcons/disc_harrow_icon.svg";
+import europe_icon from "../assets/categorieIcons/europe_icon.svg";
+import fertilization_icon from "../assets/categorieIcons/fertilizer_icon.svg";
+import forage_trailer_icon from "../assets/categorieIcons/forage_trailer_icon.svg";
+import harvester_beet_icon from "../assets/categorieIcons/harvester_beet_icon.svg";
+import harvester_combine_icon from "../assets/categorieIcons/harvester_combine_icon.svg";
+import harvester_cotton_icon from "../assets/categorieIcons/harvester_cotton_icon.svg";
+import harvester_forage_icon from "../assets/categorieIcons/harvester_forage_icon.svg";
+import harvester_grape_icon from "../assets/categorieIcons/harvester_grape_icon.svg";
+import harvester_icon from "../assets/categorieIcons/harvester_icon.svg";
+import harvester_olives_icon from "../assets/categorieIcons/harvester_olives_icon.svg";
+import harvester_potato_icon from "../assets/categorieIcons/harvester_potato_icon.svg";
+import harvester_sugar_cane_icon from "../assets/categorieIcons/harvester_sugar_cane_icon.svg";
+import header_trailer_icon from "../assets/categorieIcons/header_trailer_icon.svg";
+import headers_icon from "../assets/categorieIcons/headers_icon.svg";
+import loader_icon from "../assets/categorieIcons/loader_icon.svg";
+import log_trailer_icon from "../assets/categorieIcons/log_trailer_icon.svg";
+import forestry_icon from "../assets/categorieIcons/loggin_icon.svg";
+import low_bed_trailer_icon from "../assets/categorieIcons/low_bed_trailer_icon.svg";
+import map_icon from "../assets/categorieIcons/maps_icon.svg";
+import breeding_icon from "../assets/categorieIcons/mixer_icon.svg";
+import north_america_icon from "../assets/categorieIcons/north_america_icon.svg";
+import other_icon from "../assets/categorieIcons/other_icon.svg";
+import pickup_icon from "../assets/categorieIcons/pickup_icon.svg";
+import planters_icon from "../assets/categorieIcons/planters_icon.svg";
+import plows_icon from "../assets/categorieIcons/plows_icon.svg";
+import power_harrows_icon from "../assets/categorieIcons/power_harrows_icon.svg";
+import production_icon from "../assets/categorieIcons/production_icon.svg";
+import public_work_icon from "../assets/categorieIcons/publicWork_icon.svg";
+import seeders_icon from "../assets/categorieIcons/seeders_icon.svg";
+import placeable_icon from "../assets/categorieIcons/placeable_icon.svg";
+import silo_icon from "../assets/categorieIcons/silo_icon.svg";
+import south_america_icon from "../assets/categorieIcons/south_america_icon.svg";
+import subsoilers_icon from "../assets/categorieIcons/subsoilers_icon.svg";
+import tank_icon from "../assets/categorieIcons/tank_icon.svg";
+import tractor_icon from "../assets/categorieIcons/tractor_icon.svg";
+import trailer_icon from "../assets/categorieIcons/trailer_icon.svg";
+import truck_icon from "../assets/categorieIcons/truck_icon.svg";
+import vehicle_icon from "../assets/categorieIcons/vehicles_icon.svg";
+import weight_icon from "../assets/categorieIcons/weight_icon.svg";
+import windrowers_icon from "../assets/categorieIcons/windrowers_icon.svg";
+import hay_icon from "../assets/categorieIcons/hay_icon.svg";
 
 export const useIconsStore = create((set) => ({
   ui_icons: {
@@ -135,5 +186,57 @@ export const useIconsStore = create((set) => ({
     logout_icon,
     user_icon,
     account_settings_icon,
+  },
+  principalCategories_icons: {
+    auger_wagon_icon,
+    bale_trailer_icon,
+    bale_icon,
+    car_icon,
+    cow_icon,
+    implement_icon,
+    cultivators_icon,
+    decoration_icon,
+    disc_harrow_icon,
+    europe_icon,
+    fertilization_icon,
+    forage_trailer_icon,
+    harvester_beet_icon,
+    harvester_combine_icon,
+    harvester_cotton_icon,
+    harvester_forage_icon,
+    harvester_grape_icon,
+    harvester_icon,
+    harvester_olives_icon,
+    harvester_potato_icon,
+    harvester_sugar_cane_icon,
+    header_trailer_icon,
+    headers_icon,
+    loader_icon,
+    log_trailer_icon,
+    forestry_icon,
+    low_bed_trailer_icon,
+    map_icon,
+    breeding_icon,
+    north_america_icon,
+    other_icon,
+    pickup_icon,
+    planters_icon,
+    plows_icon,
+    power_harrows_icon,
+    production_icon,
+    public_work_icon,
+    seeders_icon,
+    placeable_icon,
+    silo_icon,
+    south_america_icon,
+    subsoilers_icon,
+    tank_icon,
+    tractor_icon,
+    trailer_icon,
+    truck_icon,
+    vehicle_icon,
+    weight_icon,
+    windrowers_icon,
+    hay_icon,
   },
 }));

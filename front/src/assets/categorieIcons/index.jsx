@@ -3,7 +3,7 @@ import bale_trailer_icon from "./bale_trailer_icon.svg";
 import bales_icon from "./bales_icon.svg";
 import car_icon from "./car_icon.svg";
 import cow_icon from "./cow_icon.svg";
-import cultivator_icon from "./cultivator_icon.svg";
+import implements_icon from "./implements_icon.svg";
 import cultivators_icon from "./cultivators_icon.svg";
 import decoration_icon from "./decoration_icon.svg";
 import disc_harrow_icon from "./disc_harrow_icon.svg";
@@ -28,14 +28,14 @@ import low_bed_trailer_icon from "./low_bed_trailer_icon.svg";
 import maps_icon from "./maps_icon.svg";
 import mixer_icon from "./mixer_icon.svg";
 import north_america_icon from "./north_america_icon.svg";
-import others_icon from "./others_icon.svg";
+import other_icon from "./other_icon.svg";
 import pickup_icon from "./pickup_icon.svg";
 import planters_icon from "./planters_icon.svg";
 import plows_icon from "./plows_icon.svg";
 import power_harrows_icon from "./power_harrows_icon.svg";
 import publicWork_icon from "./publicWork_icon.svg";
 import seeders_icon from "./seeders_icon.svg";
-import shed_icon from "./shed_icon.svg";
+import placeable_icon from "./placeable_icon.svg";
 import silo_icon from "./silo_icon.svg";
 import south_america_icon from "./south_america_icon.svg";
 import subsoilers_icon from "./subsoilers_icon.svg";
@@ -92,7 +92,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -114,7 +114,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -136,7 +136,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -174,13 +174,13 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
   {
     category: "Implements",
-    icon: cultivator_icon,
+    icon: implements_icon,
     subcategories: [
       {
         name: "Seeders",
@@ -220,7 +220,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -242,7 +242,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -272,7 +272,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -294,7 +294,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -316,7 +316,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -346,7 +346,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -368,7 +368,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -386,7 +386,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -416,7 +416,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -442,13 +442,13 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
   {
     category: "Placeables",
-    icon: shed_icon,
+    icon: placeable_icon,
     subcategories: [
       {
         name: "Silos",
@@ -476,7 +476,7 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
@@ -518,13 +518,13 @@ const categories = [
       },
       {
         name: "Others",
-        icon: others_icon,
+        icon: other_icon,
       },
     ],
   },
   {
     category: "Others",
-    icon: others_icon,
+    icon: other_icon,
     subcategories: [
       {
         name: "Scripts",
