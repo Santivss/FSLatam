@@ -1,5 +1,7 @@
 .optionsGames__container {
   width: 12rem;
+  position: relative;
+  z-index: 2;
 }
 
 .optionsGames__title-container {
@@ -39,7 +41,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--color-body);
-  border: 1px solid var(--color-secondary);
+  border: 1px solid var(--color-secondary2);
   top: 2.5rem;
   right: 0;
   overflow-y: auto;
@@ -54,6 +56,9 @@
 .optionsContainerActive {
   opacity: 1;
   pointer-events: all;
+  box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 10px 10px 27px 0px rgba(0, 0, 0, 0.8);
 }
 
 .optionIndividual__container {

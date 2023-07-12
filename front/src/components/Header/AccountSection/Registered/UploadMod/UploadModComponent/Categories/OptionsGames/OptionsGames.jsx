@@ -2,7 +2,7 @@ import "./OptionsGames.css";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 import { useState, useEffect, useRef } from "react";
 
-const OptionsGames = ({ categories }) => {
+const OptionsGames = ({ categories, onOptionSelection }) => {
   const { ui_icons } = useIconsStore();
   const { fs19_icon, fs22_icon } = ui_icons;
 
@@ -41,6 +41,7 @@ const OptionsGames = ({ categories }) => {
   const handleGameSelection = (item) => {
     setSelectedOption(item);
     setContainerVisibility(false);
+    onOptionSelection(item);
 
     const gameName = item.game_name;
     if (gameName === "fs19" || gameName === "fs22") {

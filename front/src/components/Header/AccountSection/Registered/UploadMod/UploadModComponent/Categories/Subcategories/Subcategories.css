@@ -1,0 +1,8 @@
+.subcategoryContainer__active {
+  cursor: default;
+}
+
+.subcategory__active {
+  pointer-events: all;
+  opacity: 1;
+}

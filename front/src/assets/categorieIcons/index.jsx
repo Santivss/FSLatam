@@ -1,10 +1,10 @@
 import auger_wagon_icon from "./auger_wagon_icon.svg";
 import bale_trailer_icon from "./bale_trailer_icon.svg";
-import bales_icon from "./bales_icon.svg";
+import bale_icon from "./bale_icon.svg";
 import car_icon from "./car_icon.svg";
 import cow_icon from "./cow_icon.svg";
-import implements_icon from "./implements_icon.svg";
-import cultivators_icon from "./cultivators_icon.svg";
+import implement_icon from "./implement_icon.svg";
+import cultivator_icon from "./cultivator_icon.svg";
 import decoration_icon from "./decoration_icon.svg";
 import disc_harrow_icon from "./disc_harrow_icon.svg";
 import europe_icon from "./europe_icon.svg";
@@ -16,37 +16,37 @@ import harvester_cotton_icon from "./harvester_cotton_icon.svg";
 import harvester_forage_icon from "./harvester_forage_icon.svg";
 import harvester_icon from "./harvester_icon.svg";
 import harvester_grape_icon from "./harvester_grape_icon.svg";
-import harvester_olives_icon from "./harvester_olives_icon.svg";
+import harvester_olive_icon from "./harvester_olive_icon.svg";
 import harvester_potato_icon from "./harvester_potato_icon.svg";
 import harvester_sugar_cane_icon from "./harvester_sugar_cane_icon.svg";
 import header_trailer_icon from "./header_trailer_icon.svg";
-import headers_icon from "./headers_icon.svg";
+import header_icon from "./header_icon.svg";
 import loader_icon from "./loader_icon.svg";
 import log_trailer_icon from "./log_trailer_icon.svg";
 import loggin_icon from "./loggin_icon.svg";
 import low_bed_trailer_icon from "./low_bed_trailer_icon.svg";
-import maps_icon from "./maps_icon.svg";
+import map_icon from "./map_icon.svg";
 import mixer_icon from "./mixer_icon.svg";
 import north_america_icon from "./north_america_icon.svg";
 import other_icon from "./other_icon.svg";
 import pickup_icon from "./pickup_icon.svg";
-import planters_icon from "./planters_icon.svg";
-import plows_icon from "./plows_icon.svg";
-import power_harrows_icon from "./power_harrows_icon.svg";
+import planter_icon from "./planter_icon.svg";
+import plow_icon from "./plow_icon.svg";
+import power_harrow_icon from "./power_harrow_icon.svg";
 import publicWork_icon from "./publicWork_icon.svg";
-import seeders_icon from "./seeders_icon.svg";
+import seeder_icon from "./seeder_icon.svg";
 import placeable_icon from "./placeable_icon.svg";
 import silo_icon from "./silo_icon.svg";
 import south_america_icon from "./south_america_icon.svg";
-import subsoilers_icon from "./subsoilers_icon.svg";
+import subsoiler_icon from "./subsoiler_icon.svg";
 import tank_icon from "./tank_icon.svg";
 import tractor_icon from "./tractor_icon.svg";
 import trailer_icon from "./trailer_icon.svg";
 import truck_icon from "./truck_icon.svg";
-import vehicles_icon from "./vehicles_icon.svg";
+import vehicle_icon from "./vehicle_icon.svg";
 import weight_icon from "./weight_icon.svg";
 import production_icon from "./production_icon.svg";
-import windrowers_icon from "./windrowers_icon.svg";
+import windrower_icon from "./windrower_icon.svg";
 
 const categories = [
   {
@@ -72,7 +72,7 @@ const categories = [
       },
       {
         name: "Olives",
-        icon: harvester_olives_icon,
+        icon: harvester_olive_icon,
       },
       {
         name: "Beet",
@@ -98,7 +98,7 @@ const categories = [
   },
   {
     category: "Maps",
-    icon: maps_icon,
+    icon: map_icon,
     subcategories: [
       {
         name: "Europe",
@@ -120,7 +120,7 @@ const categories = [
   },
   {
     category: "Vehicles",
-    icon: vehicles_icon,
+    icon: vehicle_icon,
     subcategories: [
       {
         name: "Trucks",
@@ -180,19 +180,19 @@ const categories = [
   },
   {
     category: "Implements",
-    icon: implements_icon,
+    icon: implement_icon,
     subcategories: [
       {
         name: "Seeders",
-        icon: seeders_icon,
+        icon: seeder_icon,
       },
       {
         name: "Planters",
-        icon: planters_icon,
+        icon: planter_icon,
       },
       {
         name: "Headers",
-        icon: headers_icon,
+        icon: header_icon,
       },
       {
         name: "Disc Harrows",
@@ -200,19 +200,19 @@ const categories = [
       },
       {
         name: "Power Harrows",
-        icon: power_harrows_icon,
+        icon: power_harrow_icon,
       },
       {
         name: "Subsoilers",
-        icon: subsoilers_icon,
+        icon: subsoiler_icon,
       },
       {
         name: "Cultivators",
-        icon: cultivators_icon,
+        icon: cultivator_icon,
       },
       {
         name: "Plows",
-        icon: plows_icon,
+        icon: plow_icon,
       },
       {
         name: "Weights",
@@ -226,7 +226,7 @@ const categories = [
   },
   {
     category: "Hay",
-    icon: windrowers_icon,
+    icon: windrower_icon,
     subcategories: [
       {
         name: "Windrowers",
@@ -278,7 +278,7 @@ const categories = [
   },
   {
     category: "Bales",
-    icon: bales_icon,
+    icon: bale_icon,
     subcategories: [
       {
         name: "Square Balers",
@@ -452,7 +452,7 @@ const categories = [
     subcategories: [
       {
         name: "Silos",
-        icon: "",
+        icon: silo_icon,
       },
       {
         name: "Houses",

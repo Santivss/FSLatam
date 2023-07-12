@@ -1,7 +1,12 @@
+import "./Subcategories.css";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 import { useEffect, useRef, useState } from "react";
 
-const Subcategories = ({ subcategories }) => {
+const Subcategories = ({
+  subcategories,
+  selectedCategory,
+  handleSubcategoriesSelection,
+}) => {
   const containerRef = useRef(null);
   const { ui_icons, principalCategories_icons } = useIconsStore();
   const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
@@ -30,13 +35,20 @@ const Subcategories = ({ subcategories }) => {
 
   const handleSubcategorySelection = (subcategory) => {
     setSelectedSubcategory(subcategory);
+    handleSubcategoriesSelection(subcategory);
   };
 
   return (
-    <div className="principalCategories__container">
+    <div
+      className={`principalCategories__container ${
+        selectedCategory ? "subcategoryContainer__active" : null
+      }`}
+    >
       <div
         onClick={handleVisibilityContainer}
-        className="principalCategories__title-container"
+        className={`principalCategories__title-container ${
+          selectedCategory ? "subcategory__active" : ""
+        } `}
         ref={containerRef}
       >
         {selectedSubcategory ? (

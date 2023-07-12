@@ -11,17 +11,46 @@ import Brands from "./Brands/Brands";
 
 const Categories = ({ categories }) => {
   const { ui_icons } = useIconsStore();
-  const { games } = categories;
+  const [selectedGame, setSelectedGame] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubcategory, setselectedSubcategory] = useState(null);
   const { fs19_icon, fs22_icon } = ui_icons;
+
+  /* Lógica gameSelection */
+  const handleOptionSelection = (gameOptionSelected) => {
+    console.log("La opcion es", gameOptionSelected);
+    setSelectedGame(gameOptionSelected);
+  };
+  /* Lógica PrincipalCategories */
+  const handlePrincipalCategorySelection = (categorySelected) => {
+    setSelectedCategory(categorySelected);
+  };
+  /* Lógica Subcategories */
+  const handleSubcategoriesSelection = (subcategorySelected) => {
+    setselectedSubcategory(subcategorySelected);
+  };
+
+  console.log("La subcategoria seleccionada es", selectedSubcategory);
 
   const [isConsoleEnabled, setConsoleEnabled] = useState(false);
   const [isMultiplayerEnabled, setMultiplayerEnabled] = useState(false);
 
   return (
     <div className="categories__options-container">
-      <OptionsGames categories={categories} />
-      <PrincipalCategories categories={categories.principalCategories} />
-      <Subcategories subcategories={categories.subcategories} />
+      <OptionsGames
+        categories={categories}
+        onOptionSelection={handleOptionSelection}
+      />
+      <PrincipalCategories
+        categories={categories.principalCategories}
+        selectedGame={selectedGame}
+        handlePrincipalCategorySelection={handlePrincipalCategorySelection}
+      />
+      <Subcategories
+        subcategories={categories.subcategories}
+        selectedCategory={selectedCategory}
+        handleSubcategoriesSelection={handleSubcategoriesSelection}
+      />
       <Size size={categories.size} />
       <Antiquity antiquity={categories.antiquity} />
       {/* <Brands brands={categories.brands} /> */}

@@ -74,7 +74,25 @@ const UploadModComponent = () => {
           <InputVersion />
           <InputDescription />
           <Categories categories={categoriesData} />
-          <button type="button">Enviar</button>
+          <div className="linkMod__container">
+            <span className="linkMod__title">Link</span>
+            <input
+              type="input"
+              className="inputLinkMod__title"
+              placeholder="https://sharemods.com/yfm6tlbowfl8/FS22_Juan_Bautista_Alberdi.zip.html"
+            />
+          </div>
+
+          <motion.div
+            whileHover={{ scale: 1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.1 }}
+            className="sendMod__container"
+          >
+            <button type="button" className="buttonSendMod">
+              Enviar
+            </button>
+          </motion.div>
         </motion.div>
       ) : null}
     </form>

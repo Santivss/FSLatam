@@ -2,7 +2,11 @@ import "./PrincipalCategories.css";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 import { useEffect, useRef, useState } from "react";
 
-const PrincipalCategories = ({ categories }) => {
+const PrincipalCategories = ({
+  categories,
+  selectedGame,
+  handlePrincipalCategorySelection,
+}) => {
   const containerRef = useRef(null);
   const { ui_icons, principalCategories_icons } = useIconsStore();
   const [principalCategoriesVilibity, setPrincipalCategoriesVilibity] =
@@ -31,13 +35,20 @@ const PrincipalCategories = ({ categories }) => {
 
   const handleCategorySelection = (category) => {
     setSelectedCategory(category);
+    handlePrincipalCategorySelection(category);
   };
 
   return (
-    <div className="principalCategories__container">
+    <div
+      className={`principalCategories__container ${
+        selectedGame ? "principalCategories__container-active" : null
+      }`}
+    >
       <div
         onClick={handleVisibilityContainer}
-        className="principalCategories__title-container"
+        className={`principalCategories__title-container ${
+          selectedGame ? "principalCategories__title-container-active" : null
+        }`}
         ref={containerRef}
       >
         {selectedCategory ? (
