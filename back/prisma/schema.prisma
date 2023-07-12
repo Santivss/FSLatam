@@ -20,6 +20,7 @@ model User {
   country_id  Int?
   country     Country?   @relation(fields: [country_id], references: [country_id])
   mods        Mod[]
+  createdAt DateTime @default(now())
 }
 
 model Country {
@@ -43,6 +44,24 @@ model Subcategory {
   principal_category_id  Int
   principal_category     PrincipalCategory  @relation(fields: [principal_category_id], references: [principal_category_id])
   mods                   Mod[]
+  size                   Size?              @relation("SubcategorySize", fields: [size_id], references: [size_id])
+  size_id                Int?
+  antiquity   Antiquity? @relation("Subcategoryantiques", fields: [antiquity_id], references: [antiquity_id])
+  antiquity_id  Int?
+}
+
+model Size {
+  size_id     Int       @id @default(autoincrement())
+  size_name   String
+  mods        Mod[]     @relation("ModSize")
+  subcategories Subcategory[] @relation("SubcategorySize")
+}
+
+model Antiquity {
+  antiquity_id    Int       @id @default(autoincrement())
+  antiquity_name  String
+  mods            Mod[]
+  antiques  Subcategory[] @relation("Subcategoryantiques")
 }
 
 model Mod {
@@ -64,13 +83,9 @@ model Mod {
   brands            Brand[]      @relation("ModBrand")
   user_id Int
   user User @relation(fields: [user_id],references: [user_id])
+  createdAt DateTime @default(now())
 }
 
-model Antiquity {
-  antiquity_id    Int       @id @default(autoincrement())
-  antiquity_name  String
-  mods            Mod[]
-}
 
 model Game {
   game_id       Int       @id @default(autoincrement())
@@ -86,11 +101,6 @@ model Image {
   mod          Mod       @relation(fields: [mod_id], references: [mod_id])
 }
 
-model Size {
-  size_id     Int       @id @default(autoincrement())
-  size_name   String
-  mods        Mod[]     @relation("ModSize")
-}
 
 model Brand {
   brand_id     Int       @id @default(autoincrement())
