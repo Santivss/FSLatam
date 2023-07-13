@@ -6,11 +6,14 @@ const router = Router();
 router.get("/categories", async (req, res) => {
   try {
     const gamesPromise = prisma.game.findMany();
-    const principalCategoriesPromise = prisma.principalCategory.findMany();
+    const principalCategoriesPromise = prisma.principalCategory.findMany({
+      include: {
+        subcategories: true,
+      },
+    });
     const subcategoriesPromise = prisma.subcategory.findMany();
     const sizePromise = prisma.size.findMany();
     const antiquityPromise = prisma.antiquity.findMany();
-    /* const brandsPromise = prisma.brand.findMany(); */
 
     // Ejecutar todas las consultas en paralelo
     const [games, principalCategories, subcategories, size, antiquity, brands] =

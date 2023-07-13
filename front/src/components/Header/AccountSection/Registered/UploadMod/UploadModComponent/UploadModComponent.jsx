@@ -28,6 +28,8 @@ const UploadModComponent = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  console.log(categoriesData);
+
   return (
     <form className="uploadModComponent__container">
       {advirtiseMessage ? null : (

@@ -11,6 +11,7 @@ const Subcategories = ({
   const { ui_icons, principalCategories_icons } = useIconsStore();
   const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [containerInteractuable, setContainerInteractuable] = useState(false);
 
   const handleVisibilityContainer = () => {
     setSubcategoriesVisibility(!subcategoriesVisibility);
@@ -38,16 +39,26 @@ const Subcategories = ({
     handleSubcategoriesSelection(subcategory);
   };
 
+  useEffect(() => {
+    {
+      selectedCategory?.subcategories.length > 0
+        ? setContainerInteractuable(true)
+        : selectedCategory?.subcategories.length === 0
+        ? setContainerInteractuable(false)
+        : null;
+    }
+  }, [selectedCategory]);
+
   return (
     <div
       className={`principalCategories__container ${
-        selectedCategory ? "subcategoryContainer__active" : null
+        containerInteractuable ? "subcategoryContainer__active" : ""
       }`}
     >
       <div
         onClick={handleVisibilityContainer}
         className={`principalCategories__title-container ${
-          selectedCategory ? "subcategory__active" : ""
+          containerInteractuable ? "subcategory__active" : ""
         } `}
         ref={containerRef}
       >
@@ -83,7 +94,7 @@ const Subcategories = ({
           subcategoriesVisibility ? "principalCategoriesOptionActive" : ""
         }`}
       >
-        {subcategories.map((item) => {
+        {selectedCategory?.subcategories.map((item) => {
           const iconName = item.subcategory_icon;
           const icon = principalCategories_icons[iconName];
           const isHighlighted = selectedSubcategory === item; // Verifica si el elemento actual está seleccionado

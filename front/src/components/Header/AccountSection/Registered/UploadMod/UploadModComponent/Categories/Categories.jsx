@@ -30,8 +30,6 @@ const Categories = ({ categories }) => {
     setselectedSubcategory(subcategorySelected);
   };
 
-  console.log("La subcategoria seleccionada es", selectedSubcategory);
-
   const [isConsoleEnabled, setConsoleEnabled] = useState(false);
   const [isMultiplayerEnabled, setMultiplayerEnabled] = useState(false);
 
