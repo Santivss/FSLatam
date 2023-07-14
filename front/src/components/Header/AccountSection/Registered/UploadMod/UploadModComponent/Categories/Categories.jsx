@@ -53,7 +53,7 @@ const Categories = ({ categories }) => {
       <Antiquity antiquity={categories.antiquity} />
       {/* <Brands brands={categories.brands} /> */}
       <div className="switchOption__container">
-        Consoles
+        Console
         <SwitchAnimated
           onSwitchChange={setConsoleEnabled}
           value={isConsoleEnabled}
