@@ -1,28 +1,20 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "User" (
+    "user_id" SERIAL NOT NULL,
+    "user_name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT,
+    "country_id" INTEGER,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-  - The primary key for the `User` table will be changed. If it partially fails, the table could be left without primary key constraint.
-  - You are about to drop the column `id` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the column `name` on the `User` table. All the data in the column will be lost.
-  - Added the required column `country_id` to the `User` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `password` to the `User` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `user_name` to the `User` table without a default value. This is not possible if the table is not empty.
-
-*/
--- AlterTable
-ALTER TABLE "User" DROP CONSTRAINT "User_pkey",
-DROP COLUMN "id",
-DROP COLUMN "name",
-ADD COLUMN     "country_id" INTEGER NOT NULL,
-ADD COLUMN     "password" TEXT NOT NULL,
-ADD COLUMN     "user_id" SERIAL NOT NULL,
-ADD COLUMN     "user_name" TEXT NOT NULL,
-ADD CONSTRAINT "User_pkey" PRIMARY KEY ("user_id");
+    CONSTRAINT "User_pkey" PRIMARY KEY ("user_id")
+);
 
 -- CreateTable
 CREATE TABLE "Country" (
     "country_id" SERIAL NOT NULL,
     "country_name" TEXT NOT NULL,
+    "country_icon" TEXT NOT NULL,
 
     CONSTRAINT "Country_pkey" PRIMARY KEY ("country_id")
 );
@@ -31,6 +23,7 @@ CREATE TABLE "Country" (
 CREATE TABLE "PrincipalCategory" (
     "principal_category_id" SERIAL NOT NULL,
     "principal_category_name" TEXT NOT NULL,
+    "principal_category_icon" TEXT NOT NULL,
 
     CONSTRAINT "PrincipalCategory_pkey" PRIMARY KEY ("principal_category_id")
 );
@@ -39,24 +32,20 @@ CREATE TABLE "PrincipalCategory" (
 CREATE TABLE "Subcategory" (
     "subcategory_id" SERIAL NOT NULL,
     "subcategory_name" TEXT NOT NULL,
+    "subcategory_icon" TEXT NOT NULL,
     "principal_category_id" INTEGER NOT NULL,
+    "size" BOOLEAN,
+    "antiquity" BOOLEAN,
 
     CONSTRAINT "Subcategory_pkey" PRIMARY KEY ("subcategory_id")
 );
 
 -- CreateTable
-CREATE TABLE "Mod" (
-    "mod_id" SERIAL NOT NULL,
-    "mod_title" TEXT NOT NULL,
-    "mod_description" TEXT NOT NULL,
-    "consoles" TEXT[],
-    "multiplayer" BOOLEAN NOT NULL,
-    "mod_link" TEXT NOT NULL,
-    "subcategory_id" INTEGER NOT NULL,
-    "antiquity_id" INTEGER NOT NULL,
-    "game_id" INTEGER NOT NULL,
+CREATE TABLE "Size" (
+    "size_id" SERIAL NOT NULL,
+    "size_name" TEXT NOT NULL,
 
-    CONSTRAINT "Mod_pkey" PRIMARY KEY ("mod_id")
+    CONSTRAINT "Size_pkey" PRIMARY KEY ("size_id")
 );
 
 -- CreateTable
@@ -68,9 +57,28 @@ CREATE TABLE "Antiquity" (
 );
 
 -- CreateTable
+CREATE TABLE "Mod" (
+    "mod_id" SERIAL NOT NULL,
+    "mod_title" TEXT NOT NULL,
+    "mod_description" TEXT NOT NULL,
+    "consoles" BOOLEAN NOT NULL,
+    "multiplayer" BOOLEAN NOT NULL,
+    "mod_link" TEXT NOT NULL,
+    "subcategory_id" INTEGER NOT NULL,
+    "antiquity_id" INTEGER NOT NULL,
+    "game_id" INTEGER NOT NULL,
+    "image_icon" TEXT NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Mod_pkey" PRIMARY KEY ("mod_id")
+);
+
+-- CreateTable
 CREATE TABLE "Game" (
     "game_id" SERIAL NOT NULL,
     "game_name" TEXT NOT NULL,
+    "game_icon" TEXT NOT NULL,
 
     CONSTRAINT "Game_pkey" PRIMARY KEY ("game_id")
 );
@@ -82,14 +90,6 @@ CREATE TABLE "Image" (
     "mod_id" INTEGER NOT NULL,
 
     CONSTRAINT "Image_pkey" PRIMARY KEY ("image_id")
-);
-
--- CreateTable
-CREATE TABLE "Size" (
-    "size_id" SERIAL NOT NULL,
-    "size_name" TEXT NOT NULL,
-
-    CONSTRAINT "Size_pkey" PRIMARY KEY ("size_id")
 );
 
 -- CreateTable
@@ -113,6 +113,9 @@ CREATE TABLE "_ModBrand" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "_ModSize_AB_unique" ON "_ModSize"("A", "B");
 
 -- CreateIndex
@@ -125,7 +128,7 @@ CREATE UNIQUE INDEX "_ModBrand_AB_unique" ON "_ModBrand"("A", "B");
 CREATE INDEX "_ModBrand_B_index" ON "_ModBrand"("B");
 
 -- AddForeignKey
-ALTER TABLE "User" ADD CONSTRAINT "User_country_id_fkey" FOREIGN KEY ("country_id") REFERENCES "Country"("country_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "User" ADD CONSTRAINT "User_country_id_fkey" FOREIGN KEY ("country_id") REFERENCES "Country"("country_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Subcategory" ADD CONSTRAINT "Subcategory_principal_category_id_fkey" FOREIGN KEY ("principal_category_id") REFERENCES "PrincipalCategory"("principal_category_id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -138,6 +141,9 @@ ALTER TABLE "Mod" ADD CONSTRAINT "Mod_antiquity_id_fkey" FOREIGN KEY ("antiquity
 
 -- AddForeignKey
 ALTER TABLE "Mod" ADD CONSTRAINT "Mod_game_id_fkey" FOREIGN KEY ("game_id") REFERENCES "Game"("game_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Mod" ADD CONSTRAINT "Mod_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Image" ADD CONSTRAINT "Image_mod_id_fkey" FOREIGN KEY ("mod_id") REFERENCES "Mod"("mod_id") ON DELETE RESTRICT ON UPDATE CASCADE;

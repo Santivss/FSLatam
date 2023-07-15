@@ -18,7 +18,6 @@ const Categories = ({ categories }) => {
 
   /* Lógica gameSelection */
   const handleOptionSelection = (gameOptionSelected) => {
-    console.log("La opcion es", gameOptionSelected);
     setSelectedGame(gameOptionSelected);
   };
   /* Lógica PrincipalCategories */
