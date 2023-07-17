@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 
-const Antiquity = ({ antiquity }) => {
+const Antiquity = ({ antiquity, statusAntiquity, handleAntiquitySelected }) => {
   const { ui_icons } = useIconsStore();
   const containerRef = useRef(null);
   const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
@@ -21,22 +21,31 @@ const Antiquity = ({ antiquity }) => {
       }
     };
 
+    setSelectedAntiquity(null);
+
     document.addEventListener("click", handleClickOutside);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [statusAntiquity]);
 
   const handleAntiquitySelection = (antiquity) => {
     setSelectedAntiquity(antiquity);
+    handleAntiquitySelected(antiquity);
   };
 
   return (
-    <div className="principalCategories__container">
+    <div
+      className={`principalCategories__container ${
+        statusAntiquity ? "subcategoryContainer__active" : ""
+      }`}
+    >
       <div
         onClick={handleVisibilityContainer}
-        className="principalCategories__title-container"
+        className={`principalCategories__title-container ${
+          statusAntiquity ? "subcategory__active" : ""
+        } `}
         ref={containerRef}
       >
         {selectedAntiquity ? (

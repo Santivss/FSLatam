@@ -1,4 +1,4 @@
-import auger_wagon_icon from "./auger_wagon_icon.svg";
+import auger_wagon_trailer_icon from "./auger_wagon_trailer_icon.svg";
 import bale_trailer_icon from "./bale_trailer_icon.svg";
 import bale_icon from "./bale_icon.svg";
 import car_icon from "./car_icon.svg";
@@ -150,7 +150,7 @@ const categories = [
       },
       {
         name: "Auger Wagons",
-        icon: auger_wagon_icon,
+        icon: auger_wagon_trailer_icon,
       },
       {
         name: "Low Bed Trailers",

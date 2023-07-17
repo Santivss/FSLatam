@@ -1,6 +1,5 @@
 import "./UploadModComponent.css";
 import { motion } from "framer-motion";
-import { useIconsStore } from "../../../../../../store/ui_icons_store";
 import InputVersion from "./InputsComponent/InputVersion";
 import InputDescription from "./InputsComponent/InputDescription";
 import Categories from "./Categories/Categories";
@@ -9,26 +8,56 @@ import axios from "axios";
 import ImagesUpLoad from "./Categories/ImagesUpLoad/ImagesUpLoad";
 
 const UploadModComponent = () => {
-  const { ui_icons } = useIconsStore();
   const [advirtiseMessage, setAdvirtiseMessage] = useState(false);
   const [categoriesData, setCategoriesData] = useState([]);
-  const [filteredCategories, setFilteredCategories] = useState([]);
+  const [categoriesFilteredPost, setCategoriesFilteredPost] = useState(null);
+  const [imagesDataForPost, setImagesDataForPost] = useState(null);
+  const [versionDataForPost, setVersionDataForPost] = useState(null);
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/categories")
-      .then((response) => {
-        setCategoriesData(response.data);
+      .then((res) => {
+        setCategoriesData(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const handleCategoriesFiltered = (dataToSend) => {
+    setCategoriesFilteredPost({
+      dataToSend,
+      imagesDataForPost,
+    });
+  };
+
+  /* Post data to back */
+
+  const handlePostDataToBack = () => {
+    axios
+      .post("http://localhost:3000/api/categories", categoriesFilteredPost)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
+  /* Traer las imagenes para enviarlas */
+  const handleImagesData = (imagesData) => {
+    setImagesDataForPost(imagesData);
+  };
+
+  /* Traer la informacion de version */
+  const handleVersionData = (titleInputValue, versionData) => {
+    setVersionDataForPost({
+      version: versionData,
+      title: titleInputValue,
+    });
+  };
+
+  console.log(versionDataForPost);
 
   const variants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0 },
   };
-
-  console.log(categoriesData);
 
   return (
     <form className="uploadModComponent__container">
@@ -72,10 +101,13 @@ const UploadModComponent = () => {
           className="uploadModComponent__elements-container"
         >
           <h1 className="uploadComponent__title">Subir mod</h1>
-          <ImagesUpLoad />
-          <InputVersion />
+          <ImagesUpLoad handleImagesData={handleImagesData} />
+          <InputVersion handleVersionData={handleVersionData} />
           <InputDescription />
-          <Categories categories={categoriesData} />
+          <Categories
+            categories={categoriesData}
+            handleCategoriesFiltered={handleCategoriesFiltered}
+          />
           <div className="linkMod__container">
             <span className="linkMod__title">Link</span>
             <input
@@ -91,7 +123,11 @@ const UploadModComponent = () => {
             transition={{ duration: 0.1 }}
             className="sendMod__container"
           >
-            <button type="button" className="buttonSendMod">
+            <button
+              type="button"
+              className="buttonSendMod"
+              onClick={handlePostDataToBack}
+            >
               Enviar
             </button>
           </motion.div>

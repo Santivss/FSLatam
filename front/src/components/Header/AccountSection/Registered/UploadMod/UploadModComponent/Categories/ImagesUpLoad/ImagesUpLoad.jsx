@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./ImagesUpLoad.css";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 
-const ImagesUpLoad = () => {
+const ImagesUpLoad = ({ handleImagesData }) => {
   const { ui_icons } = useIconsStore();
   const [selectedImages, setSelectedImages] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
@@ -48,6 +48,45 @@ const ImagesUpLoad = () => {
     ]);
   };
 
+  useEffect(() => {
+    /* Conversion */
+    const convertToBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+    };
+
+    const getBase64DataForImages = async () => {
+      try {
+        const imagesData = await Promise.all(
+          selectedImages.map(async (image) => {
+            const data = await convertToBase64(image.file);
+            return {
+              name: image.file.name,
+              type: image.file.type,
+              data: data,
+            };
+          })
+        );
+
+        // Ver los valores de name, type y data por consola
+        console.log(imagesData);
+
+        // Enviar las imágenes a través de handleImagesData
+        handleImagesData(imagesData);
+      } catch (error) {
+        console.error("Error al convertir imágenes a base64:", error);
+      }
+    };
+
+    if (selectedImages.length > 0) {
+      getBase64DataForImages();
+    }
+  }, [selectedImages]);
+
   const handleImageDelete = (index) => {
     setSelectedImages((prevImages) => {
       const updatedImages = [...prevImages];
@@ -92,7 +131,7 @@ const ImagesUpLoad = () => {
       )}
       <div className="imagesUpLoad__container-img">
         {selectedImages.map((image, index) => (
-          <div className="imagePreview__container">
+          <div key={index} className="imagePreview__container">
             <img
               key={index}
               src={image.imageURL}

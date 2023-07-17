@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 
-const Size = ({ size }) => {
+const Size = ({ size, statusSize, handleSizeSelected }) => {
   const { ui_icons } = useIconsStore();
   const containerRef = useRef(null);
   const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
@@ -21,22 +21,31 @@ const Size = ({ size }) => {
       }
     };
 
+    setSelectedSize(null);
+
     document.addEventListener("click", handleClickOutside);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [statusSize]);
 
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
+    handleSizeSelected(size);
   };
 
   return (
-    <div className="principalCategories__container">
+    <div
+      className={`principalCategories__container ${
+        statusSize ? "subcategoryContainer__active" : ""
+      }`}
+    >
       <div
         onClick={handleVisibilityContainer}
-        className="principalCategories__title-container"
+        className={`principalCategories__title-container ${
+          statusSize ? "subcategory__active" : ""
+        } `}
         ref={containerRef}
       >
         {selectedSize ? (

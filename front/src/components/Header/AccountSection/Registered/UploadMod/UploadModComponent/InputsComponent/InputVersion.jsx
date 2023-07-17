@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./InputVersion.css";
 import { useIconsStore } from "../../../../../../../store/ui_icons_store";
 import { SwitchAnimated } from "../../../../../../../utils/Animations/SwitchAnimated/SwitchAnimated";
 
-const InputVersion = () => {
-  const { ui_icons } = useIconsStore();
+const InputVersion = ({ handleVersionData }) => {
   const [switchState, setSwitchState] = useState(null);
+  const [titleInputValue, setTitleInputValue] = useState(null);
 
-  const [first, setfirst] = useState(false);
+  const [errorMessageTitle, setErrorMessageTitle] = useState(false);
 
   const [firstNumber, setFirstNumber] = useState("");
   const [secondNumber, setSecondNumber] = useState("");
@@ -32,10 +32,26 @@ const InputVersion = () => {
     secondNumber !== "" ? `.${secondNumber}` : ""
   }${thirdNumber !== "" ? `.${thirdNumber}` : ""}`;
 
+  /* Pasar la data al father */
+
+  useEffect(() => {
+    const first = firstNumber !== "" ? parseInt(firstNumber) : 1;
+    const second = secondNumber !== "" ? parseInt(secondNumber) : 0;
+    const third = thirdNumber !== "" ? parseInt(thirdNumber) : 0;
+
+    const versionData = switchState ? { beta: true } : [first, second, third];
+
+    handleVersionData(titleInputValue, versionData);
+  }, [firstNumber, secondNumber, thirdNumber, switchState, titleInputValue]);
+
   /* ----------------------- */
 
   const handleSwitchChange = (isOn) => {
     setSwitchState(isOn);
+  };
+
+  const handleInputChange = (event) => {
+    setTitleInputValue(event.target.value);
   };
 
   return (
@@ -44,8 +60,14 @@ const InputVersion = () => {
 
       <div className="uploadMod__title-container">
         <span className="uploadmod__title">Título</span>
-        <input type="input" className="uploadmodinput__title" />
-        {first ? (
+        <input
+          type="input"
+          className="uploadmodinput__title"
+          maxLength={50}
+          placeholder="Title mod"
+          onChange={handleInputChange}
+        />
+        {errorMessageTitle ? (
           <span className="uploadmod__errormessage-title">
             mensaje de error
           </span>
@@ -88,11 +110,6 @@ const InputVersion = () => {
           maxLength={1}
           placeholder="0"
         />
-        {first ? (
-          <span className="uploadmod__errormessage-version">
-            mensaje de error
-          </span>
-        ) : null}
       </div>
 
       {/* ------------uploadMod__beta-container------------ */}

@@ -26,12 +26,15 @@ const PrincipalCategories = ({
       }
     };
 
+    setSelectedCategory(null);
+    handlePrincipalCategorySelection(null);
+
     document.addEventListener("click", handleClickOutside);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [selectedGame]);
 
   const handleCategorySelection = (category) => {
     setSelectedCategory(category);

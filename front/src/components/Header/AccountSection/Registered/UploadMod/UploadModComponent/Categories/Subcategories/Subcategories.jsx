@@ -27,12 +27,15 @@ const Subcategories = ({
       }
     };
 
+    setSelectedSubcategory(null);
+    handleSubcategoriesSelection(null);
+
     document.addEventListener("click", handleClickOutside);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [selectedCategory]);
 
   const handleSubcategorySelection = (subcategory) => {
     setSelectedSubcategory(subcategory);
