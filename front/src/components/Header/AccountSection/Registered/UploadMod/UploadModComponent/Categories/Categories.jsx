@@ -7,7 +7,15 @@ import Subcategories from "./Subcategories/Subcategories";
 import Size from "./Size/Size";
 import Antiquity from "./Antiquity/Antiquity";
 
-const Categories = ({ categories, handleCategoriesFiltered }) => {
+const Categories = ({
+  categories,
+  handleCategoriesFiltered,
+  gameSelectedAlertStatus,
+  categorySelectedAlertStatus,
+  subcategorySelectedAlertStatus,
+  sizeSelectedAlertStatus,
+  antiquitySelectedAlertStatus,
+}) => {
   const [selectedGame, setSelectedGame] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubcategory, setselectedSubcategory] = useState(null);
@@ -38,7 +46,7 @@ const Categories = ({ categories, handleCategoriesFiltered }) => {
   };
 
   const handleCategoriesPost = () => {
-    const dataToSend = {
+    const categoriesSelected = {
       selectedGame: selectedGame?.game_id,
       selectedCategory: selectedCategory?.principal_category_id,
       selectedSubcategory: selectedSubcategory?.subcategory_id,
@@ -48,7 +56,7 @@ const Categories = ({ categories, handleCategoriesFiltered }) => {
       isMultiplayerEnabled,
     };
 
-    handleCategoriesFiltered(dataToSend);
+    handleCategoriesFiltered(categoriesSelected);
   };
 
   useEffect(() => {
@@ -66,6 +74,7 @@ const Categories = ({ categories, handleCategoriesFiltered }) => {
   return (
     <div className="categories__options-container">
       <OptionsGames
+        gameSelectedAlertStatus={gameSelectedAlertStatus}
         categories={categories}
         onOptionSelection={handleOptionSelection}
       />
@@ -73,21 +82,25 @@ const Categories = ({ categories, handleCategoriesFiltered }) => {
         categories={categories.principalCategories}
         selectedGame={selectedGame}
         handlePrincipalCategorySelection={handlePrincipalCategorySelection}
+        categorySelectedAlertStatus={categorySelectedAlertStatus}
       />
       <Subcategories
         subcategories={categories.subcategories}
         selectedCategory={selectedCategory}
         handleSubcategoriesSelection={handleSubcategoriesSelection}
+        subcategorySelectedAlertStatus={subcategorySelectedAlertStatus}
       />
       <Size
         size={categories.size}
         statusSize={selectedSubcategory?.size}
         handleSizeSelected={handleSizeSelected}
+        sizeSelectedAlertStatus={sizeSelectedAlertStatus}
       />
       <Antiquity
         antiquity={categories.antiquity}
         statusAntiquity={selectedSubcategory?.antiquity}
         handleAntiquitySelected={handleAntiquitySelected}
+        antiquitySelectedAlertStatus={antiquitySelectedAlertStatus}
       />
       <div className="switchOption__container">
         Console

@@ -2,7 +2,11 @@ import "./OptionsGames.css";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 import { useState, useEffect, useRef } from "react";
 
-const OptionsGames = ({ categories, onOptionSelection }) => {
+const OptionsGames = ({
+  categories,
+  onOptionSelection,
+  gameSelectedAlertStatus,
+}) => {
   const { ui_icons } = useIconsStore();
   const { fs19_icon, fs22_icon } = ui_icons;
 
@@ -54,7 +58,9 @@ const OptionsGames = ({ categories, onOptionSelection }) => {
   return (
     <div className="optionsGames__container" ref={containerRef}>
       <div
-        className="optionsGames__title-container"
+        className={`optionsGames__title-container ${
+          gameSelectedAlertStatus ? "firstClickOffThis" : ""
+        }`}
         onClick={() => {
           setContainerVisibility(!containerVisibility);
         }}

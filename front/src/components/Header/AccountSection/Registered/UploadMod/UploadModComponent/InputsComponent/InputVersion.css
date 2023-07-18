@@ -32,6 +32,10 @@
   border: 1px solid rgb(255, 196, 0);
 }
 
+.titleAlertBorder {
+  border: 1px solid red;
+}
+
 .uploadmod__title,
 .uploadmod__version,
 .uploadMod__input-title {

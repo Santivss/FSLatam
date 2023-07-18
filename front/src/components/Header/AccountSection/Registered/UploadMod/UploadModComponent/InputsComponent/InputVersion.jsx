@@ -2,8 +2,21 @@ import { useEffect, useState } from "react";
 import "./InputVersion.css";
 import { useIconsStore } from "../../../../../../../store/ui_icons_store";
 import { SwitchAnimated } from "../../../../../../../utils/Animations/SwitchAnimated/SwitchAnimated";
+import { useRef } from "react";
 
-const InputVersion = ({ handleVersionData }) => {
+const InputVersion = ({ handleVersionData, titleEmptyAlertStatus }) => {
+  const titleRef = useRef();
+
+  useEffect(() => {
+    if (titleEmptyAlertStatus) {
+      titleRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }
+  }, [titleEmptyAlertStatus]);
+
   const [switchState, setSwitchState] = useState(null);
   const [titleInputValue, setTitleInputValue] = useState(null);
 
@@ -54,6 +67,11 @@ const InputVersion = ({ handleVersionData }) => {
     setTitleInputValue(event.target.value);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === " " && event.target.selectionStart === 0) {
+      event.preventDefault();
+    }
+  };
   return (
     <div className="uploadMod__title-version__container">
       {/* ------------uploadMod__title-container------------ */}
@@ -61,11 +79,15 @@ const InputVersion = ({ handleVersionData }) => {
       <div className="uploadMod__title-container">
         <span className="uploadmod__title">Título</span>
         <input
+          ref={titleRef}
           type="input"
-          className="uploadmodinput__title"
+          className={`uploadmodinput__title ${
+            titleEmptyAlertStatus ? "titleAlertBorder" : ""
+          }`}
           maxLength={50}
           placeholder="Title mod"
           onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
         />
         {errorMessageTitle ? (
           <span className="uploadmod__errormessage-title">

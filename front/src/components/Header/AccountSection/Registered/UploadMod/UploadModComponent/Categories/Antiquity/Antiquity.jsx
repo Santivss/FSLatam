@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 
-const Antiquity = ({ antiquity, statusAntiquity, handleAntiquitySelected }) => {
+const Antiquity = ({
+  antiquity,
+  statusAntiquity,
+  handleAntiquitySelected,
+  antiquitySelectedAlertStatus,
+}) => {
   const { ui_icons } = useIconsStore();
   const containerRef = useRef(null);
   const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
@@ -44,7 +49,11 @@ const Antiquity = ({ antiquity, statusAntiquity, handleAntiquitySelected }) => {
       <div
         onClick={handleVisibilityContainer}
         className={`principalCategories__title-container ${
-          statusAntiquity ? "subcategory__active" : ""
+          statusAntiquity && antiquitySelectedAlertStatus
+            ? "subcategory__active subcategoryAlertBorder"
+            : statusAntiquity
+            ? "subcategory__active"
+            : ""
         } `}
         ref={containerRef}
       >

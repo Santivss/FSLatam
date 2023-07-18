@@ -161,9 +161,11 @@ import fence_icon from "../assets/categorieIcons/fence_icon.svg";
 import gate_icon from "../assets/categorieIcons/gate_icon.svg";
 import light_icon from "../assets/categorieIcons/light_icon.svg";
 import building_icon from "../assets/categorieIcons/building_icon.svg";
+import wheel_icon from "../assets/uiIcons/wheel_icon.svg";
 
 export const useIconsStore = create((set) => ({
   ui_icons: {
+    wheel_icon,
     mods_icon,
     close_icon,
     add_icon,

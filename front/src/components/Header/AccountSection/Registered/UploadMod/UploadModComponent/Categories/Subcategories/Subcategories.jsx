@@ -6,6 +6,7 @@ const Subcategories = ({
   subcategories,
   selectedCategory,
   handleSubcategoriesSelection,
+  subcategorySelectedAlertStatus,
 }) => {
   const containerRef = useRef(null);
   const { ui_icons, principalCategories_icons } = useIconsStore();
@@ -61,7 +62,11 @@ const Subcategories = ({
       <div
         onClick={handleVisibilityContainer}
         className={`principalCategories__title-container ${
-          containerInteractuable ? "subcategory__active" : ""
+          containerInteractuable && subcategorySelectedAlertStatus
+            ? "subcategory__active subcategoryAlertBorder"
+            : containerInteractuable
+            ? "subcategory__active"
+            : ""
         } `}
         ref={containerRef}
       >

@@ -125,3 +125,7 @@
   box-shadow: 0px 0px 10px #f59421;
   background: var(--background-border-hover);
 }
+
+.linkAlertBorder {
+  border: 1px solid red;
+}

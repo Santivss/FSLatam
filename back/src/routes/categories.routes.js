@@ -44,6 +44,10 @@ router.get("/categories", async (req, res) => {
 });
 
 router.post("/categories", async (req, res) => {
-  const { imagesDataForPost, dataToSend } = req.body;
+  const data = req.body;
+  res.status(200).json({
+    message: "From back",
+    data,
+  });
 });
 export default router;

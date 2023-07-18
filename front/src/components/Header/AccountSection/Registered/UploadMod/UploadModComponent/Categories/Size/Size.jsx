@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 
-const Size = ({ size, statusSize, handleSizeSelected }) => {
+const Size = ({
+  size,
+  statusSize,
+  handleSizeSelected,
+  sizeSelectedAlertStatus,
+}) => {
   const { ui_icons } = useIconsStore();
   const containerRef = useRef(null);
   const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
@@ -44,7 +49,11 @@ const Size = ({ size, statusSize, handleSizeSelected }) => {
       <div
         onClick={handleVisibilityContainer}
         className={`principalCategories__title-container ${
-          statusSize ? "subcategory__active" : ""
+          statusSize && sizeSelectedAlertStatus
+            ? "subcategory__active subcategoryAlertBorder"
+            : statusSize
+            ? "subcategory__active"
+            : ""
         } `}
         ref={containerRef}
       >

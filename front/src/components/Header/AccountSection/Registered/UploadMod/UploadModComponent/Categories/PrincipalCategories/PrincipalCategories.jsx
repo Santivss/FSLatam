@@ -6,6 +6,7 @@ const PrincipalCategories = ({
   categories,
   selectedGame,
   handlePrincipalCategorySelection,
+  categorySelectedAlertStatus,
 }) => {
   const containerRef = useRef(null);
   const { ui_icons, principalCategories_icons } = useIconsStore();
@@ -50,7 +51,11 @@ const PrincipalCategories = ({
       <div
         onClick={handleVisibilityContainer}
         className={`principalCategories__title-container ${
-          selectedGame ? "principalCategories__title-container-active" : null
+          selectedGame && categorySelectedAlertStatus
+            ? "principalCategories__title-container-active categoryAlertBorder"
+            : selectedGame
+            ? "principalCategories__title-container-active"
+            : ""
         }`}
         ref={containerRef}
       >

@@ -41,6 +41,12 @@
   align-items: center;
   justify-content: center;
   margin: 1rem 0;
+  border: 1px solid transparent;
+  transition: 300ms ease;
+}
+
+.imagesAlertBorder {
+  border: 1px solid red;
 }
 
 .imagesUpLoad__title-button__container {

@@ -14,7 +14,7 @@ const app = express();
 app.set("key", key);
 
 app.use(cors());
-app.use(json());
+app.use(json({ limit: "27mb" }));
 
 app.use("/api", modsRoutes);
 app.use("/api", userRoutes);

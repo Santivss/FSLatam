@@ -2,7 +2,18 @@ import React, { useState, useRef, useEffect } from "react";
 import "./ImagesUpLoad.css";
 import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
 
-const ImagesUpLoad = ({ handleImagesData }) => {
+const ImagesUpLoad = ({ handleImagesData, imagesAlertStatus }) => {
+  const imagesAlertContainer = useRef();
+  useEffect(() => {
+    if (imagesAlertStatus) {
+      imagesAlertContainer.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }
+  }, [imagesAlertStatus]);
+
   const { ui_icons } = useIconsStore();
   const [selectedImages, setSelectedImages] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
@@ -25,20 +36,28 @@ const ImagesUpLoad = ({ handleImagesData }) => {
       return;
     }
 
+    const selectedFileNames = selectedImages.map((image) => image.file.name);
+
     for (let i = 0; i < numImagesToAdd; i++) {
       const file = files[i];
       const extension = file.name
         .substring(file.name.lastIndexOf("."))
         .toLowerCase();
       if (allowedExtensions.includes(extension)) {
-        const imageURL = URL.createObjectURL(file);
-        imageArray.push({ file, imageURL });
-        imageCountRef.current += 1;
+        // Verificar si la imagen ya está seleccionada
+        if (!selectedFileNames.includes(file.name)) {
+          const imageURL = URL.createObjectURL(file);
+          imageArray.push({ file, imageURL });
+          imageCountRef.current += 1;
+        }
       } else {
-        setErrorMessage(`El formato es incorrecto`);
+        setErrorMessage("ONLY PNG OR JPG!");
         setTimeout(() => {
           setErrorMessage("");
         }, 3000);
+
+        // No agregar imágenes con formato incorrecto al array
+        continue;
       }
     }
 
@@ -71,9 +90,6 @@ const ImagesUpLoad = ({ handleImagesData }) => {
             };
           })
         );
-
-        // Ver los valores de name, type y data por consola
-        console.log(imagesData);
 
         // Enviar las imágenes a través de handleImagesData
         handleImagesData(imagesData);
@@ -110,7 +126,12 @@ const ImagesUpLoad = ({ handleImagesData }) => {
         </span>
       </div>
       {selectedImages.length < maxImages && (
-        <div className="imagesUpLoad__input-container">
+        <div
+          className={`imagesUpLoad__input-container ${
+            imagesAlertStatus ? "imagesAlertBorder" : ""
+          }`}
+          ref={imagesAlertContainer}
+        >
           <div className="imagesUpLoad__title-button__container">
             {errorMessage ? (
               <p className="error-message">{errorMessage}</p>

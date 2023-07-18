@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./InputDescription.css";
 
-const InputDescription = () => {
+const InputDescription = ({ handleDescriptionData }) => {
   const [description, setDescription] = useState("");
 
   const handleChange = (event) => {
-    setDescription(event.target.value);
+    const value = event.target.value.trimStart();
+    setDescription(value);
   };
+
+  useEffect(() => {
+    handleDescriptionData(description.trim());
+  }, [description]);
 
   const characterCount = description.length;
   const maxLength = 4000;
