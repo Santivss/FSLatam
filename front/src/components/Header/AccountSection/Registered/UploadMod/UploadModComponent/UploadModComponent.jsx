@@ -29,6 +29,9 @@ const UploadModComponent = () => {
   const [linkSelectedAlertStatus, setLinkSelectedAlertStatus] = useState(false);
   const [titleEmptyAlertStatus, setTitleEmptyAlertStatus] = useState(false);
   const [imagesAlertStatus, setImagesAlertStatus] = useState(false);
+  /* Mientras se realiza la peticion post */
+  const [postRequestStatus, setPostRequestStatus] = useState(false);
+
   /* ----------------------------------------- */
   const [link, setLink] = useState("");
 
@@ -66,106 +69,98 @@ const UploadModComponent = () => {
     link,
   ]);
 
-  /* Funciones para enviar las alertas a las categorias */
-
-  const handleAlertGameSelected = () => {
-    setGameSelectedAlertStatus(true);
+  /* Función genérica para manejar las alertas */
+  const handleAlert = (alertState, setAlertState, time = 1200) => {
+    setAlertState(true);
     setTimeout(() => {
-      setGameSelectedAlertStatus(false);
-    }, 1000);
-  };
-
-  const handleAlertCategorySelected = () => {
-    setCategorySelectedAlertStatus(true);
-    setTimeout(() => {
-      setCategorySelectedAlertStatus(false);
-    }, 1000);
-  };
-
-  const handleAlertSubcategorySelected = () => {
-    setSubcategorySelectedAlertStatus(true);
-    setTimeout(() => {
-      setSubcategorySelectedAlertStatus(false);
-    }, 1000);
-  };
-
-  const handleAlertSizeSelected = () => {
-    setSizeSelectedAlertStatus(true);
-    setTimeout(() => {
-      setSizeSelectedAlertStatus(false);
-    }, 1000);
-  };
-
-  const handleAlertAntiquitySelected = () => {
-    setAntiquitySelectedAlertStatus(true);
-    setTimeout(() => {
-      setAntiquitySelectedAlertStatus(false);
-    }, 1000);
-  };
-
-  const handleAlertLink = () => {
-    setLinkSelectedAlertStatus(true);
-    setTimeout(() => {
-      setLinkSelectedAlertStatus(false);
-    }, 1000);
-  };
-
-  const handleAlertTitle = () => {
-    setTitleEmptyAlertStatus(true);
-    setTimeout(() => {
-      setTitleEmptyAlertStatus(false);
-    }, 1500);
-  };
-
-  const handleAlertImages = () => {
-    setImagesAlertStatus(true);
-    setTimeout(() => {
-      setImagesAlertStatus(false);
-    }, 1500);
+      setAlertState(false);
+    }, time);
   };
 
   /* Send info to create mod */
-
   const handlePostDataToBack = () => {
-    /* ------------------Alertas de categorias------------------ */
-    /* Verificar que el juego este seleccionado */
-    if (!dataForCreateMod.categoriesDataForPost.selectedGame) {
-      handleAlertGameSelected();
+    const conditions = [
+      {
+        condition: !dataForCreateMod.categoriesDataForPost.selectedGame,
+        alertFunction: () =>
+          handleAlert(gameSelectedAlertStatus, setGameSelectedAlertStatus),
+      },
+      {
+        condition: !dataForCreateMod.categoriesDataForPost.selectedCategory,
+        alertFunction: () =>
+          handleAlert(
+            categorySelectedAlertStatus,
+            setCategorySelectedAlertStatus
+          ),
+      },
+      {
+        condition: !dataForCreateMod.categoriesDataForPost.selectedSubcategory,
+        alertFunction: () =>
+          handleAlert(
+            subcategorySelectedAlertStatus,
+            setSubcategorySelectedAlertStatus
+          ),
+      },
+      {
+        condition: !dataForCreateMod.categoriesDataForPost.sizeSelected,
+        alertFunction: () =>
+          handleAlert(sizeSelectedAlertStatus, setSizeSelectedAlertStatus),
+      },
+      {
+        condition: !dataForCreateMod.categoriesDataForPost.antiquitySelected,
+        alertFunction: () =>
+          handleAlert(
+            antiquitySelectedAlertStatus,
+            setAntiquitySelectedAlertStatus
+          ),
+      },
+      {
+        condition: !dataForCreateMod.link,
+        alertFunction: () =>
+          handleAlert(linkSelectedAlertStatus, setLinkSelectedAlertStatus),
+      },
+      {
+        condition: !dataForCreateMod.versionDataForPost.title,
+        alertFunction: () =>
+          handleAlert(titleEmptyAlertStatus, setTitleEmptyAlertStatus, 1500),
+      },
+      {
+        condition:
+          dataForCreateMod.imagesDataForPost?.length < 3 ||
+          dataForCreateMod.imagesDataForPost === null,
+        alertFunction: () =>
+          handleAlert(imagesAlertStatus, setImagesAlertStatus, 1500),
+      },
+    ];
+
+    // Verificar cada condición y activar la alerta correspondiente si no se cumple
+    const activatedConditions = conditions.filter(({ condition }) => condition);
+    const activatedAlerts = activatedConditions.map(
+      ({ alertFunction }) => alertFunction
+    );
+
+    activatedConditions.forEach(({ condition }) => {
+      console.log(`Activada alerta para condición: ${condition}`);
+    });
+
+    // Actualizar los estados según las alertas activadas
+    activatedAlerts.forEach((alertFunction) => alertFunction());
+
+    // Verificar si se activó alguna alerta y no realizar la petición POST
+    const alertsActivated = activatedConditions.length > 0;
+
+    if (!alertsActivated) {
+      axios
+        .post("http://localhost:3000/api/createmod", dataForCreateMod)
+        .then((res) => {
+          console.log(res.data);
+          setPostRequestStatus(true);
+          setTimeout(() => {
+            setPostRequestStatus(false);
+          }, 2000);
+        })
+        .catch((err) => console.log(err));
     }
-    /* Verificar que la categoria este seleccionada */
-    if (!dataForCreateMod.categoriesDataForPost.selectedCategory) {
-      handleAlertCategorySelected();
-    }
-    /* Verificar que la subcategoria este seleccionada */
-    if (!dataForCreateMod.categoriesDataForPost.selectedSubcategory) {
-      handleAlertSubcategorySelected();
-    }
-    /* Verificar que size este seleccionado */
-    if (!dataForCreateMod.categoriesDataForPost.sizeSelected) {
-      handleAlertSizeSelected();
-    }
-    /* Verificar que anitquity este seleccionado */
-    if (!dataForCreateMod.categoriesDataForPost.antiquitySelected) {
-      handleAlertAntiquitySelected();
-    }
-    /* ------------------Alerta de link------------------ */
-    if (!dataForCreateMod.link) {
-      handleAlertLink();
-    }
-    /* ------------------Alerta de titulo------------------ */
-    if (!dataForCreateMod.versionDataForPost.title) {
-      handleAlertTitle();
-    }
-    /* ------------------Alerta de images------------------ */
-    if (dataForCreateMod.imagesDataForPost?.length < 3) {
-      handleAlertImages();
-    }
-    console.log(dataForCreateMod);
-    /* Peticion post para enviar la data para crear un mod */
-    /*  axios
-      .post("http://localhost:3000/api/categories", dataForCreateMod)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err)); */
   };
 
   /* Crear el el estado con las categorias*/
@@ -280,12 +275,15 @@ const UploadModComponent = () => {
               className="buttonSendMod"
               onClick={handlePostDataToBack}
             >
-              Enviar
-              {/*  <img
-                src={ui_icons.wheel_icon}
-                alt=""
-                className="wheelAnimation"
-              /> */}
+              {postRequestStatus ? (
+                <img
+                  src={ui_icons.wheel_icon}
+                  alt=""
+                  className="wheelAnimation"
+                />
+              ) : (
+                <span className="buttonSendMod__title">Enviar</span>
+              )}
             </button>
           </motion.div>
         </motion.div>

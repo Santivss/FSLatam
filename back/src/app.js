@@ -3,7 +3,7 @@ import cors from "cors";
 
 const key = process.env.SECRET_KEY;
 
-import modsRoutes from "./routes/mods.routes.js";
+import createModRoutes from "./routes/createMod.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import loginRoutes from "./routes/login.routes.js";
 import registerRoutes from "./routes/register.routes.js";
@@ -16,7 +16,7 @@ app.set("key", key);
 app.use(cors());
 app.use(json({ limit: "27mb" }));
 
-app.use("/api", modsRoutes);
+app.use("/api", createModRoutes);
 app.use("/api", userRoutes);
 app.use("/api", loginRoutes);
 app.use("/api", registerRoutes);

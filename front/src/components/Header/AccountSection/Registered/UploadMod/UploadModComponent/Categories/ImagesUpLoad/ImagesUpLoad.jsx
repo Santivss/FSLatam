@@ -117,7 +117,7 @@ const ImagesUpLoad = ({ handleImagesData, imagesAlertStatus }) => {
     <div className="imagesUpLoad__container">
       <div className="imagesUpLoad__conditions-container">
         <span className="imagesUpLoad__title">Imágenes</span>
-        <span className="imagesConditions__title">Máx 5 imágenes</span>
+        <span className="imagesConditions__title">Máx 5, min 2 imágenes</span>
         <span className="imagesLine"></span>
         <span className="imagesConditions__title">Máx 6MB por imagen</span>
         <span className="imagesLine"></span>
