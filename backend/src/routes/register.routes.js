@@ -9,11 +9,11 @@ router.post("/register", async (req, res) => {
   try {
     const data = req.body;
 
-    const userExist = await prisma.users.findFirst({
+    const userExist = await prisma.User.findFirst({
       where: {
         OR: [
           {
-            username: data.username,
+            user_name: data.user_name,
           },
           {
             email: data.email,
@@ -28,12 +28,14 @@ router.post("/register", async (req, res) => {
       });
     }
 
+    console.log(data.user_name);
+
     const hashedPass = await bcrypt.hash(data.password, 10);
 
-    const newUser = await prisma.users.create({
+    const newUser = await prisma.User.create({
       data: {
         fullname: data.fullname,
-        username: data.username,
+        user_name: data.user_name,
         password: hashedPass,
         email: data.email,
         createdAt: new Date(),

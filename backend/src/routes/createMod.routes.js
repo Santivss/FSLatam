@@ -4,6 +4,8 @@ import imageCompression from "../utils/imageCompression.js";
 const router = Router();
 
 router.post("/createmod", async (req, res) => {
+  const folderName = "rucking";
+
   const {
     imagesDataForPost,
     versionDataForPost,
@@ -13,7 +15,7 @@ router.post("/createmod", async (req, res) => {
   } = req.body;
 
   try {
-    imageCompression(imagesDataForPost);
+    imageCompression(imagesDataForPost, folderName);
     res.status(200).json({
       message: "Success",
     });

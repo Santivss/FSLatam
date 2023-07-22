@@ -8,8 +8,15 @@ const router = Router();
 router.post("/login", async (req, res) => {
   const { username, email, password } = req.body;
 
-  try {
-    const user = await prisma.users.findMany({
+  res.status(200).json({
+    message: "Succes",
+    username,
+    email,
+    password,
+  });
+
+  /* try {
+    const user = await prisma.User.findMany({
       where: {
         OR: [
           {
@@ -60,7 +67,7 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Error en el servidor");
-  }
+  } */
 });
 
 export default router;

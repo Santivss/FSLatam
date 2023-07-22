@@ -14,8 +14,13 @@
   flex-direction: column;
   width: 100%;
   gap: 0.2rem;
-  border: 1px solid transparent;
+  /* border-left: 1px solid transparent; */
 }
+
+/* .bothCategoriesNav__container-active {
+  border-image: linear-gradient(0deg, #ede527 4.17%, #fe401c 91.67%);
+  border-image-slice: 1;
+} */
 
 /* ------------------------- */
 

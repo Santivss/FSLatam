@@ -33,7 +33,7 @@ const SignIn = () => {
     // Filtrar los datos necesarios para la solicitud
     const { confirmPassword, ...requestData } = data;
     const modifiedData = {
-      username: requestData.userName,
+      user_name: requestData.userName,
       email: requestData.email,
       password: requestData.password,
     };
@@ -42,6 +42,7 @@ const SignIn = () => {
     axios
       .post("http://localhost:3000/api/register", modifiedData)
       .then((response) => {
+        console.log(response.data);
         setResponseMessage(response.data.message);
         localStorage.setItem("token", response.data.token);
         reset();

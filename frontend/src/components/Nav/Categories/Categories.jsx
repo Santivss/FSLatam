@@ -9,10 +9,14 @@ export const Categories = () => {
 
   const [expandedSubcategoryContainerId, setExpandedSubcategoryContainerId] =
     useState(null);
-  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [temporalSelectedCategoryId, setTemporalSelectedCategoryId] =
+    useState(null);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
   const handleContainerClick = (category) => {
+    setSelectedCategoryId(category.principal_category_id);
+    setTemporalSelectedCategoryId(category.principal_category_id);
     if (expandedSubcategoryContainerId === category.principal_category_id) {
       return;
     }
@@ -21,20 +25,30 @@ export const Categories = () => {
   };
 
   const handleSubcategoryClick = (subcategory) => {
-    setSelectedCategoryId(subcategory.category_id);
+    setTemporalSelectedCategoryId(subcategory.category_id);
 
     if (expandedSubcategoryContainerId) {
       setSelectedSubcategoryId(subcategory.subcategory_id);
     }
   };
 
+  // Ordenar alfabéticamente las categorías y subcategorías
+  const sortedCategories = categories?.principalCategories.sort((a, b) =>
+    a.principal_category_name.localeCompare(b.principal_category_name)
+  );
+
   return (
     <div className="categoriesNav__container">
       <span className="categories__title">Categories</span>
-      {categories?.principalCategories.map((category) => {
+      {sortedCategories?.map((category) => {
         const categoryIconName = category.principal_category_icon;
         const isContainerExpanded =
           expandedSubcategoryContainerId === category.principal_category_id;
+
+        // Ordenar alfabéticamente las subcategorías
+        const sortedSubcategories = category.subcategories.sort((a, b) =>
+          a.subcategory_name.localeCompare(b.subcategory_name)
+        );
 
         return (
           <div
@@ -69,10 +83,10 @@ export const Categories = () => {
               }`}
             >
               {isContainerExpanded
-                ? category.subcategories.map((subcategory) => {
+                ? sortedSubcategories.map((subcategory) => {
                     const subcategoryIconName = subcategory.subcategory_icon;
                     const isSubcategorySelected =
-                      selectedCategoryId === subcategory.category_id &&
+                      temporalSelectedCategoryId === subcategory.category_id &&
                       selectedSubcategoryId === subcategory.subcategory_id;
 
                     return (
