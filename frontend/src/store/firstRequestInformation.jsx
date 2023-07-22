@@ -1,8 +1,9 @@
 import { create } from "zustand";
 
 export const firstRequestData = create((set) => ({
-  counter: 10,
-  sumar: (parameter) => {
-    parameter + 1;
-  },
+  categories: null,
+  setCategories: (value) =>
+    set((state) => ({
+      categories: value,
+    })),
 }));

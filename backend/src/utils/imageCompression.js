@@ -54,7 +54,7 @@ const imageCompression = async (imagesDataForPost) => {
     // Función para generar un nombre de archivo único (como se mencionó antes)
     function generateUniqueFileName() {
       const uniqueID = uuidv4();
-      const uploadDir = path.join(__dirname, "../../uploadImages");
+      const uploadDir = path.join(__dirname, "../../static/uploadImages");
       const uniqueFileName = `${uniqueID}.jpg`;
       return path.join(uploadDir, uniqueFileName);
     }

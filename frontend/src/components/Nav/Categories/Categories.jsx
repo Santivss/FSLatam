@@ -1,106 +1,113 @@
 import React, { useState } from "react";
 import "./Categories.css";
-import { categories } from "../../../assets/categorieIcons";
 import { useIconsStore } from "../../../store/ui_icons_store";
+import { firstRequestData } from "../../../store/firstRequestInformation";
 
 export const Categories = () => {
-  const { ui_icons } = useIconsStore();
+  const { principalCategories_icons } = useIconsStore();
+  const { categories } = firstRequestData();
 
-  const [expandedCategories, setExpandedCategories] = useState([]);
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [activeSubcategory, setActiveSubcategory] = useState(null);
+  const [expandedSubcategoryContainerId, setExpandedSubcategoryContainerId] =
+    useState(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null);
 
-  const handleCategoryClick = (index) => {
-    if (expandedCategories.includes(index)) {
-      setExpandedCategories([]);
-    } else {
-      setExpandedCategories([index]);
+  const handleContainerClick = (category) => {
+    if (expandedSubcategoryContainerId === category.principal_category_id) {
+      return;
     }
-
-    setActiveCategory(index);
-    setActiveSubcategory(null);
+    setSelectedSubcategoryId(null);
+    setExpandedSubcategoryContainerId(category.principal_category_id);
   };
 
-  const handleSubcategoryClick = (subIndex) => {
-    setActiveSubcategory(subIndex);
-  };
+  const handleSubcategoryClick = (subcategory) => {
+    setSelectedCategoryId(subcategory.category_id);
 
-  /* funcion de scroll */
-  const scrollToTop = () => {
-    const container = document.querySelector(".categories__container");
-    container.scrollTo({ top: 0, behavior: "smooth" });
+    if (expandedSubcategoryContainerId) {
+      setSelectedSubcategoryId(subcategory.subcategory_id);
+    }
   };
 
   return (
-    <>
-      <h5 className="categories__title">Categories</h5>
-      <div className="categories__container">
-        {categories.map((category, index) => (
-          <div key={index} className="individual__category-item__container">
-            <div className="individual__category-item__second-container">
-              <div
-                onClick={() => handleCategoryClick(index)}
-                className={`category ${
-                  activeCategory === index ? "active-category" : ""
+    <div className="categoriesNav__container">
+      <span className="categories__title">Categories</span>
+      {categories?.principalCategories.map((category) => {
+        const categoryIconName = category.principal_category_icon;
+        const isContainerExpanded =
+          expandedSubcategoryContainerId === category.principal_category_id;
+
+        return (
+          <div
+            key={category.principal_category_id}
+            className={`bothCategoriesNav__container ${
+              isContainerExpanded ? "bothCategoriesNav__container-active" : ""
+            }`}
+          >
+            <div
+              onClick={() => handleContainerClick(category)}
+              className={`principalCategoriesNav__container ${
+                isContainerExpanded ? "principalCategoriesNav-active" : ""
+              }`}
+            >
+              <span className="principalCategoryNav__title">
+                {category.principal_category_name}
+              </span>
+              <img
+                className={`principalCategoryNav__icon ${
+                  isContainerExpanded ? "principalCategoryNav__icon-active" : ""
                 }`}
-              >
-                <img src={category.icon} alt="" className="principal__icon" />
-                <h5
-                  className={`category__title ${
-                    activeCategory === index ? "active-category" : ""
-                  }`}
-                >
-                  {category.category}
-                </h5>
-                {category.subcategories.length > 0 && (
-                  <img
-                    src={ui_icons.triangle_icon}
-                    alt=""
-                    className={`triangle__icon ${
-                      expandedCategories.includes(index) ? "expanded-icon" : ""
-                    }`}
-                  />
-                )}
-              </div>
+                src={principalCategories_icons[categoryIconName]}
+                alt={categoryIconName}
+              />
+              <span>1568</span>
             </div>
-            {expandedCategories.includes(index) &&
-              category.subcategories.length > 0 && (
-                <ul
-                  className={`subCategory__container ${activeSubcategory} subCategory__container-active`}
-                >
-                  <span className="longLine"></span>
-                  {category.subcategories.map((subcategory, subIndex) => (
-                    <li
-                      key={subIndex}
-                      onClick={() => handleSubcategoryClick(subIndex)}
-                      className={`subcategory ${
-                        activeSubcategory === subIndex
-                          ? "active-subcategory"
-                          : ""
-                      }`}
-                    >
-                      <span className="lineSubcategorySeparate"></span>
-                      <img
-                        src={subcategory.icon}
-                        alt=""
-                        className="subcategory__icon"
-                      />
-                      <div className="subcategory__namecount">
-                        <span className="subcategory__title">
-                          {subcategory.name}
+            <div
+              className={`subcategoriesNav__container ${
+                isContainerExpanded
+                  ? "subcategoriesNav__container--expanded"
+                  : ""
+              }`}
+            >
+              {isContainerExpanded
+                ? category.subcategories.map((subcategory) => {
+                    const subcategoryIconName = subcategory.subcategory_icon;
+                    const isSubcategorySelected =
+                      selectedCategoryId === subcategory.category_id &&
+                      selectedSubcategoryId === subcategory.subcategory_id;
+
+                    return (
+                      <div
+                        key={subcategory.subcategory_id}
+                        className={`subcategoriesNavIndividual__container ${
+                          isSubcategorySelected ? "selected" : ""
+                        }`}
+                        onClick={() => handleSubcategoryClick(subcategory)}
+                      >
+                        <span className="subcategoryNav__longLine"></span>
+                        <span className="subcategoryNav__shortLine"></span>
+                        <span className="subcategoryNav__title">
+                          {subcategory.subcategory_name}
                         </span>
-                        <span className="count__mods">(1520)</span>
+                        <img
+                          className={`subcategoryNav__icon ${
+                            isSubcategorySelected
+                              ? "subcategoryNav__icon-selected"
+                              : ""
+                          }`}
+                          src={principalCategories_icons[subcategoryIconName]}
+                          alt={subcategoryIconName}
+                        />
+                        <span className="subcategoryNav__title-count">
+                          1.551
+                        </span>
                       </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                    );
+                  })
+                : null}
+            </div>
           </div>
-        ))}
-        <button onClick={scrollToTop} className="scroll-top-button">
-          <img src={ui_icons.arrow_icon} alt="" className="arrow__icon" />
-        </button>
-      </div>
-    </>
+        );
+      })}
+    </div>
   );
 };
