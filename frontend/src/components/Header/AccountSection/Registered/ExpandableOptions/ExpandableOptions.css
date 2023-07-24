@@ -1,11 +1,10 @@
 .account__sections-container {
   position: absolute;
-  right: -1rem;
+  right: 0;
   top: 3rem;
   min-width: 12rem;
   max-height: 0;
   background-color: var(--color-btn-bg);
-  transition: max-height 0.3s ease, opacity 0.3s ease;
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -14,7 +13,6 @@
   border-radius: 0.5rem;
   border: 1px solid var(--color-secondary);
   visibility: hidden;
-  transition: 300ms all ease;
 }
 
 .options__active {

@@ -2,8 +2,6 @@ import "./Login.css";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useState } from "react";
-import { userInfoStore } from "../../../../../store/userInfoStore";
-import jwtDecode from "jwt-decode";
 
 const Login = () => {
   const [responseMessage, setResponseMessage] = useState("");
@@ -34,10 +32,18 @@ const Login = () => {
       .then((response) => {
         setResponseMessage(response.data.message);
         const newToken = response.data.token;
-        localStorage.setItem("token", newToken);
-        reset();
+        if (newToken) {
+          localStorage.setItem("token", newToken);
+        }
         setIsLoading(false);
-        window.location.reload();
+        setTimeout(() => {
+          setResponseMessage(false);
+        }, 1500);
+
+        if (response.data.message === "Los datos se validaron correctamente") {
+          reset();
+          window.location.reload();
+        }
       })
       .catch((err) => {
         console.log(err.message);
@@ -67,12 +73,12 @@ const Login = () => {
               }
             }}
           />
-          {responseMessage ? (
+          {responseMessage === "Usuario no encontrado" ? (
             <span className="userTextError">{responseMessage}</span>
           ) : null}
         </div>
         {/* ---------password--------- */}
-        <div>
+        <div className="loginPass__container">
           <input
             type="password"
             placeholder="Password"
@@ -82,6 +88,9 @@ const Login = () => {
               setPassword(e.target.value);
             }}
           />
+          {responseMessage === "La contraseña es incorrecta" ? (
+            <span className="userTextError">{responseMessage}</span>
+          ) : null}
         </div>
 
         {/* ---------boton--------- */}
@@ -95,11 +104,7 @@ const Login = () => {
             Sign in
           </button>
         </motion.div>
-
-        <div className="login__check-container">
-          <span className="check__text">Remember</span>
-          <button className="forgotPassword">Forgot password?</button>
-        </div>
+        <button className="forgotPassword">Forgot password?</button>
         <button className="registerHere">Register Here!</button>
       </div>
     </div>

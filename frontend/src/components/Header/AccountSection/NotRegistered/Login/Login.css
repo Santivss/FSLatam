@@ -49,6 +49,8 @@
   outline: none;
   transition: 300ms ease;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .login__email-input:focus,
@@ -56,6 +58,13 @@
   box-shadow: 0px 0px 2px #f59421;
   border: 1px solid #f59421;
   border-radius: 0.25rem;
+}
+
+/* ---------loginPass__container--------- */
+
+.loginPass__container {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ------------------ */
@@ -78,11 +87,6 @@
   border: 1px solid rgb(255, 196, 0);
 }
 
-.login__check-container {
-  width: 15rem;
-  display: flex;
-}
-
 .checkbox__element {
   border-radius: 0.25rem;
   margin: 0 0.2rem 0 0;
@@ -97,15 +101,14 @@
 }
 
 .forgotPassword {
-  margin: 0 0 0 auto;
   cursor: pointer;
 }
 
 .registerHere {
   font-size: 1.2rem;
   cursor: pointer;
+  transition: 300ms ease;
 }
 
 .registerHere:hover {
-  color: rgb(200, 200, 200);
 }

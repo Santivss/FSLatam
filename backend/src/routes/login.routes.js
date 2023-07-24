@@ -8,19 +8,12 @@ const router = Router();
 router.post("/login", async (req, res) => {
   const { username, email, password } = req.body;
 
-  res.status(200).json({
-    message: "Succes",
-    username,
-    email,
-    password,
-  });
-
-  /* try {
+  try {
     const user = await prisma.User.findMany({
       where: {
         OR: [
           {
-            username: username,
+            user_name: username,
           },
           {
             email: email,
@@ -51,6 +44,7 @@ router.post("/login", async (req, res) => {
         // Las contraseñas coinciden
         const payload = {
           userId: user[0].id,
+          userName: user[0].user_name,
         };
 
         const token = generateToken(payload);
@@ -67,7 +61,7 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Error en el servidor");
-  } */
+  }
 });
 
 export default router;

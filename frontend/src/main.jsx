@@ -5,6 +5,7 @@ import { Home } from "./routes/Home/Home.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loading from "./components/Loading/Loading";
 import axios from "axios";
+import { userInfoStore } from "./store/userInfoStore";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,8 @@ const router = createBrowserRouter([
     errorElement: <h1>Hubo un error</h1>,
   },
 ]);
+
+userInfoStore.getState().checkTokenValidity();
 
 axios.interceptors.request.use(
   (config) => {

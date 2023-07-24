@@ -1,5 +1,40 @@
+.bookMark__container {
+  display: flex;
+  align-items: center;
+}
+
 .bookmark_icon {
   width: 1.5rem;
   aspect-ratio: 1;
   cursor: pointer;
+}
+
+.bookMarkOptions__container {
+  background-color: lightcoral;
+}
+
+.bookMarkOptions__container {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  width: 17rem;
+  right: 0;
+  top: 3rem;
+  background-color: var(--color-btn-bg);
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-secondary);
+  opacity: 0;
+  max-height: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow-y: auto;
+}
+
+.bookMarkOptions__container__active {
+  visibility: visible;
+  max-height: 25rem;
+  opacity: 1;
+  max-height: 20rem;
 }

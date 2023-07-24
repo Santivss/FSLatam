@@ -79,6 +79,12 @@ button {
   all: unset;
 }
 
+.toggleComponent__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Barra de desplazamiento */
 ::-webkit-scrollbar {
   width: 6px; /* Ancho de la barra */

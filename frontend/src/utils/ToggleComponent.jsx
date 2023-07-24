@@ -36,7 +36,7 @@ const ToggleComponent = ({ children, buttonText, unmountComponent }) => {
   };
 
   return (
-    <div ref={containerRef}>
+    <div className="toggleComponent__container" ref={containerRef}>
       <button onClick={handleToggle}>{buttonText}</button>
       {showComponent && (
         <Portal>

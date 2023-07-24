@@ -1,8 +1,33 @@
 import { create } from "zustand";
+import jwt_decode from "jwt-decode";
 
 export const userInfoStore = create((set) => ({
-  token: localStorage.getItem("token"), // Obtener el token almacenado en localStorage
-  //isAuthenticated: localStorage.getItem("token") !== null, // Verificar si hay un token guardado
+  token: localStorage.getItem("token"),
   isAuthenticated: false,
-  increment: (value) => set((state) => ({ count: state.count + value })),
+  userName: null,
+  checkTokenValidity: () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwt_decode(token);
+        const currentTime = Date.now() / 1000;
+
+        if (decodedToken.exp > currentTime) {
+          const userName = decodedToken;
+
+          set({
+            isAuthenticated: true,
+            userName,
+          });
+        } else {
+          set({ isAuthenticated: false, userName: null });
+        }
+      } catch (error) {
+        console.error("Error al decodificar el token:", error);
+        set({ isAuthenticated: false, userName: null });
+      }
+    } else {
+      set({ isAuthenticated: false, userName: null });
+    }
+  },
 }));

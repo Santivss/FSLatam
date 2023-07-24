@@ -23,12 +23,16 @@ router.post("/register", async (req, res) => {
     });
 
     if (userExist) {
-      return res.status(200).json({
-        message: "Este usuario ya existe",
-      });
+      if (userExist.user_name === data.user_name) {
+        return res.status(200).json({
+          message: "Este nombre de usuario no está disponible",
+        });
+      } else if (userExist.email === data.email) {
+        return res.status(200).json({
+          message: "Este email ya fue utilizado",
+        });
+      }
     }
-
-    console.log(data.user_name);
 
     const hashedPass = await bcrypt.hash(data.password, 10);
 
@@ -45,6 +49,7 @@ router.post("/register", async (req, res) => {
     if (newUser) {
       const payload = {
         userId: newUser.id,
+        userName: data.user_name,
       };
 
       const token = generateToken(payload);
@@ -56,7 +61,7 @@ router.post("/register", async (req, res) => {
     }
 
     return res.status(500).json({
-      message: "Error al crear la cuenta",
+      message: "Error desconocido",
     });
   } catch (error) {
     console.log(error);

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./SignIn.css";
 import axios from "axios";
-import { useForm, useFormState } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useIconsStore } from "../../../../../store/ui_icons_store";
 import validator from "validator";
@@ -18,6 +18,7 @@ const SignIn = () => {
     handleSubmit,
     watch,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -42,13 +43,29 @@ const SignIn = () => {
     axios
       .post("http://localhost:3000/api/register", modifiedData)
       .then((response) => {
-        console.log(response.data);
         setResponseMessage(response.data.message);
-        localStorage.setItem("token", response.data.token);
-        reset();
+        setTimeout(() => {
+          setResponseMessage(null);
+        }, 3000);
         setIsLoading(false);
-        window.location.reload();
+        localStorage.setItem("token", response.data.token);
+
+        if (
+          response.data.message === "Este nombre de usuario no está disponible"
+        ) {
+          setTimeout(() => {
+            setValue("userName", "");
+          }, 1500);
+        } else if (response.data.message === "Este email ya fue utilizado") {
+          setTimeout(() => {
+            setValue("email", "");
+          }, 1500);
+        } else {
+          reset();
+          window.location.reload();
+        }
       })
+
       .catch((error) => {
         // Ocurrió un error durante la petición
         console.error(error);
@@ -268,7 +285,13 @@ const SignIn = () => {
           </div>
         </motion.div>
         {/* --------------CreateAccount-------------- */}
-        {responseMessage ? <span>{responseMessage}</span> : null}
+        <span
+          className={`responseMessage__title ${
+            responseMessage ? "responseMessage__title-active" : ""
+          }`}
+        >
+          {responseMessage}
+        </span>
       </form>
     </div>
   );
