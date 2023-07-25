@@ -1,14 +1,24 @@
 import "./ListItems.css";
-
 import { useIconsStore } from "../../../store/ui_icons_store";
-
 import ExpandedContent from "./ExpandedContent/ExpandedContent";
 import ToggleComponent from "../../../utils/ToggleComponent";
+import axios from "axios";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const ListItems = ({ image }) => {
   const { ui_icons } = useIconsStore();
+  const [dataMod, setDataMod] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/mods")
+      .then((res) => {
+        setDataMod(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleAddIconClick = (event) => {
     event.stopPropagation();
@@ -49,7 +59,7 @@ const ListItems = ({ image }) => {
           </div>
 
           <div className="bottom__stats-container">
-            <h2 className="mod__title">Juan Bautista Alberdi (Argentina)</h2>
+            <h2 className="mod__title">{/* {dataMod[0].mod_title} */}</h2>
             <div className="bottom__info-container">
               <div className="individual__info-container">
                 <img

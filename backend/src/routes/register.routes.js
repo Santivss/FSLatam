@@ -48,7 +48,7 @@ router.post("/register", async (req, res) => {
 
     if (newUser) {
       const payload = {
-        userId: newUser.id,
+        userId: newUser.user_id,
         userName: data.user_name,
       };
 

@@ -4,7 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const imageCompression = async (imagesDataForPost, folderName) => {
+const imageCompression = async (
+  imagesDataForPost,
+  userFolderName,
+  modFolderName
+) => {
   try {
     // Obtener la ruta del directorio actual utilizando el módulo "url" y "path"
     const __filename = fileURLToPath(import.meta.url);
@@ -13,7 +17,7 @@ const imageCompression = async (imagesDataForPost, folderName) => {
     // Crear la ruta completa de la carpeta de destino usando el nombre proporcionado
     const uploadDir = path.join(
       __dirname,
-      `../../static/modImages/${folderName}`
+      `../../static/modImages/${userFolderName}/${modFolderName}`
     );
 
     // Crear la carpeta si no existe
@@ -24,7 +28,7 @@ const imageCompression = async (imagesDataForPost, folderName) => {
     // Array para almacenar las imágenes comprimidas
     const compressedImages = [];
 
-    // Procesar cada imagen en el arreglo imagesDataForPost
+    // Procesar todas las imágenes en el arreglo imagesDataForPost
     for (let i = 0; i < imagesDataForPost.length; i++) {
       const imageData = imagesDataForPost[i];
 
@@ -47,44 +51,91 @@ const imageCompression = async (imagesDataForPost, folderName) => {
         throw new Error("Unsupported image format: " + imageData.type);
       }
 
-      // Si es la primera imagen, aplicar características especiales
-      if (i === 0) {
-        sharpInstance = sharpInstance.resize({ width: 320, height: 130 });
-        // Puedes agregar más modificaciones según tus necesidades para la primera imagen
-      } else {
-        // Para el resto de las imágenes, mantener las características anteriores
-        sharpInstance = sharpInstance.resize({ width: 640, height: 360 });
-        // Puedes agregar más modificaciones según tus necesidades para el resto de las imágenes
-      }
+      // Redimensionar todas las imágenes a 720p (no es necesario clonar)
+      sharpInstance = sharpInstance.resize({ width: 720, height: 720 });
 
       const compressedImageBuffer = await sharpInstance.toBuffer();
 
-      // Generar el nombre de archivo único para la imagen
-      let uniqueFileName = generateUniqueFileName();
+      // Generar el nombre de archivo único para la imagen sin extensión
+      const uniqueFileName = generateUniqueFileName();
 
-      // Si es la primera imagen, agregar "thumb" al principio del nombre del archivo
-      if (i === 0) {
-        uniqueFileName = "thumb_" + uniqueFileName;
-      }
+      // Agregar la extensión original de la imagen al nombre de archivo único
+      const fileNameWithExtension =
+        uniqueFileName + getFileExtension(imageData.type);
+
+      // Generar la ruta relativa completa de la imagen dentro del directorio de destino
+      const relativeImagePath = path.join(
+        userFolderName,
+        modFolderName,
+        fileNameWithExtension
+      );
 
       // Guardar la imagen en el sistema de archivos dentro de la carpeta creada
       fs.writeFileSync(
-        path.join(uploadDir, uniqueFileName),
+        path.join(uploadDir, fileNameWithExtension),
         compressedImageBuffer
       );
 
       // Agregar la imagen comprimida al array
       compressedImages.push({
-        name: uniqueFileName,
-        type: imageData.type,
+        name: fileNameWithExtension,
+        path: relativeImagePath,
+      });
+    }
+
+    // Comprimir solo la primera imagen y crear una copia con el prefijo "thumb_"
+    if (compressedImages.length > 0) {
+      const firstImageData = compressedImages[0];
+
+      // Obtener el nombre de archivo sin la extensión y agregar el prefijo "thumb_"
+      const thumbFileName = `thumb_${path.parse(firstImageData.name).name}`;
+
+      // Obtener la extensión original de la imagen
+      const fileExtension = path.parse(firstImageData.name).ext;
+
+      // Generar el nombre de archivo para la copia de la primera imagen con el prefijo "thumb_"
+      const thumbFileNameWithExtension = thumbFileName + fileExtension;
+
+      // Obtener la imagen original de la primera imagen
+      const originalImage = sharp(
+        fs.readFileSync(path.join(uploadDir, firstImageData.name))
+      );
+
+      // Comprimir la copia de la primera imagen a una calidad menor
+      const compressedThumbImageBuffer = await originalImage
+        .resize({ width: 144, height: 144 }) // Redimensionar a 144p
+        .jpeg({ quality: 30 }) // Ajustar la calidad para que pese menos
+        .toBuffer();
+
+      // Generar la ruta relativa completa de la copia de la primera imagen dentro del directorio de destino
+      const thumbRelativePath = path.join(
+        userFolderName,
+        modFolderName,
+        thumbFileNameWithExtension
+      );
+
+      // Guardar la copia de la primera imagen en el sistema de archivos dentro de la carpeta creada
+      fs.writeFileSync(
+        path.join(uploadDir, thumbFileNameWithExtension),
+        compressedThumbImageBuffer
+      );
+
+      // Agregar la copia de la primera imagen comprimida al array
+      compressedImages.push({
+        name: thumbFileNameWithExtension,
+        path: thumbRelativePath,
       });
     }
 
     // Función para generar un nombre de archivo único (como se mencionó antes)
     function generateUniqueFileName() {
       const uniqueID = uuidv4();
-      const uniqueFileName = `${uniqueID}.jpg`;
-      return uniqueFileName;
+      return `${uniqueID}`;
+    }
+
+    // Función para obtener la extensión de archivo adecuada según el tipo de imagen
+    function getFileExtension(imageType) {
+      return imageType === "image/png" ? ".png" : ".jpg";
     }
 
     return compressedImages; // Devuelve el array de imágenes comprimidas

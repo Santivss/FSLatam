@@ -16,6 +16,11 @@ router.post("/createmod", async (req, res) => {
       userName,
     } = req.body;
 
+    // Verificar si antiquity está definido o no
+    const antiquityConnect = categoriesDataForPost.antiquitySelected
+      ? { connect: { antiquity_id: categoriesDataForPost.antiquitySelected } }
+      : undefined;
+
     const newMod = await prisma.Mod.create({
       data: {
         mod_title: versionDataForPost.title,
@@ -33,9 +38,7 @@ router.post("/createmod", async (req, res) => {
             subcategory_id: categoriesDataForPost.selectedSubcategory,
           },
         },
-        antiquity: {
-          connect: { antiquity_id: categoriesDataForPost.antiquitySelected },
-        },
+        antiquity: antiquityConnect,
         game: {
           connect: { game_id: categoriesDataForPost.selectedGame },
         },
@@ -46,12 +49,32 @@ router.post("/createmod", async (req, res) => {
       },
     });
 
-    const folderName = userName;
+    const userFolderName = userName;
+    const modFolderName = String(newMod.mod_id);
 
-    imageCompression(imagesDataForPost, folderName);
+    const relativeRoutesImagesComp = await imageCompression(
+      imagesDataForPost,
+      userFolderName,
+      modFolderName
+    );
+
+    // Obtener el ID del Mod recién creado
+    const newModId = newMod.mod_id;
+
+    // Crear relaciones entre el Mod y las imágenes
+    for (const image of relativeRoutesImagesComp) {
+      const newImage = await prisma.Image.create({
+        data: {
+          image_link: image.path,
+          mod: {
+            connect: { mod_id: newModId },
+          },
+        },
+      });
+    }
+
     res.status(200).json({
       message: "Success",
-      newMod,
     });
   } catch (error) {
     console.log(error);

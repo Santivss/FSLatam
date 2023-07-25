@@ -155,9 +155,9 @@ const UploadModComponent = ({ handleunmountComponent }) => {
         .then((res) => {
           setPostRequestStatus(false);
           console.log(res.data);
-          /* setTimeout(() => {
+          setTimeout(() => {
             handleunmountComponent();
-          }, 2000); */
+          }, 2000);
         })
         .catch((err) => {
           setPostRequestStatus(false), console.log(err);
