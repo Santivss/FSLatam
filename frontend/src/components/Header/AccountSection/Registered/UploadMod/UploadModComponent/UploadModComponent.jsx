@@ -153,9 +153,9 @@ const UploadModComponent = ({ handleunmountComponent }) => {
       axios
         .post("http://localhost:3000/api/createmod", dataForCreateMod)
         .then((res) => {
-          console.log(res.data);
           setPostRequestStatus(false);
-          /*  setTimeout(() => {
+          console.log(res.data);
+          /* setTimeout(() => {
             handleunmountComponent();
           }, 2000); */
         })

@@ -74,7 +74,6 @@ model Mod {
   antiquity         Antiquity?    @relation(fields: [antiquity_id], references: [antiquity_id])
   game_id           Int
   game              Game         @relation(fields: [game_id], references: [game_id])
-  image_icon        String?
   images            Image[]
   sizes             Size[]       @relation("ModSize")
   brands            Brand[]      @relation("ModBrand")
@@ -83,6 +82,7 @@ model Mod {
   createdAt DateTime @default(now())
   principal_category_id  Int?
   principal_category     PrincipalCategory?  @relation(fields: [principal_category_id], references: [principal_category_id])
+  
 }
 
 

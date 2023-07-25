@@ -6,8 +6,6 @@ const router = Router();
 
 router.post("/createmod", async (req, res) => {
   try {
-    const folderName = "rucking";
-
     const {
       categoriesDataForPost,
       descriptionDataForPost,
@@ -15,6 +13,7 @@ router.post("/createmod", async (req, res) => {
       link,
       versionDataForPost,
       userId,
+      userName,
     } = req.body;
 
     const newMod = await prisma.Mod.create({
@@ -24,20 +23,32 @@ router.post("/createmod", async (req, res) => {
         consoles: categoriesDataForPost.isConsoleEnabled,
         multiplayer: categoriesDataForPost.isMultiplayerEnabled,
         mod_link: link,
-        subcategory: {
-          connect: categoriesDataForPost.selectedSubcategory,
+        principal_category: {
+          connect: {
+            principal_category_id: categoriesDataForPost.selectedCategory,
+          },
         },
-        antiquity_id: categoriesDataForPost.antiquity_id,
+        subcategory: {
+          connect: {
+            subcategory_id: categoriesDataForPost.selectedSubcategory,
+          },
+        },
+        antiquity: {
+          connect: { antiquity_id: categoriesDataForPost.antiquitySelected },
+        },
         game: {
           connect: { game_id: categoriesDataForPost.selectedGame },
         },
         sizes: { connect: { size_id: categoriesDataForPost.sizeSelected } },
-        user_id: userId,
-        image_icon: "default/routes/for/image",
+        user: {
+          connect: { user_id: userId },
+        },
       },
     });
 
-    /* imageCompression(imagesDataForPost, folderName); */
+    const folderName = userName;
+
+    imageCompression(imagesDataForPost, folderName);
     res.status(200).json({
       message: "Success",
       newMod,
