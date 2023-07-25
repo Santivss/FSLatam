@@ -8,4 +8,10 @@
   width: 1.5rem;
   aspect-ratio: 1;
   cursor: pointer;
+  opacity: 0.5;
+  transition: 300ms ease;
+}
+
+.upload_icon:hover {
+  opacity: 1;
 }

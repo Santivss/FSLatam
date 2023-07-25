@@ -8,9 +8,13 @@ const Notification = () => {
     useState(false);
   const iconRef = useRef(null);
   const notificationsContainerRef = useRef(null);
+  const [notificationIconActive, setNotificationIconActive] = useState(true);
 
   const handleContainerVisibility = () => {
     setNotificationsContainerStatus(!notificationsContainerStatus);
+    setTimeout(() => {
+      setNotificationIconActive(false);
+    }, 500);
   };
 
   useEffect(() => {
@@ -35,9 +39,15 @@ const Notification = () => {
   return (
     <div className="notifications__container">
       <img
-        src={ui_icons.notification_icon}
+        src={
+          notificationIconActive
+            ? ui_icons.notification_icon_amarillo
+            : ui_icons.notification_icon
+        }
         alt=""
-        className="notification_icon"
+        className={`notification_icon ${
+          notificationIconActive ? "notification_icon-active" : ""
+        }`}
         onClick={handleContainerVisibility}
         ref={iconRef}
       />

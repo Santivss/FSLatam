@@ -2,6 +2,8 @@ import "./ExpandableOptions.css";
 import { useIconsStore } from "../../../../../store/ui_icons_store";
 import OptionReusable from "./OptionReusable/OptionReusable";
 import { useEffect, useRef } from "react";
+import ToggleComponent from "../../../../../utils/ToggleComponent";
+import AccountComponent from "./AccountComponent/AccountComponent";
 
 const ExpandableOptions = ({
   visibilityComponent,
@@ -39,12 +41,16 @@ const ExpandableOptions = ({
       }`}
       ref={accountContainerRef}
     >
-      <OptionReusable
-        title="Account"
-        action={null}
-        icon={ui_icons.account_settings_icon}
-      />
-      <OptionReusable title="My Mods" icon={ui_icons.mods_icon} />
+      <ToggleComponent
+        children={<AccountComponent />}
+        buttonText={
+          <OptionReusable
+            title="Account"
+            action={null}
+            icon={ui_icons.account_settings_icon}
+          />
+        }
+      ></ToggleComponent>
       <OptionReusable
         title="Logout"
         action={handleDeleteToken}

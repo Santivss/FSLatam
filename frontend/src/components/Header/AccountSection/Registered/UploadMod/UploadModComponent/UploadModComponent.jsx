@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ImagesUpLoad from "./Categories/ImagesUpLoad/ImagesUpLoad";
 import { useIconsStore } from "../../../../../../store/ui_icons_store";
+import { userInfoStore } from "../../../../../../store/userInfoStore";
 
 const UploadModComponent = ({ handleunmountComponent }) => {
   const { ui_icons } = useIconsStore();
+  const { userId, userName } = userInfoStore();
   const [advirtiseMessage, setAdvirtiseMessage] = useState(false);
   const [categoriesData, setCategoriesData] = useState([]);
   const [dataForCreateMod, setDataForCreateMod] = useState(null);
@@ -62,6 +64,8 @@ const UploadModComponent = ({ handleunmountComponent }) => {
       descriptionDataForPost,
       categoriesDataForPost,
       link,
+      userId,
+      userName,
     });
   }, [
     imagesDataForPost,
@@ -69,6 +73,8 @@ const UploadModComponent = ({ handleunmountComponent }) => {
     descriptionDataForPost,
     categoriesDataForPost,
     link,
+    userId,
+    userName,
   ]);
 
   /* Funciones para manejar las alertas */
@@ -149,9 +155,9 @@ const UploadModComponent = ({ handleunmountComponent }) => {
         .then((res) => {
           console.log(res.data);
           setPostRequestStatus(false);
-          setTimeout(() => {
+          /*  setTimeout(() => {
             handleunmountComponent();
-          }, 2000);
+          }, 2000); */
         })
         .catch((err) => {
           setPostRequestStatus(false), console.log(err);

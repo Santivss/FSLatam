@@ -7,7 +7,15 @@ const Bookmark = () => {
   const { ui_icons } = useIconsStore();
   const bookMarkIconRef = useRef(null);
   const bookMarkContainerRef = useRef(null);
+  const [bookMarkNotificationStatus, setBookMarkNotificationStatus] =
+    useState(true);
   const [bookMarkOptionsStatus, setBookMarkOptionsStatus] = useState(false);
+
+  const handleBookMarkOptionsStatus = () => {
+    setTimeout(() => {
+      setBookMarkNotificationStatus(false);
+    }, 500);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -31,11 +39,20 @@ const Bookmark = () => {
   return (
     <div className="bookMark__container">
       <img
-        src={ui_icons.bookmark_icon}
+        src={
+          bookMarkNotificationStatus
+            ? ui_icons.bookmark_icon_amarillo
+            : ui_icons.bookmark_icon
+        }
         alt=""
-        className="bookmark_icon"
+        className={`bookmark_icon ${
+          bookMarkNotificationStatus ? "bookmark_icon-active" : ""
+        }`}
         ref={bookMarkIconRef}
-        onClick={() => setBookMarkOptionsStatus(true)}
+        onClick={() => {
+          setBookMarkOptionsStatus(!bookMarkOptionsStatus);
+          handleBookMarkOptionsStatus();
+        }}
       />
       {bookMarkOptionsStatus ? (
         <div

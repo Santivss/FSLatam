@@ -1,30 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Main.css";
 import Filters from "./Filters/Filters";
 import PrincipalSection from "./PrincipalSection/PrincipalSection";
-import { imagenes } from "../../assets";
 import ListItems from "./ListItems/ListItems";
+import axios from "axios";
 
 export const Main = () => {
+  /*   useEffect(() => {
+    axios
+      .get("localhost:3000/api/mods")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []); */
+
   return (
     <main className="main">
       <PrincipalSection />
       <Filters />
       <div className="list-items-container">
-        <ListItems image={imagenes[0]} />
-        <ListItems image={imagenes[1]} />
-        <ListItems image={imagenes[2]} />
-        <ListItems image={imagenes[3]} />
-        <ListItems image={imagenes[4]} />
-        <ListItems image={imagenes[5]} />
-        <ListItems image={imagenes[6]} />
-        <ListItems image={imagenes[7]} />
-        <ListItems image={imagenes[8]} />
-        <ListItems image={imagenes[9]} />
-        <ListItems image={imagenes[10]} />
-        <ListItems image={imagenes[11]} />
-        <ListItems image={imagenes[12]} />
-        <ListItems image={imagenes[13]} />
+        <ListItems />
       </div>
     </main>
   );

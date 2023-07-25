@@ -8,6 +8,26 @@
   width: 1.5rem;
   aspect-ratio: 1;
   cursor: pointer;
+  opacity: 0.5;
+  transition: 300ms ease;
+}
+
+.notification_icon:hover {
+  opacity: 1;
+}
+
+.notification_icon-active {
+  opacity: 1;
+  animation: vibrating 0.3s infinite alternate;
+}
+
+@keyframes vibrating {
+  from {
+    transform: translateY(0) rotate(10deg);
+  }
+  to {
+    transform: translateY(0) rotate(-10deg);
+  }
 }
 
 .notificationsItems__container {

@@ -43,7 +43,7 @@ router.post("/login", async (req, res) => {
       if (result) {
         // Las contraseñas coinciden
         const payload = {
-          userId: user[0].id,
+          userId: user[0].user_id,
           userName: user[0].user_name,
         };
 

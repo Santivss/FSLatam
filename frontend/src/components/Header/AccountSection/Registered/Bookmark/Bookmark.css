@@ -7,6 +7,16 @@
   width: 1.5rem;
   aspect-ratio: 1;
   cursor: pointer;
+  opacity: 0.5;
+  transition: 300ms ease;
+}
+
+.bookmark_icon:hover {
+  opacity: 1;
+}
+
+.bookmark_icon-active {
+  opacity: 1;
 }
 
 .bookMarkOptions__container {
