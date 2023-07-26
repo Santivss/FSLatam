@@ -8,7 +8,6 @@ import "./ExpandedContent.css";
 import { imagenes } from "../../../../assets";
 import TitleAndDownload from "./TitleAndDownload/TitleAndDownload";
 import CreatorInformation from "./CreatorInformation/CreatorInformation";
-import TemperatureGauges from "./TemperatureGauges/TemperatureGauges";
 import Description from "./Description/Description";
 import Comments from "./Comments/Comments";
 import RelatedMods from "./RelatedMods/RelatedMods";

@@ -80,14 +80,9 @@ button {
 }
 
 .toggleComponent__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
 }
 
 .buttonToggleComponent {
-  width: 100%;
 }
 
 /* Barra de desplazamiento */

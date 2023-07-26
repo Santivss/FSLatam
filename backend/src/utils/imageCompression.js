@@ -39,20 +39,15 @@ const imageCompression = async (
       );
       const imageBuffer = Buffer.from(base64Data, "base64");
 
-      // Redimensionar y comprimir la imagen utilizando Sharp
-      let sharpInstance = sharp(imageBuffer);
-
-      // Ajustar el formato adecuado en función del tipo de imagen
-      if (imageData.type === "image/png") {
-        sharpInstance = sharpInstance.png({ quality: 60 });
-      } else if (imageData.type === "image/jpeg") {
-        sharpInstance = sharpInstance.jpeg({ quality: 60 });
-      } else {
-        throw new Error("Unsupported image format: " + imageData.type);
-      }
-
-      // Redimensionar todas las imágenes a 720p (no es necesario clonar)
-      sharpInstance = sharpInstance.resize({ width: 720, height: 720 });
+      // Redimensionar y comprimir la imagen utilizando Sharp en una sola llamada
+      let sharpInstance = sharp(imageBuffer)
+        .resize({
+          width: 1280,
+          height: 720,
+          fit: sharp.fit.inside,
+          withoutEnlargement: true,
+        })
+        .jpeg({ quality: 60 });
 
       const compressedImageBuffer = await sharpInstance.toBuffer();
 
@@ -103,8 +98,8 @@ const imageCompression = async (
 
       // Comprimir la copia de la primera imagen a una calidad menor
       const compressedThumbImageBuffer = await originalImage
-        .resize({ width: 144, height: 144 }) // Redimensionar a 144p
-        .jpeg({ quality: 30 }) // Ajustar la calidad para que pese menos
+        .resize({ width: 640, height: 360 }) // Redimensionar a 144p
+        .jpeg({ quality: 40 }) // Ajustar la calidad para que pese menos
         .toBuffer();
 
       // Generar la ruta relativa completa de la copia de la primera imagen dentro del directorio de destino

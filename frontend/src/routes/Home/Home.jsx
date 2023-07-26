@@ -7,22 +7,13 @@ import axios from "axios";
 import { firstRequestData } from "../../store/firstRequestInformation";
 
 export const Home = () => {
-  const { setCategories, setMods } = firstRequestData();
+  const { setCategories } = firstRequestData();
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/categories")
       .then((res) => {
         setCategories(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/mods")
-      .then((res) => {
-        setMods(res.data);
       })
       .catch((err) => console.log(err));
   }, []);

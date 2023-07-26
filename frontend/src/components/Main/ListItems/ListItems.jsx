@@ -2,12 +2,16 @@ import "./ListItems.css";
 import { useIconsStore } from "../../../store/ui_icons_store";
 import ExpandedContent from "./ExpandedContent/ExpandedContent";
 import ToggleComponent from "../../../utils/ToggleComponent";
-import { firstRequestData } from "../../../store/firstRequestInformation";
 import { motion } from "framer-motion";
+import { imagenes } from "../../../assets";
+import { userInfoStore } from "../../../store/userInfoStore";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ListItems = () => {
   const { ui_icons } = useIconsStore();
-  const { dataMods } = firstRequestData();
+  const { isAuthenticated } = userInfoStore();
+  const [dataMods, setDataMods] = useState();
 
   const handleAddIconClick = (event) => {
     event.stopPropagation();
@@ -15,17 +19,32 @@ const ListItems = () => {
     console.log("Imagen add_icon fue clickeada");
   };
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/mods")
+      .then((res) => {
+        setDataMods(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  /* dataMods?.allImages[0].content */
+
+  const imagen1 = dataMods?.allImages[6].content;
+
   return (
     <ToggleComponent
       children={<ExpandedContent />}
       buttonText={
         <div className="listItems">
           {dataMods?.allMods.map((item) => {
-            console.log(item);
             return (
               <div key={item.mod_id} className="list__container">
                 <div className="mod__icon-container">
-                  <img src="test" alt="" className="mod__icon" />
+                  <img
+                    src={"data:image/jpeg;base64," + imagen1}
+                    alt=""
+                    className="mod__icon"
+                  />
                 </div>
 
                 <div className="top__options-container">
@@ -34,24 +53,32 @@ const ListItems = () => {
                     alt=""
                     className="pc__icon"
                   />
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.05 }}
-                    className="add_icon-button__container"
-                  >
-                    <img
-                      src={ui_icons.add_icon}
-                      alt=""
-                      className="add_icon"
-                      onClick={handleAddIconClick}
-                    />
-                  </motion.div>
+                  {isAuthenticated ? (
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.05 }}
+                      className="add_icon-button__container"
+                    >
+                      <img
+                        src={ui_icons.add_icon}
+                        alt=""
+                        className="add_icon"
+                        onClick={handleAddIconClick}
+                      />
+                    </motion.div>
+                  ) : null}
 
                   <img
-                    src={ui_icons.console_icon_amarillo}
+                    src={
+                      item.consoles
+                        ? ui_icons.console_icon_amarillo
+                        : ui_icons.console_icon
+                    }
                     alt=""
-                    className="console__icon"
+                    className={`console__icon ${
+                      item.consoles ? "console__icon-active" : ""
+                    }`}
                   />
                 </div>
 
@@ -112,7 +139,7 @@ const ListItems = () => {
           })}
         </div>
       }
-    />
+    ></ToggleComponent>
   );
 };
 
