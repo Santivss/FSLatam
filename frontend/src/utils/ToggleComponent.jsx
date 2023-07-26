@@ -37,7 +37,9 @@ const ToggleComponent = ({ children, buttonText, unmountComponent }) => {
 
   return (
     <div className="toggleComponent__container" ref={containerRef}>
-      <button onClick={handleToggle}>{buttonText}</button>
+      <button className="buttonToggleComponent" onClick={handleToggle}>
+        {buttonText}
+      </button>
       {showComponent && (
         <Portal>
           <motion.div ref={componentRef} {...BoxAnimation}>

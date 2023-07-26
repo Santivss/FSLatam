@@ -1,3 +1,8 @@
+.listItems {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .list__container {
   margin: 1rem;
   width: 31rem;
@@ -50,7 +55,7 @@
 }
 
 .add_icon {
-  width: 1.5rem;
+  width: 1.3rem;
   aspect-ratio: 1;
   cursor: pointer;
 }

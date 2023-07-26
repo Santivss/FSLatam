@@ -46,6 +46,7 @@ router.post("/createmod", async (req, res) => {
         user: {
           connect: { user_id: userId },
         },
+        user_name: userName,
       },
     });
 

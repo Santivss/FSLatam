@@ -13,7 +13,7 @@ console.log(allImages);
 
 router.get("/mods", async (req, res) => {
   try {
-    const allMods = await prisma.mod.findMany();
+    const allMods = await prisma.Mod.findMany();
 
     res.status(200).json({
       message: "Succes",

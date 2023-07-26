@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import Nav from "../../components/Nav/Nav";
 import { Header } from "../../components/Header/Header";
@@ -7,13 +7,22 @@ import axios from "axios";
 import { firstRequestData } from "../../store/firstRequestInformation";
 
 export const Home = () => {
-  const { categories, setCategories } = firstRequestData();
+  const { setCategories, setMods } = firstRequestData();
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/categories")
       .then((res) => {
         setCategories(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/mods")
+      .then((res) => {
+        setMods(res.data);
       })
       .catch((err) => console.log(err));
   }, []);

@@ -5,10 +5,3 @@
   align-items: center;
   width: 100%;
 }
-
-.list-items-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}

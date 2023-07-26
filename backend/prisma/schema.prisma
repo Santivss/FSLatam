@@ -23,6 +23,32 @@ model User {
   createdAt DateTime @default(now())
 }
 
+model Mod {
+  mod_id            Int          @id @default(autoincrement())
+  mod_title         String
+  mod_description   String
+  consoles          Boolean
+  multiplayer       Boolean
+  mod_link          String
+  subcategory_id    Int
+  subcategory       Subcategory  @relation(fields: [subcategory_id], references: [subcategory_id])
+  antiquity_id      Int?  
+  antiquity         Antiquity?    @relation(fields: [antiquity_id], references: [antiquity_id])
+  game_id           Int
+  game              Game         @relation(fields: [game_id], references: [game_id])
+  images            Image[]
+  sizes             Size[]       @relation("ModSize")
+  brands            Brand[]      @relation("ModBrand")
+  user_id Int
+  user User @relation(fields: [user_id],references: [user_id])
+  user_name  String @default("userDefault")
+  createdAt DateTime @default(now())
+  principal_category_id  Int?
+  principal_category     PrincipalCategory?  @relation(fields: [principal_category_id], references: [principal_category_id])
+  
+}
+
+
 model Country {
   country_id    Int      @id @default(autoincrement())
   country_name  String
@@ -61,29 +87,6 @@ model Antiquity {
   mods            Mod[]
 }
 
-model Mod {
-  mod_id            Int          @id @default(autoincrement())
-  mod_title         String
-  mod_description   String
-  consoles          Boolean
-  multiplayer       Boolean
-  mod_link          String
-  subcategory_id    Int
-  subcategory       Subcategory  @relation(fields: [subcategory_id], references: [subcategory_id])
-  antiquity_id      Int?  
-  antiquity         Antiquity?    @relation(fields: [antiquity_id], references: [antiquity_id])
-  game_id           Int
-  game              Game         @relation(fields: [game_id], references: [game_id])
-  images            Image[]
-  sizes             Size[]       @relation("ModSize")
-  brands            Brand[]      @relation("ModBrand")
-  user_id Int
-  user User @relation(fields: [user_id],references: [user_id])
-  createdAt DateTime @default(now())
-  principal_category_id  Int?
-  principal_category     PrincipalCategory?  @relation(fields: [principal_category_id], references: [principal_category_id])
-  
-}
 
 
 model Game {
