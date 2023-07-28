@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { prisma } from "../db.js";
 import fs from "fs";
-import { fileURLToPath } from "url";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const router = Router();
 
@@ -75,6 +75,9 @@ router.get("/modsUser/:userId", async (req, res) => {
 
 router.delete("/modsUser/:modId", async (req, res) => {
   try {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
     const modId = parseInt(req.params.modId);
 
     // Paso 1: Obtener las imágenes asociadas al mod
@@ -84,35 +87,54 @@ router.delete("/modsUser/:modId", async (req, res) => {
       },
     });
 
-    // Eliminar las imágenes y las entradas de la base de datos
     for (const image of imagesToDelete) {
-      const imageFolderPath = path.join(
+      const imageFilePath = path.join(
+        __dirname,
         "../../static/modImages",
         image.image_link
       );
 
       // Verificar si el archivo existe antes de intentar eliminarlo
-      if (fs.existsSync(imageFolderPath)) {
+      if (fs.existsSync(imageFilePath)) {
         try {
-          fs.unlinkSync(path.join(imageFolderPath, image.image_link));
-          console.log("Archivo eliminado:", image.image_link);
+          fs.unlinkSync(imageFilePath);
+          console.log("Imagen eliminada:", image.image_link);
+          // Eliminar la entrada de la imagen de la base de datos
+          await prisma.Image.delete({
+            where: {
+              image_id: image.image_id,
+            },
+          });
         } catch (error) {
-          console.error(
-            "Error al eliminar el archivo:",
-            image.image_link,
-            error
-          );
+          console.error("Error al eliminar la imagen:", imageFilePath, error);
         }
       } else {
-        console.warn("El archivo no existe en la ruta:", imageFolderPath);
+        console.warn("La imagen no existe en la ruta:", imageFilePath);
       }
+    }
 
-      // Eliminar la entrada de la imagen de la base de datos
-      await prisma.image.delete({
-        where: {
-          image_id: image.image_id,
-        },
-      });
+    // Buscar el mod para extraer el nombre de usuario para eliminar la carpeta vacia
+
+    const userNameMod = await prisma.Mod.findUnique({
+      where: {
+        mod_id: modId,
+      },
+    });
+
+    // Eliminar la carpeta si está vacía
+    const folderPath = path.join(
+      __dirname,
+      `../../static/modImages/${userNameMod.user_name}/${modId}`
+    );
+    if (fs.existsSync(folderPath)) {
+      try {
+        fs.rmdirSync(folderPath);
+        console.log("Carpeta eliminada:", folderPath);
+      } catch (error) {
+        console.error("Error al eliminar la carpeta:", folderPath, error);
+      }
+    } else {
+      console.warn("La carpeta no existe en la ruta:", folderPath);
     }
 
     // Paso 2: Eliminar las relaciones de uno a uno

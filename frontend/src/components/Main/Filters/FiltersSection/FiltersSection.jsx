@@ -1,7 +1,6 @@
 import "./FiltersSection.css";
 import { useState } from "react";
 import { useIconsStore } from "../../../../store/ui_icons_store.jsx";
-import { motion } from "framer-motion";
 
 const FiltersSection = () => {
   const { ui_icons } = useIconsStore();
@@ -34,14 +33,12 @@ const FiltersSection = () => {
       {icons
         .filter((icon) => ["Trending", "New", "Top"].includes(icon.title))
         .map((icon, index) => (
-          <motion.button
+          <button
             key={index}
             className={`button_filter ${
               activeButton === index ? "active__button-filter" : ""
             }`}
             onClick={() => handleButtonClick(index)}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.01 }}
           >
             <img
               src={activeButton === index ? icon.icon_color : icon.icon}
@@ -49,7 +46,7 @@ const FiltersSection = () => {
               className="icon__filters-section"
             />
             <span>{icon.title}</span>
-          </motion.button>
+          </button>
         ))}
     </div>
   );

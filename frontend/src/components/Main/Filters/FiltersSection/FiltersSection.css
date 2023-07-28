@@ -25,7 +25,7 @@
 
 .active__button-filter {
   box-shadow: 0px 0px 10px #f55d21;
-  transition: 300ms ease;
+  border: 1px solid transparent;
   background: var(--background-border);
 }
 

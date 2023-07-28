@@ -66,6 +66,8 @@ import user_icon from "../assets/uiIcons/user_icon.png";
 import account_settings_icon from "../assets/uiIcons/account_settings_icon.svg";
 import close_icon from "../assets/uiIcons/close_icon.svg";
 import mods_icon from "../assets/uiIcons/mods_icon.svg";
+import person_icon from "../assets/uiIcons/person_icon.svg";
+import P_icon from "../assets/uiIcons/P_icon.svg";
 /* -------------------------principalCategories_icons----------------------------- */
 import auger_wagon_trailer_icon from "../assets/categorieIcons/auger_wagon_trailer_icon.svg";
 import bale_trailer_icon from "../assets/categorieIcons/bale_trailer_icon.svg";
@@ -162,9 +164,17 @@ import gate_icon from "../assets/categorieIcons/gate_icon.svg";
 import light_icon from "../assets/categorieIcons/light_icon.svg";
 import building_icon from "../assets/categorieIcons/building_icon.svg";
 import wheel_icon from "../assets/uiIcons/wheel_icon.svg";
+import gold_icon from "../assets/uiIcons/gold_icon.svg";
+import silver_icon from "../assets/uiIcons/silver_icon.svg";
+import bronze_icon from "../assets/uiIcons/bronze_icon.svg";
 
 export const useIconsStore = create((set) => ({
   ui_icons: {
+    gold_icon,
+    silver_icon,
+    bronze_icon,
+    P_icon,
+    person_icon,
     wheel_icon,
     mods_icon,
     close_icon,

@@ -58,7 +58,7 @@ const Filter_Antiquity_And_Size = ({ time }) => {
       </span>
 
       <img
-        src={ui_icons.add_icon}
+        src={ui_icons.triangle_icon}
         alt=""
         className={`filter__antique-icon ${isAntiqueOpen ? "open" : ""}`}
       />

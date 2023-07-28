@@ -8,8 +8,10 @@
   border-radius: 5px;
   transition: 300ms ease;
   border: 1px solid var(--color-secondary);
+  transition: 300ms ease;
   margin: 0 0 0 auto;
   user-select: none;
+  cursor: pointer;
 }
 
 .filter__antique-container:hover {
@@ -17,21 +19,18 @@
 }
 
 .filter__antique-container.expanded {
-  transition: 300ms ease;
-  background: var(--background-border);
+  background-color: var(--color-body);
 }
 
 .antique__title {
-  font-weight: 400;
+  font-weight: 300;
   font: 2rem;
-  /* color: var(--color-secondary); */
   margin-left: 0.5rem;
 }
 
 .antique__title-selected {
   font-size: 0.9rem;
-  opacity: 50%;
-  font-weight: 300;
+  font-weight: 500;
   margin-left: 0.5rem;
 }
 
@@ -57,8 +56,8 @@
   gap: 0.5rem;
   border-radius: 5px;
   transition: 300ms ease;
-  border: 1px solid transparent;
-  background: var(--background-border);
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-body);
   margin: 0.2rem;
 }
 
