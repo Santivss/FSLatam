@@ -1,15 +1,13 @@
 import { Router } from "express";
 import { prisma } from "../db.js";
-import express from "express";
 import fs from "fs";
 import { fileURLToPath } from "url"; // Importar fileURLToPath desde el módulo url
-import path from "path";
 
 const router = Router();
 
 router.get("/mods", async (req, res) => {
   try {
-    const maxRecords = 10;
+    const maxRecords = 15;
 
     // Paso 1: Obtener los 10 registros de Mod
     const allMods = await prisma.Mod.findMany({
@@ -33,28 +31,33 @@ router.get("/mods", async (req, res) => {
       },
     });
 
-    // Leer el contenido de cada imagen y convertirlo a base64
+    // Paso 4: Crear un mapa con los ids de mod y sus imágenes correspondientes
+    const imageMap = {};
     for (const image of allImages) {
-      // Construir la URL del archivo a partir de la URL actual y la ruta relativa
       const currentURL = new URL(import.meta.url);
       const imagePath = new URL(
         "../../static/modImages/" + image.image_link,
         currentURL
       );
-
-      // Convertir la URL a una ruta válida en el sistema de archivos
       const imagePathResolved = fileURLToPath(imagePath);
-
       const imageContent = fs.readFileSync(imagePathResolved, {
         encoding: "base64",
       });
       image.content = imageContent;
+      imageMap[image.mod_id] = image;
+    }
+
+    // Paso 5: Agregar la propiedad "thumbnail" a cada objeto "mod" en el arreglo "allMods"
+    for (const mod of allMods) {
+      const thumbnailImage = imageMap[mod.mod_id];
+      if (thumbnailImage) {
+        mod.thumbnail = thumbnailImage.content;
+      }
     }
 
     res.status(200).json({
       message: "Success",
       allMods,
-      allImages,
     });
   } catch (error) {
     console.log(error);

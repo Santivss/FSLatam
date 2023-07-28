@@ -16,6 +16,7 @@ import loginRoutes from "./routes/login.routes.js";
 import registerRoutes from "./routes/register.routes.js";
 import categoriesRoutes from "./routes/categories.routes.js";
 import modsRoutes from "./routes/mods.routes.js";
+import modsUser from "./routes/modsUser.routes.js";
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/api", loginRoutes);
 app.use("/api", registerRoutes);
 app.use("/api", categoriesRoutes);
 app.use("/api", modsRoutes);
+app.use("/api", modsUser);
 
 app.use((err, req, res, next) => {
   console.error("Error de CORS:", err);

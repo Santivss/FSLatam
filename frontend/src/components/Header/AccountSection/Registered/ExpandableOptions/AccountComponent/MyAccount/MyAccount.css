@@ -1,0 +1,5 @@
+.myAccount__container {
+  border: 1px soild var(--color-secondary);
+  width: 100%;
+  height: 100%;
+}

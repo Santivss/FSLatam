@@ -27,9 +27,8 @@ const ListItems = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  /* dataMods?.allImages[0].content */
 
-  const imagen1 = dataMods?.allImages[6].content;
+  /* "data:image/jpeg;base64," + imagen1 */
 
   return (
     <ToggleComponent
@@ -41,7 +40,7 @@ const ListItems = () => {
               <div key={item.mod_id} className="list__container">
                 <div className="mod__icon-container">
                   <img
-                    src={"data:image/jpeg;base64," + imagen1}
+                    src={"data:image/jpeg;base64," + item.thumbnail}
                     alt=""
                     className="mod__icon"
                   />

@@ -80,9 +80,11 @@ button {
 }
 
 .toggleComponent__container {
+  width: 100%;
 }
 
 .buttonToggleComponent {
+  width: 100%;
 }
 
 /* Barra de desplazamiento */
@@ -97,7 +99,7 @@ button {
 /* Thumb (el botón de arrastre) */
 ::-webkit-scrollbar-thumb {
   background: var(--color-secondary);
-  border-radius: 4px; /* Bordes redondeados */
+  border-radius: 3px;
 }
 
 /* Cambiar el color del botón de arrastre cuando se pasa el ratón por encima */

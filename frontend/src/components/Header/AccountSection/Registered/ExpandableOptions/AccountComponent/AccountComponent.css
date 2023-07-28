@@ -11,3 +11,13 @@
   gap: 2rem;
   border: 1px solid var(--color-secondary);
 }
+
+.accountComponentNav__container {
+}
+
+.navItems__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}

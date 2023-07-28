@@ -15,10 +15,7 @@ const imageCompression = async (
     const __dirname = path.dirname(__filename);
 
     // Crear la ruta completa de la carpeta de destino usando el nombre proporcionado
-    const uploadDir = path.join(
-      __dirname,
-      `../../static/modImages/${userFolderName}/${modFolderName}`
-    );
+    const uploadDir = `${__dirname}/../../static/modImages/${userFolderName}/${modFolderName}`;
 
     // Crear la carpeta si no existe
     if (!fs.existsSync(uploadDir)) {
@@ -47,7 +44,7 @@ const imageCompression = async (
           fit: sharp.fit.inside,
           withoutEnlargement: true,
         })
-        .jpeg({ quality: 60 });
+        .toFormat("jpeg", { quality: 60 });
 
       const compressedImageBuffer = await sharpInstance.toBuffer();
 
@@ -59,11 +56,7 @@ const imageCompression = async (
         uniqueFileName + getFileExtension(imageData.type);
 
       // Generar la ruta relativa completa de la imagen dentro del directorio de destino
-      const relativeImagePath = path.join(
-        userFolderName,
-        modFolderName,
-        fileNameWithExtension
-      );
+      const relativeImagePath = `${userFolderName}/${modFolderName}/${fileNameWithExtension}`;
 
       // Guardar la imagen en el sistema de archivos dentro de la carpeta creada
       fs.writeFileSync(
@@ -103,11 +96,7 @@ const imageCompression = async (
         .toBuffer();
 
       // Generar la ruta relativa completa de la copia de la primera imagen dentro del directorio de destino
-      const thumbRelativePath = path.join(
-        userFolderName,
-        modFolderName,
-        thumbFileNameWithExtension
-      );
+      const thumbRelativePath = `${userFolderName}/${modFolderName}/${thumbFileNameWithExtension}`;
 
       // Guardar la copia de la primera imagen en el sistema de archivos dentro de la carpeta creada
       fs.writeFileSync(
