@@ -19,6 +19,19 @@ const ListItems = () => {
     console.log("Imagen add_icon fue clickeada");
   };
 
+  // Función para formatear el número
+  const formatNumber = (num) => {
+    if (num < 1000) {
+      return num.toString();
+    } else if (num < 1000000) {
+      const thousands = (num / 1000).toFixed(1);
+      return `${thousands}k`;
+    } else {
+      const millions = (num / 1000000).toFixed(1);
+      return `${millions}m`;
+    }
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/mods")
@@ -82,7 +95,11 @@ const ListItems = () => {
                 </div>
 
                 <div className="bottom__stats-container">
-                  <h2 className="mod__title">{item.mod_title}</h2>
+                  <h2 className="mod__title">
+                    {item.mod_title.length > 38
+                      ? `${item.mod_title.slice(0, 38)}...`
+                      : item.mod_title}
+                  </h2>
                   <div className="bottom__info-container">
                     <div className="individual__info-container">
                       <img

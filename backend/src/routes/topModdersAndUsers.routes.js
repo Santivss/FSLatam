@@ -68,6 +68,7 @@ router.get("/topModdersAndUsers", async (req, res) => {
             downloadsCount: mod.downloadsCount,
             user_name: user.user_name,
             user_id: user.user_id,
+            mod_id: mod.mod_id,
           };
         })
       );
@@ -79,17 +80,10 @@ router.get("/topModdersAndUsers", async (req, res) => {
     const last30DaysUsers = await getUsersWithModsLastNDays(30);
     const last30DaysMods = await getModsLastNDays(30);
 
-    // Filtrar por los últimos 7 días
-    const last7DaysUsers = await getUsersWithModsLastNDays(7);
-    const last7DaysMods = await getModsLastNDays(7);
-    console.log(last30DaysUsers);
-    console.log(last30DaysMods);
     res.status(200).json({
       message: "Success",
       last30DaysUsers: last30DaysUsers,
-      last7DaysUsers: last7DaysUsers,
       last30DaysMods: last30DaysMods,
-      last7DaysMods: last7DaysMods,
     });
   } catch (error) {
     res.status(500).json({

@@ -4,6 +4,19 @@ import { useIconsStore } from "../../../../store/ui_icons_store";
 const TopStatsModsUsers = ({ topsData }) => {
   const { ui_icons } = useIconsStore();
 
+  // Función para formatear el número
+  const formatNumber = (num) => {
+    if (num < 1000) {
+      return num.toString();
+    } else if (num < 1000000) {
+      const thousands = (num / 1000).toFixed(1);
+      return `${thousands}k`;
+    } else {
+      const millions = (num / 1000000).toFixed(1);
+      return `${millions}m`;
+    }
+  };
+
   // Ordenar los datos por la cantidad de descargas antes de renderizarlos
   const sortedData = topsData?.last30DaysUsers.sort(
     (a, b) => b.totalDownloads - a.totalDownloads
@@ -75,7 +88,7 @@ const TopStatsModsUsers = ({ topsData }) => {
               {item.modsCount}
             </span>
             <span className="topStatsModsUsersItem__downloadsCount">
-              {item.totalDownloads}
+              {formatNumber(item.totalDownloads)}
             </span>
           </div>
         );

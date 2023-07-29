@@ -1,14 +1,14 @@
 .listItems {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
   padding: 1rem;
+  gap: 2rem;
 }
 
 .list__container {
-  width: 30rem;
+  width: 100%;
   border-radius: 0.5rem;
   overflow: hidden;
   display: grid;
@@ -16,7 +16,6 @@
   grid-template-columns: 1fr 1fr 1fr;
   transition: 300ms ease;
   border: 1px solid var(--color-secondary);
-  position: relative;
   cursor: pointer;
 }
 
@@ -40,6 +39,7 @@
 /* ---------------top__options-container--------------- */
 
 .top__options-container {
+  height: 10%;
   position: absolute;
   left: 50%;
   top: 0;
@@ -49,7 +49,6 @@
   border-bottom: 1px solid #f59421;
   border-left: 1px solid #f59421;
   border-right: 1px solid #f59421;
-  height: 2.2rem;
   border-radius: 0 0 1rem 1rem;
   padding: 0 0.5rem;
   text-align: center;
@@ -99,7 +98,7 @@
 }
 
 .mod__title {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 400;
   text-transform: capitalize;
 }

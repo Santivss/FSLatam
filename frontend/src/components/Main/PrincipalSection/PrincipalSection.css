@@ -5,3 +5,48 @@
   gap: 1rem;
   padding: 2rem 1rem;
 }
+
+/* Media Query para pantallas con ancho igual o menor a 600px */
+@media (max-width: 767px) {
+  /* Estilos para pantallas pequeñas */
+  .principalSection__container {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+  /* ... */
+}
+
+/* Media Query para pantallas con ancho entre 768px y 1824px */
+@media (min-width: 768px) and (max-width: 1280px) {
+  /* Estilos para pantallas medianas */
+  .principalSection__container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+  /* ... */
+}
+
+/* Media Query para pantallas con ancho entre 768px y 1824px */
+@media (min-width: 1280px) and (max-width: 1440px) {
+  /* Estilos para pantallas medianas */
+  .principalSection__container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+  /* ... */
+}
+
+/* Media Query para pantallas con ancho igual o mayor a 1025px */
+@media (min-width: 1440px) and (max-width: 1824px) {
+  /* Estilos para pantallas grandes */
+  .principalSection__container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    padding: 2rem 6rem;
+  }
+  /* ... */
+}

@@ -79,7 +79,7 @@ const SlideComponent = () => {
 
   return (
     <Swiper
-      speed={1000}
+      speed={2000}
       effect="fade"
       grabCursor={true}
       centeredSlides={true}
@@ -88,8 +88,8 @@ const SlideComponent = () => {
       fadeEffect={{ crossFade: true }}
       pagination={{ el: ".swiper-pagination", clickable: true }}
       autoplay={{
-        delay: 3000,
-        disableOnInteraction: true,
+        delay: 2000,
+        disableOnInteraction: false,
       }}
       modules={[Autoplay, EffectFade]}
       className="slideComponent__container"

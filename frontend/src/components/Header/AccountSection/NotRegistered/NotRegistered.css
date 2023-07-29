@@ -24,9 +24,12 @@
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
+  text-align: center;
+  color: var(--color-text-secondary-1);
 }
 
 .login__container-button:hover,
 .signIn__container-button:hover {
   background-color: var(--color-btn-bg);
+  color: white;
 }
