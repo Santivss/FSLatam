@@ -24,7 +24,7 @@ const Loading = () => {
         className="test__container"
       >
         <img src={ui_icons.fc_icon} alt="" className="fc_icon" />
-        <span className="welcome">FarmersClub</span>
+        <span className="welcome">FarmersClub FarmersClub</span>
       </motion.div>
     </div>
   );
