@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./InputVersion.css";
-import { useIconsStore } from "../../../../../../../store/ui_icons_store";
 import { SwitchAnimated } from "../../../../../../../utils/Animations/SwitchAnimated/SwitchAnimated";
 import { useRef } from "react";
 

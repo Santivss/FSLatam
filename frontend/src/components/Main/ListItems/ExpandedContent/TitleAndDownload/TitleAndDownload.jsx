@@ -1,31 +1,28 @@
 import "./TitleAndDownload.css";
-import { useIconsStore } from "../../../../../store/ui_icons_store";
+import star_icon_amarillo from "../../../../../assets/uiIcons/star_icon_amarillo.svg";
+import report_icon_amarillo from "../../../../../assets/uiIcons/report_icon_amarillo.svg";
+import share_icon_amarillo from "../../../../../assets/uiIcons/share_icon_amarillo.svg";
 import { motion } from "framer-motion";
 import BtnTapReusable from "../BtnTapReusable/BtnTapReusable";
 
-const TitleAndDownload = () => {
-  const { ui_icons } = useIconsStore();
-
+const TitleAndDownload = ({ fullDataMod }) => {
   return (
     <div className="titleAndDownload__container">
       <div className="expandedContent__title-container">
-        <h1 className="expandedContent__title">House Polka Sesnotak </h1>
+        <h1 className="expandedContent__title">{fullDataMod}</h1>
       </div>
       <div className="buttonsExpandedContent__container">
         <div className="buttonSmall__container">
+          <BtnTapReusable icon={star_icon_amarillo} alt="star_icon_amarillo" />
+
           <BtnTapReusable
-            icon={ui_icons.star_icon_amarillo}
-            alt={ui_icons.star_icon_amarillo}
+            icon={report_icon_amarillo}
+            alt="report_icon_amarillo"
           />
 
           <BtnTapReusable
-            icon={ui_icons.report_icon_amarillo}
-            alt={ui_icons.report_icon_amarillo}
-          />
-
-          <BtnTapReusable
-            icon={ui_icons.share_icon_amarillo}
-            alt={ui_icons.share_icon_amarillo}
+            icon={share_icon_amarillo}
+            alt="share_icon_amarillo"
           />
         </div>
 

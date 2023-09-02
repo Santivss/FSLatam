@@ -1,9 +1,9 @@
 import "./Notification.css";
-import { useIconsStore } from "../../../../../store/ui_icons_store";
+import notification_icon_amarillo from "../../../../../assets/uiIcons/notification_icon_amarillo.svg";
+import notification_icon from "../../../../../assets/uiIcons/notification_icon.svg";
 import { useState, useRef, useEffect } from "react";
 
 const Notification = () => {
-  const { ui_icons } = useIconsStore();
   const [notificationsContainerStatus, setNotificationsContainerStatus] =
     useState(false);
   const iconRef = useRef(null);
@@ -41,8 +41,8 @@ const Notification = () => {
       <img
         src={
           notificationIconActive
-            ? ui_icons.notification_icon_amarillo
-            : ui_icons.notification_icon
+            ? notification_icon_amarillo
+            : notification_icon
         }
         alt=""
         className={`notification_icon ${

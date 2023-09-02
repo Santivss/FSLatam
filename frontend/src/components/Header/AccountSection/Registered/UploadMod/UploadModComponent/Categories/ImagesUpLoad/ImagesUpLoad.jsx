@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./ImagesUpLoad.css";
-import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
+import incorrect_icon from "../../../../../../../../assets/uiIcons/incorrect_icon.svg";
 
 const ImagesUpLoad = ({ handleImagesData, imagesAlertStatus }) => {
   const imagesAlertContainer = useRef();
@@ -14,7 +14,6 @@ const ImagesUpLoad = ({ handleImagesData, imagesAlertStatus }) => {
     }
   }, [imagesAlertStatus]);
 
-  const { ui_icons } = useIconsStore();
   const [selectedImages, setSelectedImages] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const imageCountRef = useRef(0);
@@ -160,7 +159,7 @@ const ImagesUpLoad = ({ handleImagesData, imagesAlertStatus }) => {
               className="imagesUpLoad__image"
             />
             <img
-              src={ui_icons.incorrect_icon}
+              src={incorrect_icon}
               alt=""
               onClick={() => handleImageDelete(index)}
               className="deleteImage__icon"

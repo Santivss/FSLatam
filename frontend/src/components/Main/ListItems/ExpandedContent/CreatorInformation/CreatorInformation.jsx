@@ -1,15 +1,14 @@
 import "./CreatorInformation.css";
-import { useIconsStore } from "../../../../../store/ui_icons_store";
+import user_icon_test from "../../../../../assets/uiIcons/user_icon_test.jpg";
+import notification_icon_amarillo from "../../../../../assets/uiIcons/notification_icon_amarillo.svg";
 import { motion } from "framer-motion";
 import BtnTapReusable from "../BtnTapReusable/BtnTapReusable";
 
 const CreatorInformation = () => {
-  const { ui_icons } = useIconsStore();
-
   return (
     <div className="creatorInformation__container">
       <div className="userIcon__container">
-        <img src={ui_icons.user_icon_test} alt="" className="user__icon" />
+        <img src={user_icon_test} alt="" className="user__icon" />
       </div>
       <div className="infoUser__container">
         <span className="name__user-channel">RuckingFS </span>
@@ -32,8 +31,8 @@ const CreatorInformation = () => {
         </motion.div>
 
         <BtnTapReusable
-          icon={ui_icons.notification_icon_amarillo}
-          alt={ui_icons.notification_icon_amarillo}
+          icon={notification_icon_amarillo}
+          alt={notification_icon_amarillo}
         />
       </div>
     </div>

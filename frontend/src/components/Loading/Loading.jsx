@@ -2,10 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./Loading.css";
 
-import { useIconsStore } from "../../store/ui_icons_store";
-
 const Loading = () => {
-  const { ui_icons } = useIconsStore();
   return (
     <div className="icon-container">
       <motion.div
@@ -23,7 +20,7 @@ const Loading = () => {
         }}
         className="test__container"
       >
-        <img src={ui_icons.fc_icon} alt="" className="fc_icon" />
+        {/* <img src={fc_icon} alt="" className="fc_icon" /> */}
         <span className="welcome">FarmersClub FarmersClub</span>
       </motion.div>
     </div>
@@ -31,3 +28,9 @@ const Loading = () => {
 };
 
 export default Loading;
+
+/* 
+
+
+
+*/

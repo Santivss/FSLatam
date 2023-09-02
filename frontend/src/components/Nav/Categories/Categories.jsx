@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import "./Categories.css";
-import { useIconsStore } from "../../../store/ui_icons_store";
 import { firstRequestData } from "../../../store/firstRequestInformation";
 
 export const Categories = () => {
-  const { principalCategories_icons } = useIconsStore();
   const { categories } = firstRequestData();
 
   const [expandedSubcategoryContainerId, setExpandedSubcategoryContainerId] =
@@ -12,7 +10,6 @@ export const Categories = () => {
   const [temporalSelectedCategoryId, setTemporalSelectedCategoryId] =
     useState(null);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null);
-  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
   const handleContainerClick = (category) => {
     setSelectedCategoryId(category.principal_category_id);
@@ -41,7 +38,6 @@ export const Categories = () => {
     <div className="categoriesNav__container">
       <span className="categories__title">Categories</span>
       {sortedCategories?.map((category) => {
-        const categoryIconName = category.principal_category_icon;
         const isContainerExpanded =
           expandedSubcategoryContainerId === category.principal_category_id;
 
@@ -66,13 +62,7 @@ export const Categories = () => {
               <span className="principalCategoryNav__title">
                 {category.principal_category_name}
               </span>
-              <img
-                className={`principalCategoryNav__icon ${
-                  isContainerExpanded ? "principalCategoryNav__icon-active" : ""
-                }`}
-                src={principalCategories_icons[categoryIconName]}
-                alt={categoryIconName}
-              />
+
               <span>1568</span>
             </div>
             <div
@@ -84,7 +74,6 @@ export const Categories = () => {
             >
               {isContainerExpanded
                 ? sortedSubcategories.map((subcategory) => {
-                    const subcategoryIconName = subcategory.subcategory_icon;
                     const isSubcategorySelected =
                       temporalSelectedCategoryId === subcategory.category_id &&
                       selectedSubcategoryId === subcategory.subcategory_id;
@@ -102,15 +91,6 @@ export const Categories = () => {
                         <span className="subcategoryNav__title">
                           {subcategory.subcategory_name}
                         </span>
-                        <img
-                          className={`subcategoryNav__icon ${
-                            isSubcategorySelected
-                              ? "subcategoryNav__icon-selected"
-                              : ""
-                          }`}
-                          src={principalCategories_icons[subcategoryIconName]}
-                          alt={subcategoryIconName}
-                        />
                         <span className="subcategoryNav__title-count">
                           1.551
                         </span>

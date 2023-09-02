@@ -45,6 +45,7 @@ router.post("/login", async (req, res) => {
         const payload = {
           userId: user[0].user_id,
           userName: user[0].user_name,
+          userIcon: user[0].user_icon,
         };
 
         const token = generateToken(payload);

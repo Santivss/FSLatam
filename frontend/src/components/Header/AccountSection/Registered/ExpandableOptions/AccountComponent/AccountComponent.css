@@ -4,7 +4,7 @@
   border-radius: 1rem;
   overflow: auto;
   background-color: var(--color-body);
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -20,4 +20,27 @@
   align-items: center;
   justify-content: center;
   gap: 4rem;
+}
+
+.sectionAccount__title {
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: 200ms;
+}
+
+.sectionAccount__title:hover {
+  background-color: var(--color-secondary);
+}
+
+.sectionAccount__selected {
+  background-color: var(--color-secondary);
+  border-bottom: 2px solid #f59421;
+}
+
+.sectionAccount__noPermission {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

@@ -6,11 +6,10 @@ import Categories from "./Categories/Categories";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ImagesUpLoad from "./Categories/ImagesUpLoad/ImagesUpLoad";
-import { useIconsStore } from "../../../../../../store/ui_icons_store";
+import wheel_icon from "../../../../../../assets/uiIcons/wheel_icon.svg";
 import { userInfoStore } from "../../../../../../store/userInfoStore";
 
 const UploadModComponent = ({ handleunmountComponent }) => {
-  const { ui_icons } = useIconsStore();
   const { userId, userName } = userInfoStore();
   const [advirtiseMessage, setAdvirtiseMessage] = useState(false);
   const [categoriesData, setCategoriesData] = useState([]);
@@ -278,11 +277,7 @@ const UploadModComponent = ({ handleunmountComponent }) => {
               onClick={handlePostDataToBack}
             >
               {postRequestStatus ? (
-                <img
-                  src={ui_icons.wheel_icon}
-                  alt=""
-                  className="wheelAnimation"
-                />
+                <img src={wheel_icon} alt="" className="wheelAnimation" />
               ) : (
                 <span className="buttonSendMod__title">Enviar</span>
               )}

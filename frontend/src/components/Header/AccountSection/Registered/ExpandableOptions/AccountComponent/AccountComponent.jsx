@@ -8,9 +8,9 @@ import OtherComponent from "./OtherComponent/OtherComponent";
 const AccountComponent = () => {
   // Definir las pestañas o secciones de la barra de navegación
   const initialTabs = [
-    { label: "Account", component: <MyAccount /> },
-    { label: "My Mods", component: <MyMods /> },
-    { label: "Comming Soon...", component: <OtherComponent /> },
+    { label: "Cuenta", component: <MyAccount /> },
+    { label: "Mis Mods", component: <MyMods /> },
+    { label: "Roles", component: <OtherComponent /> },
     // Agregar más secciones según tus necesidades
   ];
 
@@ -25,7 +25,13 @@ const AccountComponent = () => {
           {initialTabs.map((item) => (
             <li
               key={item.label}
-              className={item === selectedTab ? "selected" : ""}
+              className={`sectionAccount__title ${
+                item.label === selectedTab.label
+                  ? "sectionAccount__selected"
+                  : ""
+              } ${
+                item.label === "Roles" ? "sectionAccount__noPermission" : ""
+              }`}
               onClick={() => setSelectedTab(item)}
             >
               {` ${item.label}`}
@@ -42,7 +48,7 @@ const AccountComponent = () => {
         <AnimatePresence>
           <motion.div
             key={selectedTab ? selectedTab.label : "empty"}
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >

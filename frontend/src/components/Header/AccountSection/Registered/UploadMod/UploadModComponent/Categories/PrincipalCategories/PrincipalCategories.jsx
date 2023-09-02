@@ -1,5 +1,5 @@
 import "./PrincipalCategories.css";
-import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
+import triangle_icon from "../../../../../../../../assets/uiIcons/triangle_icon.svg";
 import { useEffect, useRef, useState } from "react";
 
 const PrincipalCategories = ({
@@ -9,7 +9,6 @@ const PrincipalCategories = ({
   categorySelectedAlertStatus,
 }) => {
   const containerRef = useRef(null);
-  const { ui_icons, principalCategories_icons } = useIconsStore();
   const [principalCategoriesVilibity, setPrincipalCategoriesVilibity] =
     useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -64,7 +63,7 @@ const PrincipalCategories = ({
             <span className="selectedCategory__title">
               {selectedCategory.principal_category_name}
             </span>
-            <img
+            {/* <img
               src={
                 principalCategories_icons[
                   selectedCategory.principal_category_icon
@@ -72,7 +71,7 @@ const PrincipalCategories = ({
               }
               alt=""
               className="selectedCategory__icon"
-            />
+            /> */}
           </div>
         ) : (
           <>
@@ -81,7 +80,7 @@ const PrincipalCategories = ({
         )}
 
         <img
-          src={ui_icons.triangle_icon}
+          src={triangle_icon}
           alt=""
           className={`principalCategories__triangle-icon ${
             principalCategoriesVilibity ? "PrincipalCategoriesActive" : ""
@@ -94,8 +93,10 @@ const PrincipalCategories = ({
         }`}
       >
         {categories.map((item) => {
-          const iconName = item.principal_category_icon;
-          const icon = principalCategories_icons[iconName];
+          {
+            /* const iconName = item.principal_category_icon;
+          const icon = principalCategories_icons[iconName]; */
+          }
           const isHighlighted = selectedCategory === item;
 
           return (
@@ -109,11 +110,11 @@ const PrincipalCategories = ({
               <span className="principalCateogoryOption__title">
                 {item.principal_category_name}
               </span>
-              <img
+              {/*  <img
                 src={icon}
                 alt=""
                 className="principalCategoriesOption__img"
-              />
+              /> */}
             </div>
           );
         })}

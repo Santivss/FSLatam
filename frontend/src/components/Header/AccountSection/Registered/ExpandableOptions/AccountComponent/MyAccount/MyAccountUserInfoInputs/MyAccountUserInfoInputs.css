@@ -1,0 +1,59 @@
+.myAccountUserInfoInputs__container {
+  border: 1px solid var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 1rem;
+}
+
+.myAccountUserInfoInputs__title {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.userInfoInputs__container {
+  margin: 1rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 0.5rem;
+}
+
+.userInfoInputs__input {
+  font-weight: 200;
+}
+
+.testInput {
+  width: 15rem;
+  background-color: var(--color-btn-bg);
+  height: 2rem;
+  border-radius: 0.4rem;
+  border: 1px solid transparent;
+  outline: none;
+  transition: 300ms ease;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-secondary-1);
+  padding: 0 0.5rem;
+}
+
+.testInput:focus {
+  border: 1px solid rgb(255, 196, 0);
+}
+
+.userInfoInputs__buttonSave {
+  margin-top: 1rem;
+  background-color: green;
+  width: 10rem;
+  height: 2rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.userInfoInputs__buttonSave:hover {
+  opacity: 1;
+}

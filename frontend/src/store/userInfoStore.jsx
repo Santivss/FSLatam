@@ -33,4 +33,5 @@ export const userInfoStore = create((set) => ({
       set({ isAuthenticated: false, userName: null, userId: null });
     }
   },
+  userIcon: null,
 }));

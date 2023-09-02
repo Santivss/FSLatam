@@ -1,24 +1,28 @@
 import "./FiltersSection.css";
 import { useState } from "react";
-import { useIconsStore } from "../../../../store/ui_icons_store.jsx";
+import trending_icon from "../../../../assets/uiIcons/trending_icon.svg";
+import trending_icon_amarillo from "../../../../assets/uiIcons/trending_icon_amarillo.svg";
+import new_icon from "../../../../assets/uiIcons/new_icon.svg";
+import new_icon_amarillo from "../../../../assets/uiIcons/new_icon_amarillo.svg";
+import top_icon from "../../../../assets/uiIcons/top_icon.svg";
+import top_icon_amarillo from "../../../../assets/uiIcons/top_icon_amarillo.svg";
 
 const FiltersSection = () => {
-  const { ui_icons } = useIconsStore();
   const icons = [
     {
       title: "Trending",
-      icon: ui_icons.trending_icon,
-      icon_color: ui_icons.trending_icon_amarillo,
+      icon: trending_icon,
+      icon_color: trending_icon_amarillo,
     },
     {
       title: "New",
-      icon: ui_icons.new_icon,
-      icon_color: ui_icons.new_icon_amarillo,
+      icon: new_icon,
+      icon_color: new_icon_amarillo,
     },
     {
       title: "Top",
-      icon: ui_icons.top_icon,
-      icon_color: ui_icons.top_icon_amarillo,
+      icon: top_icon,
+      icon_color: top_icon_amarillo,
     },
   ];
 

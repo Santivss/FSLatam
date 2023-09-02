@@ -9,13 +9,8 @@ import { userInfoStore } from "./store/userInfoStore";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <Home />,
-    errorElement: <h1>Hubo un error</h1>,
-  },
-  {
-    path: "/*",
-    element: <Loading />,
     errorElement: <h1>Hubo un error</h1>,
   },
 ]);

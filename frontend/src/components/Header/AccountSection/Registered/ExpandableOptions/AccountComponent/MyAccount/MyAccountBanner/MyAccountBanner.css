@@ -1,0 +1,35 @@
+.bannerImage__container {
+  grid-column: 1/3;
+  border: 1px solid var(--color-secondary);
+  height: 10rem;
+  overflow: hidden;
+  border-radius: 0.5rem 0.5rem 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.banner__image-label {
+  width: 100%;
+}
+
+.banner__image {
+  width: 100%;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.testCOntainer {
+  width: 100%;
+  height: 100%;
+}
+
+.elemento-hover {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}

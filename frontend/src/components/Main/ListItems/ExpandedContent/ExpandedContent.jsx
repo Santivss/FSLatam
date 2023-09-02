@@ -11,16 +11,25 @@ import CreatorInformation from "./CreatorInformation/CreatorInformation";
 import Description from "./Description/Description";
 import Comments from "./Comments/Comments";
 import RelatedMods from "./RelatedMods/RelatedMods";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const ExpandedContent = () => {
-  const algunas = [
-    imagenes[0],
-    imagenes[1],
-    imagenes[2],
-    imagenes[3],
-    imagenes[4],
-    imagenes[5],
-  ];
+const ExpandedContent = ({ dataModSelected }) => {
+  const algunas = [imagenes[0], imagenes[1], imagenes[2], imagenes[3]];
+  const [fullDataMod, setFullDataMod] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/api/modFullData/${dataModSelected}`)
+      .then((res) => {
+        setFullDataMod(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  console.log(fullDataMod);
 
   return (
     <div className="expandedContent__container">
@@ -40,15 +49,19 @@ const ExpandedContent = () => {
             clickable: false,
           }}
           autoplay={{
-            delay: 3000,
-            disableOnInteraction: true,
+            delay: 2000,
+            disableOnInteraction: false,
           }}
           modules={[Pagination, Navigation, Autoplay, EffectFade]}
           className="swiperComponent__container-expandedContent"
         >
-          {algunas.map((imagen, index) => (
+          {fullDataMod?.images.map((item, index) => (
             <SwiperSlide key={index}>
-              <img src={imagen} alt="" className="imageTest" />
+              <img
+                src={`data:image/jpeg;base64,${item.content}`}
+                alt={item.name}
+                className="imageTest"
+              />
             </SwiperSlide>
           ))}
 
@@ -56,7 +69,7 @@ const ExpandedContent = () => {
             <div className="swiper-pagination"></div>
           </div>
         </Swiper>
-        <TitleAndDownload />
+        <TitleAndDownload fullDataMod={fullDataMod?.fullDataMod.mod_title} />
         <CreatorInformation />
         <Description />
         <Comments />

@@ -1,11 +1,8 @@
 import { useState } from "react";
 import "./SwitchAnimated.css";
 import { motion } from "framer-motion";
-import { useIconsStore } from "../../../store/ui_icons_store";
 
 export const SwitchAnimated = ({ onSwitchChange }) => {
-  const { ui_icons } = useIconsStore();
-
   const [isOn, setIsOn] = useState(false);
   const toggleSwitch = () => {
     setIsOn(!isOn);

@@ -1,17 +1,23 @@
 import "./ListItems.css";
-import { useIconsStore } from "../../../store/ui_icons_store";
+import pc_icon_amarillo from "../../../assets/uiIcons/pc_icon_amarillo.svg";
+import add_icon from "../../../assets/uiIcons/add_icon.svg";
+import console_icon_amarillo from "../../../assets/uiIcons/console_icon_amarillo.svg";
+import console_icon from "../../../assets/uiIcons/console_icon.svg";
+import date_icon_amarillo from "../../../assets/uiIcons/date_icon_amarillo.svg";
+import version_icon_amarillo from "../../../assets/uiIcons/version_icon_amarillo.svg";
+import star_icon_amarillo from "../../../assets/uiIcons/star_icon_amarillo.svg";
+import download_icon_amarillo from "../../../assets/uiIcons/download_icon_amarillo.svg";
 import ExpandedContent from "./ExpandedContent/ExpandedContent";
 import ToggleComponent from "../../../utils/ToggleComponent";
 import { motion } from "framer-motion";
-import { imagenes } from "../../../assets";
 import { userInfoStore } from "../../../store/userInfoStore";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const ListItems = () => {
-  const { ui_icons } = useIconsStore();
   const { isAuthenticated } = userInfoStore();
   const [dataMods, setDataMods] = useState();
+  const [dataModSelected, setDataModSelected] = useState();
 
   const handleAddIconClick = (event) => {
     event.stopPropagation();
@@ -41,121 +47,120 @@ const ListItems = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  /* "data:image/jpeg;base64," + imagen1 */
-
   return (
-    <ToggleComponent
-      children={<ExpandedContent />}
-      buttonText={
-        <div className="listItems">
-          {dataMods?.allMods.map((item) => {
-            return (
-              <div key={item.mod_id} className="list__container">
-                <div className="mod__icon-container">
-                  <img
-                    src={"data:image/jpeg;base64," + item.thumbnail}
-                    alt=""
-                    className="mod__icon"
-                  />
-                </div>
+    <div className="listItems__container">
+      {dataMods?.allMods.map((item) => {
+        return (
+          <div
+            onClick={() => {
+              setDataModSelected(item.mod_id);
+            }}
+            key={item.mod_id}
+            className="list__item-container"
+          >
+            <ToggleComponent
+              buttonText={
+                <>
+                  <div className="mod__icon-container">
+                    <img
+                      src={"data:image/jpeg;base64," + item.thumbnail}
+                      alt=""
+                      className="mod__icon"
+                    />
+                  </div>
 
-                <div className="top__options-container">
-                  <img
-                    src={ui_icons.pc_icon_amarillo}
-                    alt=""
-                    className="pc__icon"
-                  />
-                  {isAuthenticated ? (
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ duration: 0.05 }}
-                      className="add_icon-button__container"
-                    >
-                      <img
-                        src={ui_icons.add_icon}
-                        alt=""
-                        className="add_icon"
-                        onClick={handleAddIconClick}
-                      />
-                    </motion.div>
-                  ) : null}
+                  <div className="top__options-container">
+                    <img src={pc_icon_amarillo} alt="" className="pc__icon" />
+                    {isAuthenticated ? (
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ duration: 0.05 }}
+                        className="add_icon-button__container"
+                      >
+                        <img
+                          src={add_icon}
+                          alt=""
+                          className="add_icon"
+                          onClick={handleAddIconClick}
+                        />
+                      </motion.div>
+                    ) : null}
 
-                  <img
-                    src={
-                      item.consoles
-                        ? ui_icons.console_icon_amarillo
-                        : ui_icons.console_icon
-                    }
-                    alt=""
-                    className={`console__icon ${
-                      item.consoles ? "console__icon-active" : ""
-                    }`}
-                  />
-                </div>
+                    <img
+                      src={item.consoles ? console_icon_amarillo : console_icon}
+                      alt=""
+                      className={`console__icon ${
+                        item.consoles ? "console__icon-active" : ""
+                      }`}
+                    />
+                  </div>
 
-                <div className="bottom__stats-container">
-                  <h2 className="mod__title">
-                    {item.mod_title.length > 38
-                      ? `${item.mod_title.slice(0, 38)}...`
-                      : item.mod_title}
-                  </h2>
-                  <div className="bottom__info-container">
-                    <div className="individual__info-container">
-                      <img
-                        src={ui_icons.date_icon_amarillo}
-                        alt=""
-                        className="info__icon"
-                      />
-                      <span className="infoTest">17/03/23</span>
-                    </div>
+                  <div className="bottom__stats-container">
+                    <h2 className="mod__title">
+                      {item.mod_title.length > 38
+                        ? `${item.mod_title.slice(0, 38)}...`
+                        : item.mod_title}
+                    </h2>
+                    <div className="bottom__info-container">
+                      <div className="individual__info-container">
+                        <img
+                          src={date_icon_amarillo}
+                          alt=""
+                          className="info__icon"
+                        />
+                        <span className="infoTest">17/03/23</span>
+                      </div>
 
-                    {/* Line */}
-                    <span className="infoLine"></span>
-                    {/* Line */}
+                      {/* Line */}
+                      <span className="infoLine"></span>
+                      {/* Line */}
 
-                    <div className="individual__info-container">
-                      <img
-                        src={ui_icons.version_icon_amarillo}
-                        alt=""
-                        className="info__icon"
-                      />
-                      <span className="infoTest">0.0.9</span>
-                    </div>
+                      <div className="individual__info-container">
+                        <img
+                          src={version_icon_amarillo}
+                          alt=""
+                          className="info__icon"
+                        />
+                        <span className="infoTest">0.0.9</span>
+                      </div>
 
-                    {/* Line */}
-                    <span className="infoLine"></span>
-                    {/* Line */}
+                      {/* Line */}
+                      <span className="infoLine"></span>
+                      {/* Line */}
 
-                    <div className="individual__info-container">
-                      <img
-                        src={ui_icons.star_icon_amarillo}
-                        alt=""
-                        className="info__icon"
-                      />
-                      <span className="infoTest">4.6</span>
-                    </div>
+                      <div className="individual__info-container">
+                        <img
+                          src={star_icon_amarillo}
+                          alt=""
+                          className="info__icon"
+                        />
+                        <span className="infoTest">4.6</span>
+                      </div>
 
-                    {/* Line */}
-                    <span className="infoLine"></span>
-                    {/* Line */}
+                      {/* Line */}
+                      <span className="infoLine"></span>
+                      {/* Line */}
 
-                    <div className="individual__info-container">
-                      <img
-                        src={ui_icons.download_icon_amarillo}
-                        alt=""
-                        className="info__icon"
-                      />
-                      <span className="infoTest">9.459</span>
+                      <div className="individual__info-container">
+                        <img
+                          src={download_icon_amarillo}
+                          alt=""
+                          className="info__icon"
+                        />
+                        <span className="infoTest">9.459</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      }
-    ></ToggleComponent>
+                </>
+              }
+            >
+              <ExpandedContent dataModSelected={dataModSelected} />
+            </ToggleComponent>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

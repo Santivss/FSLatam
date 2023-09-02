@@ -1,6 +1,9 @@
 import "./Levels.css";
+import { userInfoStore } from "../../../store/userInfoStore";
 
 export const Levels = () => {
+  const { userName } = userInfoStore();
+
   return (
     <div className="levels__container">
       <h1 className="title">
@@ -10,8 +13,8 @@ export const Levels = () => {
         </a>
       </h1>
       <div className="levels__section">
-        <h4>Level</h4>
-        <h4>Money</h4>
+        <h4>Usuario:</h4>
+        <h4>{userName}</h4>
       </div>
     </div>
   );

@@ -1,9 +1,13 @@
 import "./TopStatsModsUsers.css";
-import { useIconsStore } from "../../../../store/ui_icons_store";
+import p_icon from "../../../../assets/uiIcons/p_icon.svg";
+import user_icon from "../../../../assets/uiIcons/user_icon.svg";
+import mods_icon from "../../../../assets/uiIcons/mods_icon.svg";
+import download_icon_amarillo from "../../../../assets/uiIcons/download_icon_amarillo.svg";
+import gold_icon from "../../../../assets/uiIcons/gold_icon.svg";
+import silver_icon from "../../../../assets/uiIcons/silver_icon.svg";
+import bronze_icon from "../../../../assets/uiIcons/bronze_icon.svg";
 
 const TopStatsModsUsers = ({ topsData }) => {
-  const { ui_icons } = useIconsStore();
-
   // Función para formatear el número
   const formatNumber = (num) => {
     if (num < 1000) {
@@ -27,22 +31,22 @@ const TopStatsModsUsers = ({ topsData }) => {
       <span className="topStatsModsUsers__title">Top 10 Modders</span>
       <div className="topStatsModsUsers__sections-container">
         <img
-          src={ui_icons.P_icon}
+          src={p_icon}
           alt=""
           className="topStatsModsUsers__mods-icon position"
         />
         <img
-          src={ui_icons.person_icon}
+          src={user_icon}
           alt=""
           className="topStatsModsUsers__mods-icon person"
         />
         <img
-          src={ui_icons.mods_icon}
+          src={mods_icon}
           alt=""
           className="topStatsModsUsers__mods-icon mods"
         />
         <img
-          src={ui_icons.download_icon_amarillo}
+          src={download_icon_amarillo}
           alt=""
           className="topStatsModsUsers__mods-icon downloads"
         />
@@ -53,27 +57,15 @@ const TopStatsModsUsers = ({ topsData }) => {
 
         if (index === 0) {
           iconToShow = (
-            <img
-              src={ui_icons.gold_icon}
-              alt=""
-              className="prizeModder__icon"
-            />
+            <img src={gold_icon} alt="" className="prizeModder__icon" />
           );
         } else if (index === 1) {
           iconToShow = (
-            <img
-              src={ui_icons.silver_icon}
-              alt=""
-              className="prizeModder__icon"
-            />
+            <img src={silver_icon} alt="" className="prizeModder__icon" />
           );
         } else if (index === 2) {
           iconToShow = (
-            <img
-              src={ui_icons.bronze_icon}
-              alt=""
-              className="prizeModder__icon"
-            />
+            <img src={bronze_icon} alt="" className="prizeModder__icon" />
           );
         }
 

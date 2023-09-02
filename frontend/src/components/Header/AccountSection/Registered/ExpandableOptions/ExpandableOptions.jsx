@@ -1,5 +1,6 @@
 import "./ExpandableOptions.css";
-import { useIconsStore } from "../../../../../store/ui_icons_store";
+import account_settings_icon from "../../../../../assets/uiIcons/account_settings_icon.svg";
+import logout_icon_amarillo from "../../../../../assets/uiIcons/logout_icon_amarillo.svg";
 import OptionReusable from "./OptionReusable/OptionReusable";
 import { useEffect, useRef } from "react";
 import ToggleComponent from "../../../../../utils/ToggleComponent";
@@ -11,7 +12,6 @@ const ExpandableOptions = ({
   iconRef,
   setVisibilityComponent,
 }) => {
-  const { ui_icons } = useIconsStore();
   const accountContainerRef = useRef(null);
 
   useEffect(() => {
@@ -47,14 +47,14 @@ const ExpandableOptions = ({
           <OptionReusable
             title="Account"
             action={null}
-            icon={ui_icons.account_settings_icon}
+            icon={account_settings_icon}
           />
         }
       ></ToggleComponent>
       <OptionReusable
         title="Logout"
         action={handleDeleteToken}
-        icon={ui_icons.logout_icon_amarillo}
+        icon={logout_icon_amarillo}
       />
     </div>
   );

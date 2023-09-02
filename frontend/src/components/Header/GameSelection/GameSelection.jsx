@@ -1,12 +1,11 @@
 // Importar estilos y archivos de iconos
 import "./GameSelection.css";
 import { useState } from "react";
-import { useIconsStore } from "../../../store/ui_icons_store";
+import fs19_icon from "../../../assets/uiIcons/fs19_icon.svg";
+import fs22_icon from "../../../assets/uiIcons/fs22_icon.svg";
 
 // Definir el componente GameSelection
 export const GameSelection = () => {
-  const { ui_icons } = useIconsStore();
-
   // Estado para almacenar los filtros activos
   const [activeFilters, setActiveFilters] = useState([]);
 
@@ -31,13 +30,13 @@ export const GameSelection = () => {
         className={isFilterActive("fs19") ? "active" : "inactive"}
         onClick={() => handleFilterClick("fs19")}
       >
-        <img src={ui_icons.fs19_icon} alt="" className="fs19__icon" />
+        <img src={fs19_icon} alt="" className="fs19__icon" />
       </button>
       <button
         className={isFilterActive("fs22") ? "active" : "inactive"}
         onClick={() => handleFilterClick("fs22")}
       >
-        <img src={ui_icons.fs22_icon} alt="" className="fs22__icon" />
+        <img src={fs22_icon} alt="" className="fs22__icon" />
       </button>
     </div>
   );

@@ -2,19 +2,20 @@
   margin: 1.5rem 0;
   width: 100%;
   border-radius: 0.5rem;
-
   background-color: var(--color-body-variant);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
 }
 
 .expandedContent__title-container {
-  width: 50%;
+  width: 100%;
 }
 
 .expandedContent__title {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .buttonsExpandedContent__container {

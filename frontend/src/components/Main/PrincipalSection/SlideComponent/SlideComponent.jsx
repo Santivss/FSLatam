@@ -6,11 +6,13 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useIconsStore } from "../../../../store/ui_icons_store";
+import date_icon_amarillo from "../../../../assets/uiIcons/date_icon_amarillo.svg";
+import version_icon_amarillo from "../../../../assets/uiIcons/version_icon_amarillo.svg";
+import pc_icon_amarillo from "../../../../assets/uiIcons/pc_icon_amarillo.svg";
+import console_icon from "../../../../assets/uiIcons/console_icon.svg";
+import download_icon_amarillo from "../../../../assets/uiIcons/download_icon_amarillo.svg";
 
 const SlideComponent = () => {
-  const { ui_icons } = useIconsStore();
-
   const data = [
     {
       title: "Jhon deere 730 1990 Version Argentine",
@@ -103,7 +105,7 @@ const SlideComponent = () => {
             <div className="mod__stats-container__principal">
               <div className="mod__stat-container">
                 <img
-                  src={ui_icons.date_icon_amarillo}
+                  src={date_icon_amarillo}
                   alt=""
                   className="mod__icon-stat"
                 />
@@ -114,7 +116,7 @@ const SlideComponent = () => {
 
               <div className="mod__stat-container">
                 <img
-                  src={ui_icons.version_icon_amarillo}
+                  src={version_icon_amarillo}
                   alt=""
                   className="mod__icon-stat"
                 />
@@ -124,23 +126,15 @@ const SlideComponent = () => {
               <div className="line__decorative"></div>
 
               <div className="mod__stat-container">
-                <img
-                  src={ui_icons.pc_icon_amarillo}
-                  alt=""
-                  className="mod__icon-stat"
-                />
-                <img
-                  src={ui_icons.console_icon}
-                  alt=""
-                  className="mod__icon-stat"
-                />
+                <img src={pc_icon_amarillo} alt="" className="mod__icon-stat" />
+                <img src={console_icon} alt="" className="mod__icon-stat" />
               </div>
 
               <div className="line__decorative"></div>
 
               <div className="mod__stat-container">
                 <img
-                  src={ui_icons.download_icon_amarillo}
+                  src={download_icon_amarillo}
                   alt=""
                   className="mod__icon-stat"
                 />

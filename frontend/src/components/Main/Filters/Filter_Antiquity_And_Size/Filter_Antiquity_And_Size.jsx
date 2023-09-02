@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Filter_Antiquity_And_Size.css";
-import { useIconsStore } from "../../../../store/ui_icons_store";
+import triangle_icon from "../../../../assets/uiIcons/triangle_icon.svg";
 
 const Filter_Antiquity_And_Size = ({ time }) => {
-  const { ui_icons } = useIconsStore();
-
   const containerRef = useRef(null);
   const [isAntiqueOpen, setIsAntiqueOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -58,7 +56,7 @@ const Filter_Antiquity_And_Size = ({ time }) => {
       </span>
 
       <img
-        src={ui_icons.triangle_icon}
+        src={triangle_icon}
         alt=""
         className={`filter__antique-icon ${isAntiqueOpen ? "open" : ""}`}
       />

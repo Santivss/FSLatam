@@ -1,10 +1,9 @@
 import { useRef, useState } from "react";
 import "./Account.css";
-import { useIconsStore } from "../../../../../store/ui_icons_store";
 import ExpandableOptions from "../ExpandableOptions/ExpandableOptions";
+import user_icon from "../../../../../assets/uiIcons/user_icon.svg";
 
 const Account = () => {
-  const { ui_icons } = useIconsStore();
   const [visibilityComponent, setVisibilityComponent] = useState(false);
   const iconRef = useRef(null);
 
@@ -20,8 +19,8 @@ const Account = () => {
   return (
     <div className="account__container">
       <img
-        src={ui_icons.user_icon}
-        alt=""
+        src={user_icon}
+        alt="user_icon"
         className="account_icon"
         onClick={showComponent}
         ref={iconRef}

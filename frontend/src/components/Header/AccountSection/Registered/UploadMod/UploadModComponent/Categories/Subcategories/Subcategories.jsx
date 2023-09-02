@@ -1,5 +1,5 @@
 import "./Subcategories.css";
-import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
+import triangle_icon from "../../../../../../../../assets/uiIcons/triangle_icon.svg";
 import { useEffect, useRef, useState } from "react";
 
 const Subcategories = ({
@@ -9,7 +9,6 @@ const Subcategories = ({
   subcategorySelectedAlertStatus,
 }) => {
   const containerRef = useRef(null);
-  const { ui_icons, principalCategories_icons } = useIconsStore();
   const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
   const [containerInteractuable, setContainerInteractuable] = useState(false);
@@ -75,13 +74,6 @@ const Subcategories = ({
             <span className="selectedCategory__title">
               {selectedSubcategory.subcategory_name}
             </span>
-            <img
-              src={
-                principalCategories_icons[selectedSubcategory.subcategory_icon]
-              }
-              alt=""
-              className="selectedCategory__icon"
-            />
           </div>
         ) : (
           <>
@@ -90,7 +82,7 @@ const Subcategories = ({
         )}
 
         <img
-          src={ui_icons.triangle_icon}
+          src={triangle_icon}
           alt=""
           className={`principalCategories__triangle-icon ${
             subcategoriesVisibility ? "PrincipalCategoriesActive" : ""
@@ -103,9 +95,7 @@ const Subcategories = ({
         }`}
       >
         {selectedCategory?.subcategories.map((item) => {
-          const iconName = item.subcategory_icon;
-          const icon = principalCategories_icons[iconName];
-          const isHighlighted = selectedSubcategory === item; // Verifica si el elemento actual está seleccionado
+          const isHighlighted = selectedSubcategory === item;
 
           return (
             <div
@@ -118,11 +108,6 @@ const Subcategories = ({
               <span className="principalCateogoryOption__title">
                 {item.subcategory_name}
               </span>
-              <img
-                src={icon}
-                alt=""
-                className="principalCategoriesOption__img"
-              />
             </div>
           );
         })}

@@ -1,10 +1,9 @@
 import "./Bookmark.css";
-
-import { useIconsStore } from "../../../../../store/ui_icons_store";
+import bookmark_icon_amarillo from "../../../../../assets/uiIcons/bookmark_icon_amarillo.svg";
+import bookmark_icon from "../../../../../assets/uiIcons/bookmark_icon.svg";
 import { useEffect, useRef, useState } from "react";
 
 const Bookmark = () => {
-  const { ui_icons } = useIconsStore();
   const bookMarkIconRef = useRef(null);
   const bookMarkContainerRef = useRef(null);
   const [bookMarkNotificationStatus, setBookMarkNotificationStatus] =
@@ -40,9 +39,7 @@ const Bookmark = () => {
     <div className="bookMark__container">
       <img
         src={
-          bookMarkNotificationStatus
-            ? ui_icons.bookmark_icon_amarillo
-            : ui_icons.bookmark_icon
+          bookMarkNotificationStatus ? bookmark_icon_amarillo : bookmark_icon
         }
         alt=""
         className={`bookmark_icon ${

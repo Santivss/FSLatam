@@ -3,13 +3,15 @@ import "./SignIn.css";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { useIconsStore } from "../../../../../store/ui_icons_store";
+import correct_icon from "../../../../../assets/uiIcons/correct_icon.svg";
+import incorrect_icon from "../../../../../assets/uiIcons/incorrect_icon.svg";
+import loading_icon from "../../../../../assets/uiIcons/loading_icon.svg";
+import question_mark_icon from "../../../../../assets/uiIcons/question_mark_icon.svg";
 import validator from "validator";
 
 const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const { ui_icons } = useIconsStore();
   const [responseMessage, setResponseMessage] = useState(null);
 
   // Configuración y estado del formulario usando react-hook-form
@@ -100,18 +102,10 @@ const SignIn = () => {
         <div className="input__container">
           <div className="input-wrapper">
             {shouldShowCorrectIcons("userName") && (
-              <img
-                src={ui_icons.correct_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
+              <img src={correct_icon} alt="" className="inputCheck__icon" />
             )}
             {errors.userName && !shouldShowCorrectIcons("userName") && (
-              <img
-                src={ui_icons.incorrect_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
+              <img src={incorrect_icon} alt="" className="inputCheck__icon" />
             )}
             <input
               type="text"
@@ -148,18 +142,10 @@ const SignIn = () => {
         <div className="input__container">
           <div className="input-wrapper">
             {shouldShowCorrectIcons("email") && (
-              <img
-                src={ui_icons.correct_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
+              <img src={correct_icon} alt="" className="inputCheck__icon" />
             )}
             {errors.email && !shouldShowCorrectIcons("email") && (
-              <img
-                src={ui_icons.incorrect_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
+              <img src={incorrect_icon} alt="" className="inputCheck__icon" />
             )}
             <input
               type="text"
@@ -185,18 +171,10 @@ const SignIn = () => {
         <div className="input__container">
           <div className="input-wrapper">
             {shouldShowCorrectIcons("password") && (
-              <img
-                src={ui_icons.correct_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
+              <img src={correct_icon} alt="" className="inputCheck__icon" />
             )}
             {errors.password && !shouldShowCorrectIcons("password") && (
-              <img
-                src={ui_icons.incorrect_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
+              <img src={incorrect_icon} alt="" className="inputCheck__icon" />
             )}
             <input
               type="password"
@@ -208,7 +186,7 @@ const SignIn = () => {
               className="signIn__input"
             />
             <img
-              src={ui_icons.question_mark_icon}
+              src={question_mark_icon}
               alt=""
               className="question_mark_icon"
             />
@@ -231,19 +209,11 @@ const SignIn = () => {
         <div className="input__container">
           <div className="input-wrapper">
             {shouldShowCorrectIcons("confirmPassword") && (
-              <img
-                src={ui_icons.correct_icon}
-                alt=""
-                className="inputCheck__icon"
-              />
+              <img src={correct_icon} alt="" className="inputCheck__icon" />
             )}
             {errors.confirmPassword &&
               !shouldShowCorrectIcons("confirmPassword") && (
-                <img
-                  src={ui_icons.incorrect_icon}
-                  alt=""
-                  className="inputCheck__icon"
-                />
+                <img src={incorrect_icon} alt="" className="inputCheck__icon" />
               )}
             <input
               type="password"
@@ -274,11 +244,7 @@ const SignIn = () => {
         >
           <div className="button__create-container">
             {isLoading ? (
-              <img
-                src={ui_icons.loading_icon}
-                alt=""
-                className="button__loadingIcon"
-              />
+              <img src={loading_icon} alt="" className="button__loadingIcon" />
             ) : (
               <input type="submit" value="Crear Cuenta" className="boton" />
             )}

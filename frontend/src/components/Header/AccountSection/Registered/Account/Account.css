@@ -7,4 +7,10 @@
   width: 1.5rem;
   aspect-ratio: 1;
   cursor: pointer;
+  transition: 200ms ease;
+  opacity: 0.8;
+}
+
+.account_icon:hover {
+  opacity: 1;
 }

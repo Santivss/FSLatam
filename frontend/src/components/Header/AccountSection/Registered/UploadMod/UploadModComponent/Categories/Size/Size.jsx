@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
+import triangle_icon from "../../../../../../../../assets/uiIcons/triangle_icon.svg";
 
 const Size = ({
   size,
@@ -7,7 +7,6 @@ const Size = ({
   handleSizeSelected,
   sizeSelectedAlertStatus,
 }) => {
-  const { ui_icons } = useIconsStore();
   const containerRef = useRef(null);
   const [subcategoriesVisibility, setSubcategoriesVisibility] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
@@ -70,7 +69,7 @@ const Size = ({
         )}
 
         <img
-          src={ui_icons.triangle_icon}
+          src={triangle_icon}
           alt=""
           className={`principalCategories__triangle-icon ${
             subcategoriesVisibility ? "PrincipalCategoriesActive" : ""

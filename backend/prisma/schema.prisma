@@ -13,11 +13,12 @@ datasource db {
 // schema.prisma
 
 model User {
-  user_id     Int       @id @default(autoincrement())
-  user_name   String    @unique
-  email       String    @unique
+  user_id     Int        @id @default(autoincrement())
+  user_name   String     @unique
+  email       String     @unique
   password    String?
   country_id  Int?
+  user_icon   String     @default("user_icon_default")
   country     Country?   @relation(fields: [country_id], references: [country_id])
   mods        Mod[]
   createdAt DateTime @default(now())

@@ -55,4 +55,23 @@ router.post("/users", async (req, res) => {
   } catch (error) {}
 });
 
+router.get("/userData/:id", async (req, res) => {
+  const userId = parseFloat(req.params.id);
+
+  const userExist = await prisma.User.findFirst({
+    where: {
+      user_id: userId,
+    },
+  });
+
+  userExist
+    ? res.status(200).json({
+        message: `Succes`,
+        userExist,
+      })
+    : res.status(404).json({
+        message: `No se encontró ningun usuario con ese id`,
+      });
+});
+
 export default router;

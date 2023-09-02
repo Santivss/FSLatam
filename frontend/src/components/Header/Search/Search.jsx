@@ -1,14 +1,13 @@
 import "./Search.css";
 
-import { useIconsStore } from "../../../store/ui_icons_store";
+import lupa_icon from "../../../assets/uiIcons/lupa_icon.svg";
 
 const Search = () => {
-  const { ui_icons } = useIconsStore();
   return (
     <div className="search__container">
       <input type="text" placeholder="Search" className="search__input" />
       <button className="btn">Search</button>
-      <img src={ui_icons.lupa_icon} alt="" className="lupa_icon" />
+      <img src={lupa_icon} alt="" className="lupa_icon" />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import "./OptionsGames.css";
-import { useIconsStore } from "../../../../../../../../store/ui_icons_store";
+import triangle_icon from "../../../../../../../../assets/uiIcons/triangle_icon.svg";
 import { useState, useEffect, useRef } from "react";
 
 const OptionsGames = ({
@@ -7,23 +7,10 @@ const OptionsGames = ({
   onOptionSelection,
   gameSelectedAlertStatus,
 }) => {
-  const { ui_icons } = useIconsStore();
-  const { fs19_icon, fs22_icon } = ui_icons;
-
   const [containerVisibility, setContainerVisibility] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
   const containerRef = useRef(null);
-
-  const getIconByName = (icon) => {
-    if (icon === "fs19_icon") {
-      return fs19_icon;
-    } else if (icon === "fs22_icon") {
-      return fs22_icon;
-    } else {
-      return null;
-    }
-  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -70,11 +57,6 @@ const OptionsGames = ({
             <span className="optionIndividual__title">
               {selectedOption.game_name}
             </span>
-            <img
-              src={getIconByName(selectedOption.game_icon)}
-              alt=""
-              className="optionIndividual__icon"
-            />
           </div>
         ) : (
           <>
@@ -82,7 +64,7 @@ const OptionsGames = ({
           </>
         )}
         <img
-          src={ui_icons.triangle_icon}
+          src={triangle_icon}
           alt=""
           className={`optionsTriangle__icon ${
             containerVisibility ? "optionsGamesActive" : ""
@@ -106,11 +88,6 @@ const OptionsGames = ({
               key={item.game_id}
             >
               <span className="optionIndividual__title">{item.game_name}</span>
-              <img
-                src={getIconByName(item.game_icon)}
-                alt=""
-                className="optionIndividual__icon"
-              />
             </div>
           );
         })}
