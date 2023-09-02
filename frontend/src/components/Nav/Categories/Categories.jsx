@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import "./Categories.css";
 import { firstRequestData } from "../../../store/firstRequestInformation";
+import { categoriesDataFilteredStore } from "../../../store/categoriesDataFilteredStore";
 
 export const Categories = () => {
   const { categories } = firstRequestData();
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null);
+  const { setCategorySelected } = categoriesDataFilteredStore();
 
   const [expandedSubcategoryContainerId, setExpandedSubcategoryContainerId] =
     useState(null);
   const [temporalSelectedCategoryId, setTemporalSelectedCategoryId] =
     useState(null);
-  const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null);
 
   const handleContainerClick = (category) => {
     setSelectedCategoryId(category.principal_category_id);
+    setCategorySelected(category.principal_category_id); // Modifica el estado para el filtrado
     setTemporalSelectedCategoryId(category.principal_category_id);
     if (expandedSubcategoryContainerId === category.principal_category_id) {
       return;

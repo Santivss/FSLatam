@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Mod" ADD COLUMN     "pc" BOOLEAN NOT NULL DEFAULT false;

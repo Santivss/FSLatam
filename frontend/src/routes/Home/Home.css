@@ -53,26 +53,26 @@
 }
 
 .burbujas {
-  /* display: none; */
+  position: absolute;
   top: 0;
   left: 10px;
-  width: 20rem;
-  height: 20rem;
+  width: 14rem;
+  height: 14rem;
   background-color: #fa661e;
   border-radius: 50%;
   filter: blur(170px);
 }
 
 .burbujas2 {
-  /* display: none; */
   position: absolute;
-  top: -110px;
-  right: 50px;
-  width: 20rem;
-  height: 20rem;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  height: 25rem;
   background-color: #fa661e;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(220px);
 }
 
 .burbujas3 {

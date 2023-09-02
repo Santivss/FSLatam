@@ -20,14 +20,14 @@ export const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  if (isAuthenticated && userId) {
+  /*   if (isAuthenticated && userId) {
     useEffect(() => {
       axios
         .get(`http://localhost:3000/api/userData/${userId}`)
-        .then((res) => console.log(res))
+        .then((res) => console.log())
         .catch((err) => console.log(err));
     }, []);
-  }
+  } */
 
   return (
     <>

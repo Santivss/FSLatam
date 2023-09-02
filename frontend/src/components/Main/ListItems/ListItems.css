@@ -1,32 +1,35 @@
 .listItems__container {
-  padding: 1rem 0;
+  padding: 1rem;
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 2rem;
 }
 
 .list__item-container {
-  width: 31rem;
+  width: 100%;
   border: 1px solid transparent;
   border-radius: 0.5rem;
-  overflow: hidden;
   box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   transition: 200ms;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  background-color: #4141411f;
 }
 
 .list__item-container:hover {
-  border: 1px solid #f59421;
+  /* border: 1px solid #f59421; */
+  background-color: #52525248;
 }
 
-/* ---------------mod__icon-container--------------- */
-
 .mod__icon-container {
-  display: grid;
-  grid-row: 1/2;
-  grid-column: 1/4;
+  grid-column: 1/2;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
 }
 
 .mod__icon {
@@ -34,99 +37,104 @@
   aspect-ratio: 16/9;
 }
 
-/* ---------------top__options-container--------------- */
+/* -------------------- */
 
-.top__options-container {
-  height: 10%;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(3px);
-  border-bottom: 1px solid #f59421;
-  border-left: 1px solid #f59421;
-  border-right: 1px solid #f59421;
-  border-radius: 0 0 1rem 1rem;
-  padding: 0 0.5rem;
-  text-align: center;
-  display: flex;
-  align-content: center;
-  justify-content: space-around;
-  gap: 1rem;
-}
-
-.add_icon {
-  width: 1.3rem;
-  aspect-ratio: 1;
-  cursor: pointer;
-}
-
-.add_icon-button__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pc__icon,
-.console__icon {
-  width: 1.2rem;
-  aspect-ratio: 1;
-  margin: 0 0.5rem;
-}
-
-.console__icon {
-  opacity: 0.4;
-}
-
-.console__icon-active {
-  opacity: 1;
-}
-
-/* ---------------bottom__stats-container--------------- */
-
-.bottom__stats-container {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(3px);
-  grid-column: 1/4;
+.modPrincipalSection__container {
+  grid-column: 2/3;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0 0.5rem 0.5rem 0.5rem;
+  align-items: start;
+  padding: 0 1rem;
+  justify-content: space-between;
+  /* border: 1px solid #f59421; */
 }
 
-.mod__title {
-  font-size: 1.2rem;
-  font-weight: 400;
-  text-transform: capitalize;
+.modPrincipalSection__title {
+  font-size: 2rem;
+  font-weight: 500;
 }
 
-.bottom__info-container {
-  width: 80%;
+.modPrincipalSection__description {
+  font-weight: lighter;
+  width: 70%;
+  color: var(--color-text-secondary-1);
+}
+
+.modPrincipalSectionStats__container {
+  width: 100%;
   display: flex;
+  font-weight: lighter;
 }
 
-.infoLine {
-  display: inline-block;
-  width: 1px;
-  height: 1rem;
-  margin: auto;
-  background-color: var(--color-text-secondary-5);
+.modPrincipalCompatibility__container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: lighter;
+  font-size: 0.9rem;
+  margin: 0 2rem 0 0;
 }
 
-.info__icon {
+.modPrincipalSectionStats__compatibility {
+  margin-right: 0.3rem;
+  font-weight: 400;
+}
+
+.principalSectionCompatibility__icon {
   width: 1rem;
 }
 
-.individual__info-container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  gap: 0.4rem;
+.modPrincipalSection__date-title {
+  margin-right: 0.5rem;
+  font-weight: 400;
 }
 
-.infoTest {
-  font-size: 0.9rem;
-  font-weight: 200;
-  color: var(--color-text-secondary-2);
+.modPrincipalSectionOptions__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.modPrincipalSectionButtons__container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.modPrincipalSectionButtons__container button {
+  width: 3rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: 200ms;
+}
+
+.modPrincipalSectionButtons__container:hover button:hover {
+  border: 1px solid rgb(255, 196, 0);
+}
+
+.principalSectionButton {
+  width: 1rem;
+}
+
+.principalSectionDownload__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.principalSectionDownload__count {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.principalSectionDownload__icon {
+  width: 1rem;
+  aspect-ratio: 1;
 }

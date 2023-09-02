@@ -9,9 +9,18 @@ router.get("/mods", async (req, res) => {
   try {
     const maxRecords = 15;
 
-    // Paso 1: Obtener los 10 registros de Mod
+    const categorySelectedHeaderValue = parseFloat(
+      req.headers["categoryselected"]
+    );
+
     const allMods = await prisma.Mod.findMany({
-      take: maxRecords,
+      // take: maxRecords,
+      where: {
+        principal_category_id: categorySelectedHeaderValue,
+        // Tu condición específica aquí, por ejemplo:
+        // id: 1,
+        // O cualquier otra condición que necesites
+      },
     });
 
     // Paso 2: Extraer los id de cada mod y almacenarlos en un arreglo

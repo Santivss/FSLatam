@@ -29,6 +29,7 @@ model Mod {
   mod_title         String
   mod_description   String
   consoles          Boolean
+  pc                Boolean     @default(true)
   multiplayer       Boolean
   mod_link          String
   subcategory_id    Int

@@ -7,7 +7,6 @@ const ToggleComponent = ({ children, buttonText, unmountComponent }) => {
   const [showComponent, setShowComponent] = useState(false);
   const containerRef = useRef(null);
   const componentRef = useRef(null);
-
   useEffect(() => {
     setShowComponent(false);
   }, [unmountComponent]);
