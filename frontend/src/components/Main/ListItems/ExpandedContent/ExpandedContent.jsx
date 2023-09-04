@@ -29,8 +29,6 @@ const ExpandedContent = ({ dataModSelected }) => {
       });
   }, []);
 
-  console.log(fullDataMod);
-
   return (
     <div className="expandedContent__container">
       <div className="slider__container-expandedContent">

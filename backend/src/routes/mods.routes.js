@@ -2,6 +2,7 @@ import { Router } from "express";
 import { prisma } from "../db.js";
 import fs from "fs";
 import { fileURLToPath } from "url"; // Importar fileURLToPath desde el módulo url
+import filteredForModsRequest from "../utils/filteredForModsRequest.js";
 
 const router = Router();
 
@@ -9,18 +10,25 @@ router.get("/mods", async (req, res) => {
   try {
     const maxRecords = 15;
 
-    const categorySelectedHeaderValue = parseFloat(
-      req.headers["categoryselected"]
+    const subcategorySelected =
+      parseFloat(req.query.subcategorySelected) || null;
+    const antiquityAndSizeSelected = req.query.antiquityAndSizeSelected || null;
+    const typesFiltered = req.query.typesFiltered || null;
+    const fs19 = parseFloat(req.query.gameSelected.fs19) || null;
+    const fs22 = parseFloat(req.query.gameSelected.fs22) || null;
+    const categorySelected = parseFloat(req.query.categorySelected) || null;
+
+    const whereClause = await filteredForModsRequest(
+      subcategorySelected,
+      antiquityAndSizeSelected,
+      typesFiltered,
+      fs19,
+      fs22,
+      categorySelected
     );
 
     const allMods = await prisma.Mod.findMany({
-      // take: maxRecords,
-      where: {
-        principal_category_id: categorySelectedHeaderValue,
-        // Tu condición específica aquí, por ejemplo:
-        // id: 1,
-        // O cualquier otra condición que necesites
-      },
+      where: whereClause,
     });
 
     // Paso 2: Extraer los id de cada mod y almacenarlos en un arreglo
@@ -64,10 +72,12 @@ router.get("/mods", async (req, res) => {
       }
     }
 
-    res.status(200).json({
-      message: "Success",
-      allMods,
-    });
+    setTimeout(() => {
+      res.status(200).json({
+        message: "Success",
+        allMods,
+      });
+    }, 500);
   } catch (error) {
     console.log(error);
     res.status(500).json({

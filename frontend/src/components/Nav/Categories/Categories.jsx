@@ -7,7 +7,8 @@ export const Categories = () => {
   const { categories } = firstRequestData();
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(null);
-  const { setCategorySelected } = categoriesDataFilteredStore();
+  const { setCategorySelected, setSubcategorySelected } =
+    categoriesDataFilteredStore();
 
   const [expandedSubcategoryContainerId, setExpandedSubcategoryContainerId] =
     useState(null);
@@ -16,7 +17,7 @@ export const Categories = () => {
 
   const handleContainerClick = (category) => {
     setSelectedCategoryId(category.principal_category_id);
-    setCategorySelected(category.principal_category_id); // Modifica el estado para el filtrado
+    setCategorySelected(category.principal_category_id);
     setTemporalSelectedCategoryId(category.principal_category_id);
     if (expandedSubcategoryContainerId === category.principal_category_id) {
       return;
@@ -30,6 +31,7 @@ export const Categories = () => {
 
     if (expandedSubcategoryContainerId) {
       setSelectedSubcategoryId(subcategory.subcategory_id);
+      setSubcategorySelected(subcategory.subcategory_id);
     }
   };
 

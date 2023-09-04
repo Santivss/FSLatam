@@ -1,39 +1,70 @@
-// Importar estilos y archivos de iconos
 import "./GameSelection.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import fs19_icon from "../../../assets/uiIcons/fs19_icon.svg";
 import fs22_icon from "../../../assets/uiIcons/fs22_icon.svg";
+import { categoriesDataFilteredStore } from "../../../store/categoriesDataFilteredStore";
 
-// Definir el componente GameSelection
 export const GameSelection = () => {
-  // Estado para almacenar los filtros activos
-  const [activeFilters, setActiveFilters] = useState([]);
+  const { gameSelected, setGameSelected } = categoriesDataFilteredStore();
 
-  // Manejar el clic en un filtro
+  const [buttonClasses, setButtonClasses] = useState({
+    fs19: "active",
+    fs22: "active",
+  });
+
+  useEffect(() => {
+    setButtonClasses((prevClasses) => ({
+      fs19: gameSelected.fs19 ? "active" : "inactive",
+      fs22: gameSelected.fs22 ? "active" : "inactive",
+    }));
+  }, [gameSelected]);
+
   const handleFilterClick = (filter) => {
-    if (activeFilters.includes(filter)) {
-      // Si el filtro ya está activo, se remueve
-      setActiveFilters(activeFilters.filter((f) => f !== filter));
-    } else {
-      // Si el filtro no está activo, se agrega
-      setActiveFilters([...activeFilters, filter]);
+    const newGameSelected = { ...gameSelected };
+
+    // Si el filtro actual está inactivo y ambos filtros están inactivos, no hacemos nada
+    if (
+      !gameSelected[filter] &&
+      !Object.values(gameSelected).some((value) => value !== null)
+    ) {
+      return;
     }
+
+    // Alternar el estado del filtro actual
+    newGameSelected[filter] =
+      gameSelected[filter] === null ? getNumberForFilter(filter) : null;
+
+    // Si ambos filtros están inactivos, activamos el filtro actual
+    if (!newGameSelected.fs19 && !newGameSelected.fs22) {
+      newGameSelected[filter] = getNumberForFilter(filter);
+    }
+
+    // Actualizar el estado global
+    setGameSelected(newGameSelected);
   };
 
-  // Verificar si un filtro está activo
-  const isFilterActive = (filter) => activeFilters.includes(filter);
+  // Función para asignar el número según el filtro
+  const getNumberForFilter = (filter) => {
+    if (filter === "fs19") {
+      return 1;
+    } else if (filter === "fs22") {
+      return 2;
+    }
+    // Puedes agregar más casos según sea necesario
 
-  // Renderizar el componente
+    return null; // Valor predeterminado si no coincide con ningún filtro conocido
+  };
+
   return (
     <div className="game__icon-container">
       <button
-        className={isFilterActive("fs19") ? "active" : "inactive"}
+        className={buttonClasses.fs19}
         onClick={() => handleFilterClick("fs19")}
       >
         <img src={fs19_icon} alt="" className="fs19__icon" />
       </button>
       <button
-        className={isFilterActive("fs22") ? "active" : "inactive"}
+        className={buttonClasses.fs22}
         onClick={() => handleFilterClick("fs22")}
       >
         <img src={fs22_icon} alt="" className="fs22__icon" />

@@ -6,20 +6,36 @@ export const categoriesDataFilteredStore = create((set) => ({
     set((state) => ({
       categorySelected: value,
     })),
+  /* ----------subcategorySelected-----------  */
   subcategorySelected: null,
-  typesFiltered: {
-    trending: false,
-    new: true,
-    top: false,
+  setSubcategorySelected: (value) => {
+    set((state) => ({
+      subcategorySelected: value,
+    }));
   },
-  antiquitySelected: {
-    new: false,
-    intermadiate: false,
-    old: false,
+  /* ----------typesFiltered-----------  */
+  typesFiltered: null,
+  setTypesFiltered: (value) => {
+    set((state) => ({
+      typesFiltered: value,
+    }));
   },
-  size: {
-    small: false,
-    medium: false,
-    large: false,
+  /* ----------antiquitySelected-----------  */
+  antiquityAndSizeSelected: null,
+  setAntiquityAndSizeSelected: (value) => {
+    set((state) => ({
+      antiquityAndSizeSelected: value,
+    }));
+  },
+
+  /* ----------gameSelected-----------  */
+  gameSelected: {
+    fs19: 1,
+    fs22: 2,
+  },
+  setGameSelected: (value) => {
+    set((state) => ({
+      gameSelected: value,
+    }));
   },
 }));

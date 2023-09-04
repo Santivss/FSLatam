@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Filter_Antiquity_And_Size.css";
 import triangle_icon from "../../../../assets/uiIcons/triangle_icon.svg";
 
-const Filter_Antiquity_And_Size = ({ time }) => {
+const Filter_Antiquity_And_Size = ({ time, handleTypes }) => {
   const containerRef = useRef(null);
   const [isAntiqueOpen, setIsAntiqueOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -15,6 +15,7 @@ const Filter_Antiquity_And_Size = ({ time }) => {
   const selectOption = (type, option) => {
     setSelectedOption({ type, option });
     setDisplayedOption(option);
+    handleTypes(option);
   };
 
   useEffect(() => {

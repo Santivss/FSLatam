@@ -5,6 +5,7 @@ import star_icon_amarillo from "../../../assets/uiIcons/star_icon_amarillo.svg";
 import bookmark_icon_amarillo from "../../../assets/uiIcons/bookmark_icon_amarillo.svg";
 import share_icon_amarillo from "../../../assets/uiIcons/share_icon_amarillo.svg";
 import download_icon_amarillo from "../../../assets/uiIcons/download_icon_amarillo.svg";
+import loading_icon from "../../../assets/uiIcons/loading_icon.svg";
 import ExpandedContent from "./ExpandedContent/ExpandedContent";
 import ToggleComponent from "../../../utils/ToggleComponent";
 import { useEffect, useState } from "react";
@@ -14,7 +15,13 @@ import { categoriesDataFilteredStore } from "../../../store/categoriesDataFilter
 const ListItems = () => {
   const [dataModSelected, setDataModSelected] = useState();
   const [dataMods, setDataMods] = useState(null);
-  const { categorySelected } = categoriesDataFilteredStore();
+  const {
+    categorySelected,
+    subcategorySelected,
+    typesFiltered,
+    antiquityAndSizeSelected,
+    gameSelected,
+  } = categoriesDataFilteredStore();
 
   // Función para formatear el número
   const formatNumber = (num) => {
@@ -30,19 +37,29 @@ const ListItems = () => {
   };
 
   useEffect(() => {
-    const config = {
-      headers: {
-        categorySelected: 1,
-      },
+    const params = {
+      categorySelected,
+      gameSelected,
+      subcategorySelected,
+      antiquityAndSizeSelected,
+      typesFiltered,
     };
 
     axios
-      .get("http://localhost:3000/api/mods", config)
+      .get("http://localhost:3000/api/mods", {
+        params: params,
+      })
       .then((res) => {
         setDataMods(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [
+    categorySelected,
+    gameSelected,
+    subcategorySelected,
+    antiquityAndSizeSelected,
+    typesFiltered,
+  ]);
 
   const formatDate = (isolate) => {
     const date = new Date(isolate);
@@ -52,6 +69,7 @@ const ListItems = () => {
 
   return (
     <div className="listItems__container">
+      <span>Total de Mods: {dataMods?.allMods.length}</span>
       {dataMods?.allMods.map((item) => {
         return (
           <div key={item.mod_id}>
@@ -64,11 +82,15 @@ const ListItems = () => {
                   className="list__item-container"
                 >
                   <div className="mod__icon-container">
-                    <img
-                      src={"data:image/jpeg;base64," + item.thumbnail}
-                      alt="mod_image"
-                      className="mod__icon"
-                    />
+                    {item.thumbnail ? (
+                      <img
+                        src={"data:image/jpeg;base64," + item.thumbnail}
+                        alt="mod_image"
+                        className="mod__icon"
+                      />
+                    ) : (
+                      <img src={loading_icon} alt="" />
+                    )}
                   </div>
 
                   <div className="modPrincipalSection__container">
@@ -130,9 +152,14 @@ const ListItems = () => {
                         alt="download_icon_amarillo"
                         className="principalSectionDownload__icon"
                       />
-                      <span className="principalSectionDownload__count">
-                        {formatNumber(item.downloadsCount)}
-                      </span>
+
+                      {item.downloadsCount ? (
+                        <span className="principalSectionDownload__count">
+                          {formatNumber(item.downloadsCount)}
+                        </span>
+                      ) : (
+                        <img src={loading_icon} alt="" />
+                      )}
                     </div>
                   </div>
                 </div>
