@@ -1,129 +1,103 @@
 .categoriesNav__container {
-  padding: 1rem 0;
   overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
-.categories__title {
+.categoriesNav__title {
+  cursor: pointer;
   font-size: 2rem;
+  align-self: center;
+  border-radius: 0.5rem;
 }
 
-/* ------------------------- */
+.categoriesNav__title:hover {
+  background-color: var(--color-secondary);
+}
 
-.bothCategoriesNav__container {
-  display: flex;
-  flex-direction: column;
+/* --------categoriesItem__container-------- */
+
+.categoriesItem__container {
   width: 100%;
-  gap: 0.2rem;
-  /* border-left: 1px solid transparent; */
-}
-
-/* .bothCategoriesNav__container-active {
-  border-image: linear-gradient(0deg, #ede527 4.17%, #fe401c 91.67%);
-  border-image-slice: 1;
-} */
-
-/* ------------------------- */
-
-.principalCategoriesNav__container {
-  border-radius: 0 0.8rem 0.8rem 0;
-  display: grid;
-  grid-template-columns: 2.3fr 0.8fr 0.5fr;
-  align-items: center;
-  transition: 300ms ease;
-  cursor: pointer;
-  padding: 0.2rem 1rem;
-  color: var(--color-text-secondary-4);
-}
-
-.principalCategoriesNav__container:hover {
-  background-color: var(--color-secondary2);
-}
-
-.principalCategoriesNav-active {
-  color: white;
-  background-color: var(--color-secondary);
-}
-
-.principalCategoryNav__title {
-  text-transform: capitalize;
-}
-
-.principalCategoryNav__icon {
-  width: 3rem;
-  aspect-ratio: 1;
-  opacity: 0.6;
-}
-
-.principalCategoryNav__icon-active {
-  opacity: 1;
-}
-
-.subcategoriesNav__container {
+  /* border: 1px solid; */
   display: flex;
   flex-direction: column;
 }
 
-/* ------------------------- */
+/* --------categoriesPrincipalCategory__container-------- */
 
-.subcategoriesNav__container {
-  max-height: 0;
-  overflow: hidden;
-}
-
-.subcategoriesNavIndividual__container {
-  margin: 0 0 0 1rem;
+.categoriesPrincipalCategory__container {
+  width: 100%;
+  height: 2rem;
+  border-radius: 0 1rem 1rem 0;
   display: grid;
-  align-items: center;
-  grid-template-columns: auto 0.1fr 2fr 0.8fr 0.8fr;
-  border-radius: 0 0.8rem 0.8rem 0;
-  transition: 300ms ease;
-  color: var(--color-text-secondary-4);
+  grid-template-columns: 4fr 1fr;
+  align-content: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  transition: 200ms;
   cursor: pointer;
+  color: var(--color-text-secondary-4);
+  text-transform: capitalize;
 }
 
-.subcategoriesNavIndividual__container:hover {
-  background-color: var(--color-secondary2);
-}
-
-.selected {
+.principalCategory-active {
   background-color: var(--color-secondary);
   color: white;
 }
 
-.subcategoriesNav__container--expanded {
-  max-height: 2000px;
-}
-
-.subcategoryNav__longLine {
-  height: 3rem;
-  width: 2px;
+.categoriesPrincipalCategory__container:hover {
   background-color: var(--color-secondary);
-  margin: 0 0 0 auto;
 }
 
-.subcategoryNav__shortLine {
-  width: 1.5rem;
-  height: 2px;
-  background-color: var(--color-secondary);
-  margin: 0 0.5rem 0 0;
+.categoriesPrincipalCategory__title {
 }
 
-.subcategoryNav__title {
-  margin: 0 0.5rem 0 0;
+.categoriesPrincipalCategory__countMods {
+  text-align: center;
+}
+
+/* --------subcategoryExpanded__container-------- */
+
+.subcategoryExpanded__container {
+  grid-column: 1/3;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--color-yellow);
+  padding: 1rem;
+  background-color: var(--color-body-variant);
+}
+
+/* --------subcategoryExpandedItem__container-------- */
+
+.subcategoryExpandedItem__container {
+  display: grid;
+  grid-template-columns: 4fr 0.5fr;
+  align-content: center;
+  justify-content: center;
+  gap: 0.5rem;
   text-transform: capitalize;
+  transition: 200ms;
+  color: var(--color-text-secondary-4);
+  height: 2rem;
+  border-radius: 0 1rem 1rem 0;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
-.subcategoryNav__icon {
-  width: 2.5rem;
-  aspect-ratio: 1;
-  margin: 0 0.5rem 0 0;
-  opacity: 0.6;
+.subcategoryExpandedItem__countMods {
+  text-align: center;
 }
 
-.subcategoryNav__icon-selected {
-  opacity: 1;
+.subcategoryExpandedItem__container:hover {
+  background-color: var(--color-secondary);
 }
 
-.subcategoryNav__title-count {
-  font-size: 0.9rem;
+.subcategory-active {
+  background-color: var(--color-secondary);
+  color: white;
+  font-weight: 400;
 }

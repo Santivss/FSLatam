@@ -13,9 +13,9 @@ export const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/categories")
+      .get("http://localhost:3000/api/modsCount")
       .then((res) => {
-        setCategories(res.data);
+        setCategories(res.data.response);
       })
       .catch((err) => console.log(err));
   }, []);
