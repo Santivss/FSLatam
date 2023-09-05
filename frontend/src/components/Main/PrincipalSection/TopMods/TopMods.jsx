@@ -1,5 +1,4 @@
 import "./TopMods.css";
-import p_icon from "../../../../assets/uiIcons/p_icon.svg";
 import mods_icon from "../../../../assets/uiIcons/mods_icon.svg";
 import download_icon_amarillo from "../../../../assets/uiIcons/download_icon_amarillo.svg";
 import gold_icon from "../../../../assets/uiIcons/gold_icon.svg";
@@ -29,11 +28,6 @@ const TopMods = ({ topsData }) => {
     <div className="topStatsModsUsers__container">
       <span className="topStatsModsUsers__title">Top 10 Modders</span>
       <div className="topStatsModsUsers__sections-container">
-        <img
-          src={p_icon}
-          alt=""
-          className="topStatsModsUsers__mods-icon position"
-        />
         <img
           src={mods_icon}
           alt=""
