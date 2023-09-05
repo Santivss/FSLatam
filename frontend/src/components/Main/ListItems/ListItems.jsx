@@ -48,7 +48,7 @@ const ListItems = () => {
     };
 
     axios
-      .get("http://localhost:3000/api/mods", {
+      .get("https://fslatam-back.onrender.com/api/mods", {
         params: params,
       })
       .then((res) => {
