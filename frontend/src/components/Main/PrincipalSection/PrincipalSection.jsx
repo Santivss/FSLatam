@@ -21,9 +21,9 @@ const PrincipalSection = () => {
 
   return (
     <div className="principalSection__container">
-      {/* <TopStatsModsUsers topsData={topsData} /> */}
-      {/* <SlideComponent /> */}
-      {/* <TopMods topsData={topsData} /> */}
+      <TopStatsModsUsers topsData={topsData} />
+      <SlideComponent />
+      <TopMods topsData={topsData} />
     </div>
   );
 };
