@@ -22,7 +22,7 @@ const PrincipalSection = () => {
   return (
     <div className="principalSection__container">
       {/* <TopStatsModsUsers topsData={topsData} /> */}
-      <SlideComponent />
+      {/* <SlideComponent /> */}
       {/* <TopMods topsData={topsData} /> */}
     </div>
   );
