@@ -2,6 +2,8 @@ import "./ListItems.css";
 import pc_icon_amarillo from "../../../assets/uiIcons/pc_icon_amarillo.svg";
 import console_icon_amarillo from "../../../assets/uiIcons/console_icon_amarillo.svg";
 import star_icon_amarillo from "../../../assets/uiIcons/star_icon_amarillo.svg";
+import fs19_icon from "../../../assets/uiIcons/fs19_icon.svg";
+import fs22_icon from "../../../assets/uiIcons/fs22_icon.svg";
 import bookmark_icon_amarillo from "../../../assets/uiIcons/bookmark_icon_amarillo.svg";
 import share_icon_amarillo from "../../../assets/uiIcons/share_icon_amarillo.svg";
 import download_icon_amarillo from "../../../assets/uiIcons/download_icon_amarillo.svg";
@@ -122,10 +124,31 @@ const ListItems = () => {
                           />
                         ) : null}
                       </div>
-                      <span className="modPrincipalSection__date-title">
-                        Publicado:
-                      </span>
-                      <span>{formatDate(item.createdAt)}</span>
+                      <div>
+                        <span className="modPrincipalSection__date-title">
+                          Publicado:
+                        </span>
+                        <span>{formatDate(item.createdAt)}</span>
+                      </div>
+                      <div className="compatibilityGame__container">
+                        <span className="modPrincipalSection__game">
+                          Disponible para:
+                        </span>
+
+                        {item.game_id === 1 ? (
+                          <img
+                            src={fs19_icon}
+                            alt="fs19_icon"
+                            className="compatibilityGame__icon"
+                          />
+                        ) : (
+                          <img
+                            src={fs22_icon}
+                            alt="fs22_icon"
+                            className="compatibilityGame__icon"
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
 

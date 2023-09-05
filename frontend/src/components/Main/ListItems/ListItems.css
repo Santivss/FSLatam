@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .list__item-container {
@@ -33,7 +33,7 @@
 }
 
 .mod__icon {
-  width: 100%;
+  min-width: 100%;
   aspect-ratio: 16/9;
 }
 
@@ -64,6 +64,7 @@
   width: 100%;
   display: flex;
   font-weight: lighter;
+  gap: 2rem;
 }
 
 .modPrincipalCompatibility__container {
@@ -72,7 +73,6 @@
   gap: 0.5rem;
   font-weight: lighter;
   font-size: 0.9rem;
-  margin: 0 2rem 0 0;
 }
 
 .modPrincipalSectionStats__compatibility {
@@ -87,6 +87,21 @@
 .modPrincipalSection__date-title {
   margin-right: 0.5rem;
   font-weight: 400;
+}
+
+.compatibilityGame__container {
+  display: flex;
+  align-content: center;
+  gap: 0.5rem;
+}
+
+.modPrincipalSection__game {
+  margin-left: 1rem;
+  font-weight: 400;
+}
+
+.compatibilityGame__icon {
+  width: 1.5rem;
 }
 
 .modPrincipalSectionOptions__container {
