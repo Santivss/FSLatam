@@ -92,7 +92,7 @@ const PrincipalCategories = ({
           principalCategoriesVilibity ? "principalCategoriesOptionActive" : ""
         }`}
       >
-        {categories.map((item) => {
+        {categories?.map((item) => {
           {
             /* const iconName = item.principal_category_icon;
           const icon = principalCategories_icons[iconName]; */

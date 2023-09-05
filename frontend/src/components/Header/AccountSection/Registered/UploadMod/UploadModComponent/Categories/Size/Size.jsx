@@ -81,7 +81,7 @@ const Size = ({
           subcategoriesVisibility ? "principalCategoriesOptionActive" : ""
         }`}
       >
-        {size.map((size) => {
+        {size?.map((size) => {
           const isHighlighted = selectedSize === size;
 
           return (

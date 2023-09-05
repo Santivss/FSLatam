@@ -81,7 +81,7 @@ const Antiquity = ({
           subcategoriesVisibility ? "principalCategoriesOptionActive" : ""
         }`}
       >
-        {antiquity.map((item) => {
+        {antiquity?.map((item) => {
           const isHighlighted = selectedAntiquity === item;
 
           return (

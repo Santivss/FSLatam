@@ -75,7 +75,7 @@ const Categories = ({
     <div className="categories__options-container">
       <OptionsGames
         gameSelectedAlertStatus={gameSelectedAlertStatus}
-        categories={categories}
+        categories={categories?.games}
         onOptionSelection={handleOptionSelection}
       />
       <PrincipalCategories

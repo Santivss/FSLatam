@@ -6,9 +6,9 @@ import { generateToken } from "../controllers/auth.js";
 const router = Router();
 
 router.post("/login", async (req, res) => {
-  const { username, email, password } = req.body;
-
   try {
+    const { username, email, password } = req.body;
+
     const user = await prisma.User.findMany({
       where: {
         OR: [

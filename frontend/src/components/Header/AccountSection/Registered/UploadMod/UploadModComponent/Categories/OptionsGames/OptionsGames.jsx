@@ -76,7 +76,7 @@ const OptionsGames = ({
           containerVisibility ? "optionsContainerActive" : ""
         }`}
       >
-        {categories.games.map((item) => {
+        {categories?.map((item) => {
           const isSelected = selectedOption === item;
 
           return (

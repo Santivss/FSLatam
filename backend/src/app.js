@@ -41,8 +41,8 @@ app.use("/api", topModdersAndUsersRoutes);
 app.use("/api", modFullData);
 
 app.use((err, req, res, next) => {
-  console.error("Error de CORS:", err);
-  res.status(500).send("Error de CORS");
+  console.error("Error no manejado:", err);
+  res.status(500).json({ error: "Ocurrió un error en el servidor" });
 });
 
 app.listen(3000, () => {

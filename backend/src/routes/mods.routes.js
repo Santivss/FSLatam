@@ -73,10 +73,14 @@ router.get("/mods", async (req, res) => {
     }
 
     setTimeout(() => {
-      res.status(200).json({
-        message: "Success",
-        allMods,
-      });
+      allMods
+        ? res.status(200).json({
+            message: "Success",
+            allMods,
+          })
+        : res.status(404).json({
+            message: "Not found mods",
+          });
     }, 500);
   } catch (error) {
     console.log(error);
