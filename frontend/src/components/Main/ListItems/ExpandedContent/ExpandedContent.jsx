@@ -20,7 +20,9 @@ const ExpandedContent = ({ dataModSelected }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/modFullData/${dataModSelected}`)
+      .get(
+        `https://fslatam-back.onrender.com/api/modFullData/${dataModSelected}`
+      )
       .then((res) => {
         setFullDataMod(res.data);
       })
