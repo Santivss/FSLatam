@@ -5,9 +5,31 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "password" TEXT,
     "country_id" INTEGER,
+    "user_icon" TEXT NOT NULL DEFAULT 'user_icon_default',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("user_id")
+);
+
+-- CreateTable
+CREATE TABLE "Mod" (
+    "mod_id" SERIAL NOT NULL,
+    "mod_title" TEXT NOT NULL,
+    "mod_description" TEXT NOT NULL,
+    "consoles" BOOLEAN NOT NULL,
+    "pc" BOOLEAN NOT NULL DEFAULT true,
+    "multiplayer" BOOLEAN NOT NULL,
+    "mod_link" TEXT NOT NULL,
+    "subcategory_id" INTEGER NOT NULL,
+    "antiquity_id" INTEGER,
+    "game_id" INTEGER NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "user_name" TEXT NOT NULL DEFAULT 'userDefault',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "principal_category_id" INTEGER,
+    "downloadsCount" INTEGER NOT NULL DEFAULT 0,
+
+    CONSTRAINT "Mod_pkey" PRIMARY KEY ("mod_id")
 );
 
 -- CreateTable
@@ -57,24 +79,6 @@ CREATE TABLE "Antiquity" (
 );
 
 -- CreateTable
-CREATE TABLE "Mod" (
-    "mod_id" SERIAL NOT NULL,
-    "mod_title" TEXT NOT NULL,
-    "mod_description" TEXT NOT NULL,
-    "consoles" BOOLEAN NOT NULL,
-    "multiplayer" BOOLEAN NOT NULL,
-    "mod_link" TEXT NOT NULL,
-    "subcategory_id" INTEGER NOT NULL,
-    "antiquity_id" INTEGER NOT NULL,
-    "game_id" INTEGER NOT NULL,
-    "image_icon" TEXT NOT NULL,
-    "user_id" INTEGER NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "Mod_pkey" PRIMARY KEY ("mod_id")
-);
-
--- CreateTable
 CREATE TABLE "Game" (
     "game_id" SERIAL NOT NULL,
     "game_name" TEXT NOT NULL,
@@ -113,6 +117,9 @@ CREATE TABLE "_ModBrand" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_user_name_key" ON "User"("user_name");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
@@ -131,19 +138,22 @@ CREATE INDEX "_ModBrand_B_index" ON "_ModBrand"("B");
 ALTER TABLE "User" ADD CONSTRAINT "User_country_id_fkey" FOREIGN KEY ("country_id") REFERENCES "Country"("country_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Subcategory" ADD CONSTRAINT "Subcategory_principal_category_id_fkey" FOREIGN KEY ("principal_category_id") REFERENCES "PrincipalCategory"("principal_category_id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "Mod" ADD CONSTRAINT "Mod_subcategory_id_fkey" FOREIGN KEY ("subcategory_id") REFERENCES "Subcategory"("subcategory_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Mod" ADD CONSTRAINT "Mod_antiquity_id_fkey" FOREIGN KEY ("antiquity_id") REFERENCES "Antiquity"("antiquity_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Mod" ADD CONSTRAINT "Mod_antiquity_id_fkey" FOREIGN KEY ("antiquity_id") REFERENCES "Antiquity"("antiquity_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Mod" ADD CONSTRAINT "Mod_game_id_fkey" FOREIGN KEY ("game_id") REFERENCES "Game"("game_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Mod" ADD CONSTRAINT "Mod_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Mod" ADD CONSTRAINT "Mod_principal_category_id_fkey" FOREIGN KEY ("principal_category_id") REFERENCES "PrincipalCategory"("principal_category_id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Subcategory" ADD CONSTRAINT "Subcategory_principal_category_id_fkey" FOREIGN KEY ("principal_category_id") REFERENCES "PrincipalCategory"("principal_category_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Image" ADD CONSTRAINT "Image_mod_id_fkey" FOREIGN KEY ("mod_id") REFERENCES "Mod"("mod_id") ON DELETE RESTRICT ON UPDATE CASCADE;

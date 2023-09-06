@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Mod" ALTER COLUMN "pc" DROP DEFAULT;
