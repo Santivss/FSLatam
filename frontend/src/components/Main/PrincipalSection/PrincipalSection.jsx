@@ -10,7 +10,7 @@ const PrincipalSection = () => {
 
   useEffect(() => {
     axios
-      .get("https://fslatam-back.onrender.com/api/topModdersAndUsers")
+      .get("http://localhost:3000/api/topModdersAndUsers")
       .then((res) => {
         setTopsData(res.data);
       })

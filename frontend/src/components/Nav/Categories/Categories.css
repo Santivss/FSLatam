@@ -13,6 +13,22 @@
   border-radius: 0.5rem;
 }
 
+.test {
+  width: 20%;
+  margin: auto;
+  align-self: center;
+  animation: loadingicon 3s linear infinite;
+}
+
+@keyframes loadingicon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .categoriesNav__title:hover {
   background-color: var(--color-secondary);
 }
@@ -21,7 +37,6 @@
 
 .categoriesItem__container {
   width: 100%;
-  /* border: 1px solid; */
   display: flex;
   flex-direction: column;
 }

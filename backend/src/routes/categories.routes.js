@@ -3,10 +3,6 @@ import { prisma } from "../db.js";
 
 const router = Router();
 
-/* const test = await prisma.Subcategory.findMany();
-
-console.log(test); */
-
 router.get("/categories", async (req, res) => {
   try {
     const gamesPromise = prisma.Game.findMany();

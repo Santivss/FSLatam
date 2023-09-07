@@ -13,7 +13,7 @@ export const Home = () => {
 
   useEffect(() => {
     axios
-      .get("https://fslatam-back.onrender.com/api/modsCount")
+      .get("http://localhost:3000/api/modsCount")
       .then((res) => {
         setCategories(res.data.response);
       })

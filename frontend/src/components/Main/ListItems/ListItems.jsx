@@ -48,7 +48,7 @@ const ListItems = () => {
     };
 
     axios
-      .get("https://fslatam-back.onrender.com/api/mods", {
+      .get("http://localhost:3000/api/mods", {
         params: params,
       })
       .then((res) => {
@@ -71,7 +71,9 @@ const ListItems = () => {
 
   return (
     <div className="listItems__container">
-      <span>Total de Mods: {dataMods?.allMods.length}</span>
+      <span className="listItems__modsTitle">
+        Total de Mods: {dataMods?.allMods.length}
+      </span>
       {dataMods?.allMods.map((item) => {
         return (
           <div key={item.mod_id}>
@@ -178,14 +180,9 @@ const ListItems = () => {
                         alt="download_icon_amarillo"
                         className="principalSectionDownload__icon"
                       />
-
-                      {item.downloadsCount ? (
-                        <span className="principalSectionDownload__count">
-                          {formatNumber(item.downloadsCount)}
-                        </span>
-                      ) : (
-                        <img src={loading_icon} alt="" />
-                      )}
+                      <span className="principalSectionDownload__count">
+                        {formatNumber(item.downloadsCount)}
+                      </span>
                     </div>
                   </div>
                 </div>

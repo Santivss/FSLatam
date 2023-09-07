@@ -41,14 +41,14 @@ const Filters = () => {
   return (
     <div className="filters__container">
       <FiltersSection />
-      <Filter_Antiquity_And_Size
+      {/*  <Filter_Antiquity_And_Size
         time={timeAntiquity[0]}
         handleTypes={handleAntiquitySelection}
-      />
-      <Filter_Antiquity_And_Size
+      /> */}
+      {/* <Filter_Antiquity_And_Size
         time={timeSize[0]}
         handleTypes={handleSizeSelection}
-      />
+      /> */}
     </div>
   );
 };

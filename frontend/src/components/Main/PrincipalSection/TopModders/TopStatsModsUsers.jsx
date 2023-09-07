@@ -5,6 +5,7 @@ import download_icon_amarillo from "../../../../assets/uiIcons/download_icon_ama
 import gold_icon from "../../../../assets/uiIcons/gold_icon.svg";
 import silver_icon from "../../../../assets/uiIcons/silver_icon.svg";
 import bronze_icon from "../../../../assets/uiIcons/bronze_icon.svg";
+import wheel_icon from "../../../../assets/uiIcons/wheel_icon.svg";
 
 const TopStatsModsUsers = ({ topsData }) => {
   // Función para formatear el número
@@ -45,6 +46,7 @@ const TopStatsModsUsers = ({ topsData }) => {
           className="topStatsModsUsers__mods-icon downloads"
         />
       </div>
+
       {sortedData?.map((item, index) => {
         let itemClass = "topStatsModsUsersItem__container";
         let iconToShow = null;
