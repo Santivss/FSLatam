@@ -4,7 +4,7 @@ import { firstRequestData } from "../../../store/firstRequestInformation";
 import { categoriesDataFilteredStore } from "../../../store/categoriesDataFilteredStore";
 import { motion } from "framer-motion";
 import OrderCategories from "../../../utils/OrderCategories";
-import wheel_icon from "../../../assets/uiIcons/wheel_icon.svg";
+import loading_icon from "../../../assets/uiIcons/loading_icon.svg";
 
 export const Categories = () => {
   const { categories } = firstRequestData();
@@ -39,7 +39,7 @@ export const Categories = () => {
       <button className="categoriesNav__title">Categorias</button>
 
       {categories ? null : (
-        <img src={wheel_icon} alt="wheel_icon" className="test" />
+        <img src={loading_icon} alt="loading_icon" className="test" />
       )}
       {orderedCategories.map((item) => {
         const isCategorySelected =

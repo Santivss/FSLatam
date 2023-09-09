@@ -7,6 +7,21 @@
   overflow-y: auto;
 }
 
+.myMods__loadingIcon {
+  margin: auto;
+  width: 4rem;
+  animation: myMods__loadingIcon 2s linear infinite;
+}
+
+@keyframes myMods__loadingIcon {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .modsUser__container {
   border: 1px solid var(--color-secondary);
   background-color: var(--color-secondary2);
@@ -37,7 +52,11 @@
 }
 
 .deleteMod__btn {
+}
+
+.deleteMod__btn:hover {
   border: 1px solid red;
+  cursor: pointer;
 }
 
 .updateMod__btn {

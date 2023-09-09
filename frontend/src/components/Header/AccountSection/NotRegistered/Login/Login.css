@@ -33,6 +33,7 @@
 
 .userTextError {
   font-size: 0.8rem;
+  height: 0.8rem;
   color: var(--color-orange);
 }
 
@@ -71,13 +72,13 @@
 
 .boton {
   width: 10rem;
+  height: 1.5rem;
   border: 1px solid var(--color-secondary);
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
   border-radius: 0.25rem;
   transition: 300ms ease;
-  padding: 0.1rem;
   font-size: 1rem;
   cursor: pointer;
   will-change: transform;
@@ -105,10 +106,26 @@
 }
 
 .registerHere {
+  width: 100%;
   font-size: 1.2rem;
   cursor: pointer;
   transition: 300ms ease;
+  border: 1px solid;
 }
 
 .registerHere:hover {
+}
+
+.loginPass__loadingIcon {
+  width: 1rem;
+  animation: slideComponentLooadingIcon 2s linear infinite;
+}
+
+@keyframes slideComponentLooadingIcon {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

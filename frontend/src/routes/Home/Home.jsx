@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Nav from "../../components/Nav/Nav";
 import { Header } from "../../components/Header/Header";
@@ -9,7 +9,14 @@ import { userInfoStore } from "../../store/userInfoStore";
 
 export const Home = () => {
   const { setCategories } = firstRequestData();
-  const { isAuthenticated, userId } = userInfoStore();
+  const {
+    isAuthenticated,
+    userId,
+    setUserIicon,
+    setEmail,
+    setCountMods,
+    setUserName,
+  } = userInfoStore();
 
   useEffect(() => {
     axios
@@ -20,14 +27,19 @@ export const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  /*   if (isAuthenticated && userId) {
+  if (isAuthenticated && userId) {
     useEffect(() => {
       axios
         .get(`http://localhost:3000/api/userData/${userId}`)
-        .then((res) => console.log())
+        .then((res) => {
+          setCountMods(res.data.userData.countMods);
+          setUserIicon(res.data.userData.user_icon);
+          setEmail(res.data.userData.email);
+          setUserName(res.data.userData.user_name);
+        })
         .catch((err) => console.log(err));
     }, []);
-  } */
+  }
 
   return (
     <>

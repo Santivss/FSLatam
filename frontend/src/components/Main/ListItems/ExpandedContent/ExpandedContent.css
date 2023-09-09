@@ -1,4 +1,5 @@
 .expandedContent__container {
+  position: relative;
   width: 60vw;
   max-height: 90vh;
   border-radius: 1rem;
@@ -12,12 +13,33 @@
 }
 
 .swiperComponent__container-expandedContent {
-  aspect-ratio: 16/9;
-  margin: auto;
-  border-radius: 1rem;
+  width: 100%;
+  height: 39rem;
   overflow: hidden;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
 }
 
-.imageTest {
+.expandedContent__imageMod {
   width: 100%;
+  height: 100%;
+}
+
+.expandedContent__loadingIcon {
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+  animation: expandedContentLoadingIcon 2s linear infinite;
+}
+
+@keyframes expandedContentLoadingIcon {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

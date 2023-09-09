@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Home } from "./routes/Home/Home.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Loading from "./components/Loading/Loading";
 import axios from "axios";
 import { userInfoStore } from "./store/userInfoStore";
 

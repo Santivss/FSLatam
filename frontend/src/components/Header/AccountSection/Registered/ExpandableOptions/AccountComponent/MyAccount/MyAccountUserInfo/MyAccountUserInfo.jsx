@@ -1,14 +1,21 @@
 import "./MyAccountUserInfo.css";
-import user_image_test from "../../../../../../../../assets/user_image_test.png";
+import user_icon from "../../../../../../../../assets/uiIcons/user_icon.svg";
+import { userInfoStore } from "../../../../../../../../store/userInfoStore";
 
 const MyAccountUserInfo = () => {
+  const { userIcon, countMods, userName } = userInfoStore();
   return (
     <div className="myAccountUserInfo__container">
-      <img src={user_image_test} alt="" className="myAccountUser__image" />
-      <span>Rucking</span>
+      {userIcon === "user_icon_default" ? (
+        <img src={user_icon} alt="" className="myAccountUser__image" />
+      ) : (
+        "iconPersonalizado"
+      )}
+
+      <span>{userName}</span>
       <div className="myAccountStats__container">
         <span>Seguidores</span>
-        <span>Mods</span>
+        <span>Mods: {countMods}</span>
         <span>Descargas Totales</span>
         <span>Descargas hoy</span>
       </div>

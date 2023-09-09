@@ -6,7 +6,8 @@ import Categories from "./Categories/Categories";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ImagesUpLoad from "./Categories/ImagesUpLoad/ImagesUpLoad";
-import wheel_icon from "../../../../../../assets/uiIcons/wheel_icon.svg";
+import loading_icon from "../../../../../../assets/uiIcons/loading_icon.svg";
+
 import { userInfoStore } from "../../../../../../store/userInfoStore";
 
 const UploadModComponent = ({ handleunmountComponent }) => {
@@ -153,7 +154,7 @@ const UploadModComponent = ({ handleunmountComponent }) => {
         .post("http://localhost:3000/api/createmod", dataForCreateMod)
         .then((res) => {
           setPostRequestStatus(false);
-          console.log(res.data);
+          window.location.reload();
           setTimeout(() => {
             handleunmountComponent();
           }, 2000);
@@ -277,7 +278,11 @@ const UploadModComponent = ({ handleunmountComponent }) => {
               onClick={handlePostDataToBack}
             >
               {postRequestStatus ? (
-                <img src={wheel_icon} alt="" className="wheelAnimation" />
+                <img
+                  src={loading_icon}
+                  alt="loading_icon"
+                  className="myMods__loadingIcon"
+                />
               ) : (
                 <span className="buttonSendMod__title">Enviar</span>
               )}

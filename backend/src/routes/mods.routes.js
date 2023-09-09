@@ -8,8 +8,6 @@ const router = Router();
 
 router.get("/mods", async (req, res) => {
   try {
-    const maxRecords = 15;
-
     const subcategorySelected =
       parseFloat(req.query.subcategorySelected) || null;
     const antiquityAndSizeSelected = req.query.antiquityAndSizeSelected || null;
@@ -154,6 +152,81 @@ router.get("/modsCount", async (req, res) => {
       response,
     });
   } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
+
+router.get("/sliderMods", async (req, res) => {
+  try {
+    const maxItems = 5;
+
+    // Consulta los 5 primeros mods con todas sus imágenes
+    const mods = await prisma.Mod.findMany({
+      take: maxItems,
+      include: {
+        images: true,
+      },
+    });
+
+    // Recorre los mods y selecciona una sola imagen en formato base64 por cada mod
+    const modsWithOneImageBase64 = await Promise.all(
+      mods.map(async (mod) => {
+        // Escoge la primera imagen del arreglo de imágenes
+        const image = mod.images[0];
+
+        if (image) {
+          const currentURL = new URL(import.meta.url);
+          const imagePath = new URL(
+            `../../static/modImages/${image.image_link}`,
+            currentURL
+          );
+          const imagePathResolved = fileURLToPath(imagePath);
+          const imageContent = fs.readFileSync(imagePathResolved, {
+            encoding: "base64",
+          });
+
+          // Devuelve el mod con una sola imagen en formato base64
+          return {
+            createdAt: mod.createdAt,
+            downloadsCount: mod.downloadsCount,
+            image: imageContent,
+            mod_id: mod.mod_id,
+            mod_title: mod.mod_title,
+            consoles: mod.consoles,
+            pc: mod.pc,
+            user_id: mod.user_id,
+            user_name: mod.user_name,
+          };
+        } else {
+          // Si el mod no tiene imágenes, devolvemos solo las propiedades del mod sin la imagen
+          return {
+            createdAt: mod.createdAt,
+            downloadsCount: mod.downloadsCount,
+            mod_id: mod.mod_id,
+            mod_title: mod.mod_title,
+            consoles: mod.consoles,
+            pc: mod.pc,
+            user_id: mod.user_id,
+            user_name: mod.user_name,
+          };
+        }
+      })
+    );
+
+    setTimeout(() => {
+      modsWithOneImageBase64
+        ? res.status(200).json({
+            message: "Success",
+            mods: modsWithOneImageBase64,
+          })
+        : res.status(404).json({
+            message: "Not found mods",
+          });
+    }, 500);
+  } catch (error) {
+    console.log(error);
     res.status(500).json({
       message: error.message,
     });

@@ -246,7 +246,7 @@ const SignIn = () => {
             {isLoading ? (
               <img src={loading_icon} alt="" className="button__loadingIcon" />
             ) : (
-              <input type="submit" value="Crear Cuenta" className="boton" />
+              <input type="submit" value="Crear" className="boton" />
             )}
           </div>
         </motion.div>

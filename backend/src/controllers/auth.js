@@ -4,7 +4,7 @@ const secretKey = process.env.SECRET_KEY;
 
 export const generateToken = (payload) => {
   const token = jwt.sign(payload, secretKey, {
-    expiresIn: "60d",
+    expiresIn: "30m",
   });
 
   return token;

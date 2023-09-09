@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { prisma } from "../db.js";
+import bcrypt from "bcryptjs";
 
 const router = Router();
 
@@ -76,8 +77,25 @@ router.get("/userData/:id", async (req, res) => {
       },
     });
 
+    let mods = [];
+
     if (userExist) {
-      res.status(200).json({ message: "Succes", userExist });
+      mods = await prisma.mod.findMany({
+        where: {
+          user_id: userId,
+        },
+      });
+    }
+
+    if (userExist) {
+      const userData = {
+        user_name: userExist.user_name,
+        user_id: userExist.user_id,
+        user_icon: userExist.user_icon,
+        email: userExist.email,
+        countMods: mods.length,
+      };
+      res.status(200).json({ message: "Succes", userData });
     } else {
       res
         .status(404)

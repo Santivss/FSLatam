@@ -2,6 +2,9 @@ import "./Login.css";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useState } from "react";
+import loading_icon from "../../../../../assets/uiIcons/loading_icon.svg";
+import ToggleComponent from "../../../../../utils/ToggleComponent";
+import SignIn from "../SignIn/SignIn";
 
 const Login = () => {
   const [responseMessage, setResponseMessage] = useState("");
@@ -75,7 +78,9 @@ const Login = () => {
           />
           {responseMessage === "Usuario no encontrado" ? (
             <span className="userTextError">{responseMessage}</span>
-          ) : null}
+          ) : (
+            <span className="userTextError"></span>
+          )}
         </div>
         {/* ---------password--------- */}
         <div className="loginPass__container">
@@ -90,7 +95,9 @@ const Login = () => {
           />
           {responseMessage === "La contraseña es incorrecta" ? (
             <span className="userTextError">{responseMessage}</span>
-          ) : null}
+          ) : (
+            <span className="userTextError"></span>
+          )}
         </div>
 
         {/* ---------boton--------- */}
@@ -101,11 +108,19 @@ const Login = () => {
           transition={{ duration: 0.1 }}
         >
           <button className="boton" onClick={handleSubmit}>
-            Sign in
+            {isLoading ? (
+              <img
+                src={loading_icon}
+                alt="loading_icon"
+                className="loginPass__loadingIcon"
+              />
+            ) : (
+              "Sign in"
+            )}
           </button>
         </motion.div>
-        <button className="forgotPassword">Forgot password?</button>
-        <button className="registerHere">Register Here!</button>
+
+        <span className="forgotPassword">Forgot password?</span>
       </div>
     </div>
   );

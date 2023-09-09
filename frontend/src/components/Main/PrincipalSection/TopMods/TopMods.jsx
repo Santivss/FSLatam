@@ -4,6 +4,7 @@ import download_icon_amarillo from "../../../../assets/uiIcons/download_icon_ama
 import gold_icon from "../../../../assets/uiIcons/gold_icon.svg";
 import silver_icon from "../../../../assets/uiIcons/silver_icon.svg";
 import bronze_icon from "../../../../assets/uiIcons/bronze_icon.svg";
+import loading_icon from "../../../../assets/uiIcons/loading_icon.svg";
 
 const TopMods = ({ topsData }) => {
   // Función para formatear el número
@@ -40,42 +41,54 @@ const TopMods = ({ topsData }) => {
           className="topStatsModsUsers__mods-icon downloads"
         />
       </div>
-      {sortedData?.map((item, index) => {
-        let itemClass = "topStatsModsUsersItem__container";
-        let iconToShow = null;
+      {sortedData ? (
+        <>
+          {sortedData?.map((item, index) => {
+            let itemClass = "topStatsModsUsersItem__container";
+            let iconToShow = null;
 
-        if (index === 0) {
-          iconToShow = (
-            <img src={gold_icon} alt="" className="prizeModder__icon" />
-          );
-        } else if (index === 1) {
-          iconToShow = (
-            <img src={silver_icon} alt="" className="prizeModder__icon" />
-          );
-        } else if (index === 2) {
-          iconToShow = (
-            <img src={bronze_icon} alt="" className="prizeModder__icon" />
-          );
-        }
+            if (index === 0) {
+              iconToShow = (
+                <img src={gold_icon} alt="" className="prizeModder__icon" />
+              );
+            } else if (index === 1) {
+              iconToShow = (
+                <img src={silver_icon} alt="" className="prizeModder__icon" />
+              );
+            } else if (index === 2) {
+              iconToShow = (
+                <img src={bronze_icon} alt="" className="prizeModder__icon" />
+              );
+            }
 
-        return (
-          <div key={item.mod_id} className={itemClass}>
-            <span className="topStatsModsUsersItem__number">{index + 1}</span>
-            {iconToShow}
-            <span className="topStatsModsUsersItem__name">
-              {item.mod_title.length > 20
-                ? `${item.mod_title.slice(0, 20)}...`
-                : item.mod_title}
-            </span>
-            <span className="topStatsModsUsersItem__modsCount">
-              {/* {item.user_name} */}
-            </span>
-            <span className="topStatsModsUsersItem__downloadsCount downloadsCount__fromTopMods">
-              {formatNumber(item.downloadsCount)}
-            </span>
-          </div>
-        );
-      })}
+            return (
+              <div key={item.mod_id} className={itemClass}>
+                <span className="topStatsModsUsersItem__number">
+                  {index + 1}
+                </span>
+                {iconToShow}
+                <span className="topStatsModsUsersItem__name">
+                  {item.mod_title.length > 20
+                    ? `${item.mod_title.slice(0, 20)}...`
+                    : item.mod_title}
+                </span>
+                <span className="topStatsModsUsersItem__modsCount">
+                  {/* {item.user_name} */}
+                </span>
+                <span className="topStatsModsUsersItem__downloadsCount downloadsCount__fromTopMods">
+                  {formatNumber(item.downloadsCount)}
+                </span>
+              </div>
+            );
+          })}
+        </>
+      ) : (
+        <img
+          src={loading_icon}
+          alt="loading_icon"
+          className="myMods__loadingIcon"
+        />
+      )}
     </div>
   );
 };

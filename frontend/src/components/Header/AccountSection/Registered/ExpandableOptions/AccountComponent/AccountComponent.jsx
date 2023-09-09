@@ -3,14 +3,12 @@ import "./AccountComponent.css";
 import { useState } from "react";
 import MyAccount from "./MyAccount/MyAccount";
 import MyMods from "./MyMods/MyMods";
-import OtherComponent from "./OtherComponent/OtherComponent";
 
 const AccountComponent = () => {
   // Definir las pestañas o secciones de la barra de navegación
   const initialTabs = [
     { label: "Cuenta", component: <MyAccount /> },
     { label: "Mis Mods", component: <MyMods /> },
-    { label: "Roles", component: <OtherComponent /> },
     // Agregar más secciones según tus necesidades
   ];
 
@@ -48,11 +46,10 @@ const AccountComponent = () => {
         <AnimatePresence>
           <motion.div
             key={selectedTab ? selectedTab.label : "empty"}
-            initial={{ y: 10, opacity: 0 }}
+            initial={{ y: 0, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Mostrar el componente correspondiente */}
             {selectedTab ? selectedTab.component : "😋"}
           </motion.div>
         </AnimatePresence>

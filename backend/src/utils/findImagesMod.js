@@ -28,8 +28,10 @@ const findImagesMod = async (folderName, subFolderName) => {
             images.push(...subImages);
           } else {
             const fileExtension = path.extname(file).toLowerCase();
-            if (imageExtensions.includes(fileExtension)) {
-              // Leer el contenido de la imagen y convertirlo a Base64
+            if (
+              imageExtensions.includes(fileExtension) &&
+              !file.startsWith("thumb_")
+            ) {
               const fileContent = await fs.readFile(filePath, {
                 encoding: "base64",
               });
@@ -46,7 +48,6 @@ const findImagesMod = async (folderName, subFolderName) => {
 
     const foundImages = await findImagesInDirectory(mainDirectory);
 
-    console.log("Nombres de imágenes encontradas:");
     foundImages.forEach((image) => console.log(image.name));
 
     return foundImages;
