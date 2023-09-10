@@ -6,11 +6,32 @@
   gap: 2rem;
 }
 
+.listItems__titleContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.listItems__loadingIcon {
+  width: 2rem;
+  grid-column: 2/3;
+  margin: auto;
+  animation: listItemLoadingIconAnim 2s linear infinite;
+}
+
+@keyframes listItemLoadingIconAnim {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .listItems__modsTitle {
+  grid-column: 1/2;
   font-size: 2rem;
   font-weight: lighter;
   color: var(--color-text-secondary-1);
-  margin-top: 1rem;
 }
 
 .list__item-container {

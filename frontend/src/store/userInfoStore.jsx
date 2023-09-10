@@ -9,6 +9,11 @@ export const userInfoStore = create((set) => ({
     set((state) => ({
       userName: value,
     })),
+  userRol: null,
+  setUserRol: (state) =>
+    set((state) => ({
+      userRol: value,
+    })),
   userId: null,
   checkTokenValidity: () => {
     const token = localStorage.getItem("token");

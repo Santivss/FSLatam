@@ -34,12 +34,25 @@ export const Categories = () => {
 
   const orderedCategories = OrderCategories(categories);
 
+  const handleResetCategory = () => {
+    setSelectedCategoryId(null);
+    setSelectedSubcategoryId(null);
+  };
+
   return (
     <div className="categoriesNav__container">
-      <button className="categoriesNav__title">Categorias</button>
+      <div className="categoriesNav__btnCategories">
+        <button className="categoriesNav__title" onClick={handleResetCategory}>
+          {selectedCategoryId || selectedSubcategoryId ? "Todas" : "Categorias"}
+        </button>
+      </div>
 
       {categories ? null : (
-        <img src={loading_icon} alt="loading_icon" className="test" />
+        <img
+          src={loading_icon}
+          alt="loading_icon"
+          className="categoriesNav__loadingIcon"
+        />
       )}
       {orderedCategories.map((item) => {
         const isCategorySelected =

@@ -1,6 +1,5 @@
 import { Categories } from "./Categories/Categories";
 import { Levels } from "./Levels/Levels";
-import { SocialsMedia } from "./SocialsMedia/SocialsMedia";
 import "./Nav.css";
 
 const Nav = () => {
@@ -8,7 +7,6 @@ const Nav = () => {
     <nav className="nav__container">
       <Levels />
       <Categories />
-      <SocialsMedia />
     </nav>
   );
 };

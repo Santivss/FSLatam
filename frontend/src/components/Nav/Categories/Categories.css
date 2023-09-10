@@ -1,23 +1,41 @@
 .categoriesNav__container {
-  overflow-y: auto;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
+  gap: 0.5rem;
+  overflow-y: auto;
+  background-color: var(--color-body);
+  padding-bottom: 2rem 0;
+}
+
+.categoriesNav__btnCategories {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .categoriesNav__title {
   cursor: pointer;
   font-size: 2rem;
   align-self: center;
-  border-radius: 0.5rem;
+  margin: 0.5rem;
+  padding: 0 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--color-body);
+  transition: 200ms ease;
 }
 
-.test {
+.categoriesNav__title:hover {
+  background-color: var(--color-secondary);
+}
+
+.categoriesNav__loadingIcon {
   width: 20%;
   margin: auto;
   align-self: center;
-  animation: loadingicon 3s linear infinite;
+  animation: loadingicon 2s linear infinite;
 }
 
 @keyframes loadingicon {
@@ -27,10 +45,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.categoriesNav__title:hover {
-  background-color: var(--color-secondary);
 }
 
 /* --------categoriesItem__container-------- */

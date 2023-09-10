@@ -1,7 +1,6 @@
 import "./ListItems.css";
 import pc_icon_amarillo from "../../../assets/uiIcons/pc_icon_amarillo.svg";
 import console_icon_amarillo from "../../../assets/uiIcons/console_icon_amarillo.svg";
-import star_icon_amarillo from "../../../assets/uiIcons/star_icon_amarillo.svg";
 import fs19_icon from "../../../assets/uiIcons/fs19_icon.svg";
 import fs22_icon from "../../../assets/uiIcons/fs22_icon.svg";
 import bookmark_icon_amarillo from "../../../assets/uiIcons/bookmark_icon_amarillo.svg";
@@ -24,6 +23,7 @@ const ListItems = () => {
     antiquityAndSizeSelected,
     gameSelected,
   } = categoriesDataFilteredStore();
+  const [animIconStatus, setAnimIconStatus] = useState(true);
 
   // Función para formatear el número
   const formatNumber = (num) => {
@@ -46,15 +46,20 @@ const ListItems = () => {
       antiquityAndSizeSelected,
       typesFiltered,
     };
+    setAnimIconStatus(true);
 
     axios
       .get("http://localhost:3000/api/mods", {
         params: params,
       })
       .then((res) => {
+        setAnimIconStatus(false);
         setDataMods(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setAnimIconStatus(false);
+        console.log(err);
+      });
   }, [
     categorySelected,
     gameSelected,
@@ -71,9 +76,19 @@ const ListItems = () => {
 
   return (
     <div className="listItems__container">
-      <span className="listItems__modsTitle">
-        Total de Mods: {dataMods?.allMods.length}
-      </span>
+      <div className="listItems__titleContainer">
+        <span className="listItems__modsTitle">
+          Total de Mods: {dataMods?.allMods.length}
+        </span>
+
+        {animIconStatus ? (
+          <img
+            src={loading_icon}
+            alt="loading_icon"
+            className="listItems__loadingIcon"
+          />
+        ) : null}
+      </div>
       {dataMods?.allMods.map((item) => {
         return (
           <div key={item.mod_id}>
