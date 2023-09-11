@@ -47,7 +47,7 @@ const UploadModComponent = ({ handleunmountComponent }) => {
   /* Get categories for create UI */
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/categories")
+      .get("https://fslatam-back.onrender.com/api/categories")
       .then((res) => {
         setCategoriesData(res.data);
       })
