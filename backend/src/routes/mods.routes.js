@@ -3,6 +3,7 @@ import { prisma } from "../db.js";
 import fs from "fs";
 import { fileURLToPath } from "url"; // Importar fileURLToPath desde el módulo url
 import filteredForModsRequest from "../utils/filteredForModsRequest.js";
+import sortModsByType from "../utils/sortModsByType.js";
 
 const router = Router();
 
@@ -11,15 +12,13 @@ router.get("/mods", async (req, res) => {
     const subcategorySelected =
       parseFloat(req.query.subcategorySelected) || null;
     const antiquityAndSizeSelected = req.query.antiquityAndSizeSelected || null;
-    const typesFiltered = req.query.typesFiltered || null;
+    const categorySelected = parseFloat(req.query.categorySelected) || null;
     const fs19 = parseFloat(req.query.gameSelected.fs19) || null;
     const fs22 = parseFloat(req.query.gameSelected.fs22) || null;
-    const categorySelected = parseFloat(req.query.categorySelected) || null;
+    const typesFiltered = parseFloat(req.query.typesFiltered) || null;
 
     const whereClause = await filteredForModsRequest(
       subcategorySelected,
-      antiquityAndSizeSelected,
-      typesFiltered,
       fs19,
       fs22,
       categorySelected
@@ -29,12 +28,12 @@ router.get("/mods", async (req, res) => {
       where: whereClause,
     });
 
-    // Paso 2: Extraer los id de cada mod y almacenarlos en un arreglo
+    sortModsByType(allMods, typesFiltered);
+
     const modIds = allMods.map((mod) => {
       return mod.mod_id;
     });
 
-    // Paso 3: Buscar las imágenes correspondientes para cada mod
     const allImages = await prisma.image.findMany({
       where: {
         mod_id: {
@@ -46,7 +45,6 @@ router.get("/mods", async (req, res) => {
       },
     });
 
-    // Paso 4: Crear un mapa con los ids de mod y sus imágenes correspondientes
     const imageMap = {};
     for (const image of allImages) {
       const currentURL = new URL(import.meta.url);
@@ -62,7 +60,6 @@ router.get("/mods", async (req, res) => {
       imageMap[image.mod_id] = image;
     }
 
-    // Paso 5: Agregar la propiedad "thumbnail" a cada objeto "mod" en el arreglo "allMods"
     for (const mod of allMods) {
       const thumbnailImage = imageMap[mod.mod_id];
       if (thumbnailImage) {
@@ -70,16 +67,14 @@ router.get("/mods", async (req, res) => {
       }
     }
 
-    setTimeout(() => {
-      allMods
-        ? res.status(200).json({
-            message: "Success",
-            allMods,
-          })
-        : res.status(404).json({
-            message: "Not found mods",
-          });
-    }, 500);
+    allMods
+      ? res.status(200).json({
+          message: "Success",
+          allMods,
+        })
+      : res.status(404).json({
+          message: "Not found mods",
+        });
   } catch (error) {
     console.log(error);
     res.status(500).json({

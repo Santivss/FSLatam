@@ -33,7 +33,7 @@ const FiltersSection = () => {
 
   const handleButtonClick = (index) => {
     setActiveButton(index);
-    setTypesFiltered(index);
+    setTypesFiltered(index + 1);
   };
 
   return (

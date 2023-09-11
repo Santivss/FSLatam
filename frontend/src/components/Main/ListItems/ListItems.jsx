@@ -25,7 +25,6 @@ const ListItems = () => {
   } = categoriesDataFilteredStore();
   const [animIconStatus, setAnimIconStatus] = useState(true);
 
-  // Función para formatear el número
   const formatNumber = (num) => {
     if (num < 1000) {
       return num.toString();
@@ -208,6 +207,13 @@ const ListItems = () => {
           </div>
         );
       })}
+      {animIconStatus ? (
+        <img
+          src={loading_icon}
+          alt="loading_icon"
+          className="listItems__loadingIcon"
+        />
+      ) : null}
     </div>
   );
 };

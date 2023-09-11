@@ -5,12 +5,17 @@
   gap: 1rem;
   padding: 1rem;
   overflow-y: auto;
+  position: relative;
 }
 
 .myMods__loadingIcon {
   margin: auto;
   width: 4rem;
   animation: myMods__loadingIcon 2s linear infinite;
+}
+
+.loadingIcondelete {
+  width: 1rem;
 }
 
 @keyframes myMods__loadingIcon {
@@ -60,7 +65,8 @@
 }
 
 .updateMod__btn {
-  border: 1px solid green;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .myModImg {
@@ -68,4 +74,13 @@
   aspect-ratio: 1;
   margin: auto;
   object-fit: cover;
+}
+
+.myMods__alertMessage {
+  position: absolute;
+  right: 5rem;
+  top: -1rem;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-secondary);
 }

@@ -4,9 +4,7 @@ import user_icon from "../../../assets/uiIcons/user_icon.svg";
 import loading_icon from "../../../assets/uiIcons/loading_icon.svg";
 
 export const Levels = () => {
-  const { userName, isAuthenticated, userIcon, userRol } = userInfoStore();
-
-  console.log(isAuthenticated);
+  const { userName, userIcon, userRol } = userInfoStore();
 
   return (
     <div className="levels__container">

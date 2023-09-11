@@ -14,7 +14,7 @@ export const categoriesDataFilteredStore = create((set) => ({
     }));
   },
   /* ----------typesFiltered-----------  */
-  typesFiltered: null,
+  typesFiltered: 1,
   setTypesFiltered: (value) => {
     set((state) => ({
       typesFiltered: value,

@@ -1,7 +1,5 @@
 const filteredForModsRequest = async (
   subcategorySelected,
-  antiquityAndSizeSelected,
-  typesFiltered,
   fs19,
   fs22,
   categorySelected
@@ -16,15 +14,11 @@ const filteredForModsRequest = async (
     whereClause.principal_category_id = categorySelected;
   }
 
-  if (fs19 !== null && fs22 !== null) {
-  } else {
-    if (fs19 !== null) {
-      whereClause.game_id = 1;
-    }
-    if (fs22 !== null) {
-      whereClause.game_id = 2;
-    }
+  if (!fs19 || !fs22) {
+    if (fs19 === 1) whereClause.game_id = 1;
+    if (fs22 === 2) whereClause.game_id = 2;
   }
+
   return whereClause;
 };
 

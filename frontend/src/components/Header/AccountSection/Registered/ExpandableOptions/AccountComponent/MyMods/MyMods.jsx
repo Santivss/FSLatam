@@ -9,6 +9,9 @@ const MyMods = () => {
   const [modsUser, setModsUser] = useState(null);
   const { userId } = userInfoStore();
   const [modsUserStatus, setmodsUserStatus] = useState(false);
+  const [alertMessageStatus, setAlertMessageStatus] = useState({});
+  const [deleteProcessStatus, setDeleteProcessStatus] = useState(false);
+  const [actionProcessMessage, setActionProcessMessage] = useState(null);
 
   useEffect(() => {
     setmodsUserStatus(true);
@@ -24,14 +27,26 @@ const MyMods = () => {
   }, []);
 
   const handleDeleteRequest = (mod_id) => {
+    setDeleteProcessStatus(true);
     axios
       .delete(`http://localhost:3000/api/modsUser/${mod_id}`)
       .then((res) => {
-        console.log(res);
+        setDeleteProcessStatus(false);
+        setActionProcessMessage(res.data);
+        window.location.reload();
       })
       .catch((err) => {
+        setDeleteProcessStatus(false);
         console.log(err);
       });
+  };
+
+  const handleMouseEnter = (index) => {
+    setAlertMessageStatus({ ...alertMessageStatus, [index]: true });
+  };
+
+  const handleMouseLeave = (index) => {
+    setAlertMessageStatus({ ...alertMessageStatus, [index]: false });
   };
 
   return (
@@ -55,9 +70,26 @@ const MyMods = () => {
                   className="deleteMod__btn"
                   onClick={() => handleDeleteRequest(item.mod_id)}
                 >
-                  Delete
+                  {deleteProcessStatus ? (
+                    <img
+                      src={loading_icon}
+                      alt="loading_icon"
+                      className="loadingIcondelete"
+                    />
+                  ) : (
+                    "Delete"
+                  )}
                 </button>
-                <button className="updateMod__btn">Update</button>
+                <button
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={() => handleMouseLeave(index)}
+                  className="updateMod__btn"
+                >
+                  Update
+                </button>
+                {alertMessageStatus[index] ? (
+                  <span className="myMods__alertMessage">En desarrollo</span>
+                ) : null}
                 <img
                   src={"data:image/jpeg;base64," + item.thumbnail}
                   alt=""
