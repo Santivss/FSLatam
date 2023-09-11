@@ -43,7 +43,7 @@ const SignIn = () => {
 
     // Hacer la solicitud POST a la API
     axios
-      .post("http://localhost:3000/api/register", modifiedData)
+      .post("https://fslatam-back.onrender.com/api/register", modifiedData)
       .then((response) => {
         setResponseMessage(response.data.message);
         setTimeout(() => {

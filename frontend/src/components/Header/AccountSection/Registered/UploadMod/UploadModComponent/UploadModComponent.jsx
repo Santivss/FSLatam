@@ -151,7 +151,10 @@ const UploadModComponent = ({ handleunmountComponent }) => {
     if (allConditionsTrue) {
       setPostRequestStatus(true);
       axios
-        .post("http://localhost:3000/api/createmod", dataForCreateMod)
+        .post(
+          "https://fslatam-back.onrender.com/api/createmod",
+          dataForCreateMod
+        )
         .then((res) => {
           setPostRequestStatus(false);
           window.location.reload();

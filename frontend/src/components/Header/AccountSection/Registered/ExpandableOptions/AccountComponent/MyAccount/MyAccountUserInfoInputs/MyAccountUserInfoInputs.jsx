@@ -75,7 +75,10 @@ const MyAccountUserInfoInputs = () => {
     } else {
       setRequestStatus(true);
       axios
-        .post(`http://localhost:3000/api/accountData/${userId}`, inputValues)
+        .post(
+          `https://fslatam-back.onrender.com/api/accountData/${userId}`,
+          inputValues
+        )
         .then((res) => {
           setErrorMessageStatus(res.data.messages);
           setRequestStatus(false);

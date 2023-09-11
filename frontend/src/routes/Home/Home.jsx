@@ -20,7 +20,7 @@ export const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/modsCount")
+      .get("https://fslatam-back.onrender.com/api/modsCount")
       .then((res) => {
         setCategories(res.data.response);
       })
@@ -30,7 +30,7 @@ export const Home = () => {
   if (isAuthenticated && userId) {
     useEffect(() => {
       axios
-        .get(`http://localhost:3000/api/userData/${userId}`)
+        .get(`https://fslatam-back.onrender.com/api/userData/${userId}`)
         .then((res) => {
           setCountMods(res.data.userData.countMods);
           setUserIicon(res.data.userData.user_icon);
