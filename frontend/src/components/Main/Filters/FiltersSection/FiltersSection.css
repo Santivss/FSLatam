@@ -36,11 +36,6 @@
 
 @media (max-width: 880px) {
   .filters__sections {
-    gap: 1rem;
-  }
-  .button_filter {
-    font-size: 0.9rem;
-    width: 5rem;
-    height: 2rem;
+    display: none;
   }
 }

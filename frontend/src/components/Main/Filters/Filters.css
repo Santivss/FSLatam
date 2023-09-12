@@ -13,5 +13,6 @@
 
 @media (max-width: 880px) {
   .filters__container {
+    display: none;
   }
 }
