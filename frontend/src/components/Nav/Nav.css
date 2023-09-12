@@ -5,4 +5,11 @@
   display: flex;
   flex-direction: column;
   background-color: rgba(17, 16, 15, 0.7);
+  transition: 300ms;
+}
+
+@media (max-width: 880px) {
+  /* .nav__container {
+    display: none;
+  } */
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import Nav from "../../components/Nav/Nav";
 import { Header } from "../../components/Header/Header";
@@ -6,6 +6,7 @@ import { Main } from "../../components/Main/Main";
 import axios from "axios";
 import { firstRequestData } from "../../store/firstRequestInformation";
 import { userInfoStore } from "../../store/userInfoStore";
+import MenuCenterMobile from "../../components/MenuCenterMobile/MenuCenterMobile";
 
 export const Home = () => {
   const { setCategories } = firstRequestData();
@@ -47,6 +48,8 @@ export const Home = () => {
         <Nav />
         <Header />
         <Main />
+        <MenuCenterMobile />
+
         <div className="bubbles__container">
           <div className="burbujas"></div>
           <div className="burbujas2"></div>

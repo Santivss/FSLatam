@@ -26,7 +26,7 @@ const TopMods = ({ topsData }) => {
   );
 
   return (
-    <div className="topStatsModsUsers__container">
+    <div className="topMods__container">
       <span className="topStatsModsUsers__title">Top 10 Modders</span>
       <div className="topStatsModsUsers__sections-container">
         <img
@@ -68,8 +68,8 @@ const TopMods = ({ topsData }) => {
                 </span>
                 {iconToShow}
                 <span className="topStatsModsUsersItem__name">
-                  {item.mod_title.length > 20
-                    ? `${item.mod_title.slice(0, 20)}...`
+                  {item.mod_title.length > 15
+                    ? `${item.mod_title.slice(0, 15)}...`
                     : item.mod_title}
                 </span>
                 <span className="topStatsModsUsersItem__modsCount">

@@ -1,7 +1,28 @@
 .header__container {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1.5fr 0.1fr 0.4fr;
+  grid-template-columns: 3fr 0.5fr 0.8fr;
+  align-items: center;
+  justify-items: center;
   border-bottom: 1px solid var(--color-secondary);
   background-color: rgba(17, 16, 15, 0.7);
   z-index: 1;
+}
+
+@media (max-width: 880px) {
+  .header__container {
+    grid-template-columns: 1fr 1fr;
+    display: none;
+  }
+}
+
+/* @media (min-width: 880px) and (max-width: 1200px) {
+  .header__container {
+    grid-template-columns: 1.5fr 0.1fr 0.4fr 1fr;
+  }
+} */
+
+.header__categoriesBtnIcon {
+  width: 2rem;
+  cursor: pointer;
 }

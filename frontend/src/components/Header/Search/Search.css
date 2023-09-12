@@ -1,4 +1,6 @@
 .search__container {
+  grid-column: 1/2;
+  justify-self: start;
   display: flex;
   justify-content: flex-start;
   padding: 0 0 0 1rem;
@@ -61,4 +63,10 @@
 .btn:hover {
   /* background: var(--background-border-hover); */
   cursor: not-allowed;
+}
+
+@media (max-width: 880px) {
+  .search__container {
+    display: none;
+  }
 }

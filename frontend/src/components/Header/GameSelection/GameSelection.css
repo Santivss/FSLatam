@@ -7,12 +7,18 @@
 
 /* -------------game__icon-container------------- */
 
+.game__icon-container button {
+  display: flex;
+  align-items: center;
+}
+
 .fs22__icon,
 .fs19__icon {
   user-select: none;
   width: 3.3rem;
   aspect-ratio: 1;
   cursor: pointer;
+  margin: auto;
 }
 
 button {

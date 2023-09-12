@@ -45,8 +45,7 @@
   padding: 0.5rem;
   overflow: hidden;
   display: grid;
-
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 4fr 0.5fr;
   background-color: #4141411f;
 }
 
@@ -91,6 +90,7 @@
 .modPrincipalSectionStats__container {
   width: 100%;
   display: flex;
+  align-items: center;
   font-weight: lighter;
   gap: 2rem;
 }
@@ -119,7 +119,7 @@
 
 .compatibilityGame__container {
   display: flex;
-  align-content: center;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -179,4 +179,105 @@
 .principalSectionDownload__icon {
   width: 1rem;
   aspect-ratio: 1;
+}
+
+/* Medias */
+
+@media (max-width: 880px) {
+  .listItems__container {
+    padding: 0;
+    gap: 4rem;
+  }
+  .listItems__titleContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .list__item-container {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    padding-bottom: 1rem;
+    border-radius: 0;
+  }
+  .modPrincipalSectionOptions__container {
+    grid-column: 2/3;
+  }
+  .mod__icon-container {
+    grid-column: 1/3;
+    width: 100%;
+  }
+
+  .modPrincipalSection__container {
+    grid-column: 1/2;
+    padding: 0;
+  }
+
+  .modPrincipalSection__description {
+    display: none;
+  }
+
+  .mod__icon {
+    width: 100%;
+  }
+
+  .modPrincipalSectionStats__container {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+  }
+
+  .modPrincipalSectionStats__container span {
+    display: none;
+  }
+
+  .principalSectionDownload__container {
+    grid-column: 2/3;
+    grid-row: 1/4;
+  }
+
+  .principalSectionDownload__icon {
+    width: 1.5rem;
+  }
+
+  .principalSectionDownload__count {
+    font-size: 1.5rem;
+  }
+  .modPrincipalCompatibility__container {
+    gap: 1rem;
+  }
+  .principalSectionCompatibility__icon {
+    width: 1.5rem;
+  }
+  .compatibilityGame__container {
+  }
+  .compatibilityGame__container {
+  }
+}
+
+@media (max-width: 1250px) {
+}
+
+@media (max-width: 1400px) {
+  .modPrincipalSection__game {
+    margin: 0;
+  }
+  .principalSectionButton {
+    display: none;
+  }
+
+  .modPrincipalSection__title {
+    font-size: 1.5rem;
+  }
+
+  .modPrincipalSection__container {
+    justify-content: space-between;
+  }
+  .modPrincipalSectionStats__container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    gap: 0.5rem;
+  }
 }

@@ -116,8 +116,8 @@ const ListItems = () => {
                       {item.mod_title}
                     </span>
                     <span className="modPrincipalSection__description">
-                      {item.mod_description.length > 170
-                        ? item.mod_description.substring(0, 170) + "..."
+                      {item.mod_description.length > 100
+                        ? item.mod_description.substring(0, 100) + "..."
                         : item.mod_description}
                     </span>
 
