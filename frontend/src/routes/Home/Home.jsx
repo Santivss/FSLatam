@@ -49,7 +49,6 @@ export const Home = () => {
         <Header />
         <Main />
         <MenuCenterMobile />
-
         <div className="bubbles__container">
           <div className="burbujas"></div>
           <div className="burbujas2"></div>

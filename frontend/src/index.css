@@ -41,6 +41,7 @@
 }
 
 body {
+  width: 100%;
   background-color: rgb(212, 212, 212);
   background-color: var(--color-body);
   color: white;
@@ -110,11 +111,11 @@ button {
 /* ------------------portal__root------------------ */
 
 .portal__root {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,8 +123,8 @@ button {
 }
 
 .portal__root.has-content {
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-  backdrop-filter: blur(15px); /* Desenfoque aplicado solo al fondo */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
   transition: all 300ms ease;
 }
 
