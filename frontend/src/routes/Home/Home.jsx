@@ -28,6 +28,13 @@ export const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  setTimeout(() => {
+    axios
+      .get("https://fslatam-back.onrender.com/api/active")
+      .then((res) => {})
+      .catch((err) => {});
+  }, 120000);
+
   if (isAuthenticated && userId) {
     useEffect(() => {
       axios

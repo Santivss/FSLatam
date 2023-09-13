@@ -20,6 +20,7 @@ import modsUserRoutes from "./routes/modsUser.routes.js";
 import topModdersAndUsersRoutes from "./routes/topModdersAndUsers.routes.js";
 import modFullData from "./routes/modFullData.routes.js";
 import account from "./routes/account.routes.js";
+import activeApi from "./routes/activeApi.routes.js";
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use("/api", modsUserRoutes);
 app.use("/api", topModdersAndUsersRoutes);
 app.use("/api", modFullData);
 app.use("/api", account);
+app.use("/api", activeApi);
 
 app.use((err, req, res, next) => {
   console.error("Error no manejado:", err);
