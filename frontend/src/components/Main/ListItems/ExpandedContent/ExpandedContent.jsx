@@ -11,8 +11,9 @@ import RelatedMods from "./RelatedMods/RelatedMods";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import loading_icon from "../../../../assets/uiIcons/loading_icon.svg";
+import return_icon from "../../../../assets/uiIcons/return_icon.svg";
 
-const ExpandedContent = ({ dataModSelected }) => {
+const ExpandedContent = ({ dataModSelected, setUnmountExpandedContent }) => {
   const [fullDataMod, setFullDataMod] = useState(null);
 
   useEffect(() => {
@@ -30,6 +31,18 @@ const ExpandedContent = ({ dataModSelected }) => {
 
   return (
     <div className="expandedContent__container">
+      <button
+        className="expandedContentBtn__close"
+        onClick={() => {
+          setUnmountExpandedContent((prevState) => !prevState);
+        }}
+      >
+        <img
+          src={return_icon}
+          alt="return_icon"
+          className="expandedContentBtn__return-img"
+        />
+      </button>
       <Swiper
         speed={2000}
         fadeEffect={{ crossFade: true }}
@@ -67,7 +80,7 @@ const ExpandedContent = ({ dataModSelected }) => {
         </div>
       </Swiper>
       <TitleAndDownload fullDataMod={fullDataMod?.fullDataMod.mod_title} />
-      <CreatorInformation />
+      <CreatorInformation fullDataMod={fullDataMod?.fullDataMod} />
       <Description />
       <Comments />
       <RelatedMods />

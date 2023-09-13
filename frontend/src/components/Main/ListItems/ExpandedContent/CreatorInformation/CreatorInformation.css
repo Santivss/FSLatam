@@ -123,3 +123,18 @@
 .notification__btn-channel:hover {
   border: 1px solid rgb(255, 196, 0);
 }
+
+@media (max-width: 880px) {
+  .btnSubscribe {
+    width: 4rem;
+    font-size: 0.7rem;
+    margin-left: auto;
+  }
+  .name__user-channel {
+    font-size: 0.9rem;
+  }
+
+  .btnSubscribe__container .expandedContent__button {
+    display: none;
+  }
+}

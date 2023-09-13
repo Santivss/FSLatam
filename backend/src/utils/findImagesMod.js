@@ -48,8 +48,6 @@ const findImagesMod = async (folderName, subFolderName) => {
 
     const foundImages = await findImagesInDirectory(mainDirectory);
 
-    foundImages.forEach((image) => console.log(image.name));
-
     return foundImages;
   } catch (err) {
     console.log(err.message);

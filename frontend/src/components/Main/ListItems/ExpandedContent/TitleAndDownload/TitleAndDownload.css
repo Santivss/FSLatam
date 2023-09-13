@@ -32,3 +32,22 @@
   justify-content: center;
   gap: 1rem;
 }
+
+@media (max-width: 880px) {
+  .expandedContent__title {
+    font-size: 0.7rem;
+    font-weight: 400;
+  }
+
+  .buttonSmall__container {
+    border: 1px solid;
+    width: 2rem;
+    display: none;
+  }
+
+  .titleAndDownload__container .expandedContent__button-download {
+    width: 4rem;
+    font-size: 0.6rem;
+    height: 2rem;
+  }
+}

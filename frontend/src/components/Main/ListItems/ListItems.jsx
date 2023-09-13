@@ -24,6 +24,7 @@ const ListItems = () => {
     gameSelected,
   } = categoriesDataFilteredStore();
   const [animIconStatus, setAnimIconStatus] = useState(true);
+  const [unmountExpandedContent, setUnmountExpandedContent] = useState(false);
 
   const formatNumber = (num) => {
     if (num < 1000) {
@@ -92,6 +93,7 @@ const ListItems = () => {
         return (
           <div key={item.mod_id}>
             <ToggleComponent
+              unmountComponent={unmountExpandedContent}
               buttonText={
                 <div
                   onClick={() => {
@@ -202,7 +204,10 @@ const ListItems = () => {
                 </div>
               }
             >
-              <ExpandedContent dataModSelected={dataModSelected} />
+              <ExpandedContent
+                dataModSelected={dataModSelected}
+                setUnmountExpandedContent={setUnmountExpandedContent}
+              />
             </ToggleComponent>
           </div>
         );
