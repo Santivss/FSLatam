@@ -34,9 +34,11 @@
 }
 
 @media (max-width: 880px) {
+  .titleAndDownload__container {
+    margin: 1rem 0;
+  }
   .expandedContent__title {
-    font-size: 0.7rem;
-    font-weight: 400;
+    font-size: 0.9rem;
   }
 
   .buttonSmall__container {

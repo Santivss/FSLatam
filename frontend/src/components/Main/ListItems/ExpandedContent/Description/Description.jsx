@@ -1,19 +1,22 @@
 import "./Description.css";
 
-const Description = () => {
+const Description = ({ fullDataMod }) => {
+  console.log(fullDataMod);
+  const formatDate = (isolate) => {
+    const date = new Date(isolate);
+    const options = { year: "numeric", month: "numeric", day: "numeric" };
+    return date.toLocaleDateString(options);
+  };
+
   return (
     <div className="description__container">
       <div className="">
-        <span className="">1.255</span>
-        <span className="">23/04/23</span>
-      </div>
-      <div className="">
-        <span className="">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, iste
-          labore harum quo nihil sed quidem corporis facere voluptas sapiente
-          placeat ducimus possimus accusamus modi reiciendis tempore minima at.
-          Tenetur!
+        <span className="description__component-dateTitle">
+          {formatDate(fullDataMod?.createdAt)}
         </span>
+      </div>
+      <div className="description__component-descriptionTitle">
+        <span className="">{fullDataMod?.mod_description}</span>
       </div>
     </div>
   );

@@ -26,18 +26,6 @@
   transition: 300ms ease;
 }
 
-/* .expandedContent__button-download {
-  background-color: var(--color-body);
-  will-change: transform;
-}
-
-  .expandedContent__button-download:hover {
-    box-shadow: 0px 0px 10px #f59421;
-    background: var(--background-border-hover);
-  } */
-
-/* -----2-----infoUser__container-----2----- */
-
 .infoUser__container {
   display: flex;
   flex-direction: column;
@@ -125,6 +113,10 @@
 }
 
 @media (max-width: 880px) {
+  .creatorInformation__container {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+  }
   .btnSubscribe {
     width: 4rem;
     font-size: 0.7rem;
@@ -132,6 +124,13 @@
   }
   .name__user-channel {
     font-size: 0.9rem;
+  }
+  .btnSubscribe__container {
+    display: none;
+  }
+
+  .btnSubscribe {
+    will-change: auto;
   }
 
   .btnSubscribe__container .expandedContent__button {

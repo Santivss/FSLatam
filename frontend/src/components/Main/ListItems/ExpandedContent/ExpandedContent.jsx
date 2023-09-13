@@ -81,9 +81,7 @@ const ExpandedContent = ({ dataModSelected, setUnmountExpandedContent }) => {
       </Swiper>
       <TitleAndDownload fullDataMod={fullDataMod?.fullDataMod.mod_title} />
       <CreatorInformation fullDataMod={fullDataMod?.fullDataMod} />
-      <Description />
-      <Comments />
-      <RelatedMods />
+      <Description fullDataMod={fullDataMod?.fullDataMod} />
     </div>
   );
 };

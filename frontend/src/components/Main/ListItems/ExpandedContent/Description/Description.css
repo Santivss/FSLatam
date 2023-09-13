@@ -1,7 +1,18 @@
 .description__container {
-  background-color: lightslategrey;
+  background-color: var(--color-body-variant);
   width: 100%;
   border-radius: 0.5rem;
   margin: 1rem 0;
   padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.description__component-dateTitle {
+  font-weight: 300;
+}
+
+.description__component-descriptionTitle {
+  font-weight: 200;
 }
