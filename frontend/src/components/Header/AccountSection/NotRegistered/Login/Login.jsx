@@ -31,7 +31,7 @@ const Login = () => {
     setIsLoading(true);
 
     axios
-      .post("https://fslatam-back.onrender.com/api/login", data)
+      .post("https://crowded-cyan-newt.cyclic.cloud/api/login", data)
       .then((response) => {
         setResponseMessage(response.data.message);
         const newToken = response.data.token;
