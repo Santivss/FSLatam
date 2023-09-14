@@ -47,7 +47,7 @@ const UploadModComponent = ({ handleunmountComponent }) => {
   /* Get categories for create UI */
   useEffect(() => {
     axios
-      .get("https://fslatam-back.onrender.com/api/categories")
+      .get("http://localhost:3000/api/categories")
       .then((res) => {
         setCategoriesData(res.data);
       })
@@ -152,7 +152,7 @@ const UploadModComponent = ({ handleunmountComponent }) => {
       setPostRequestStatus(true);
       axios
         .post(
-          "https://fslatam-back.onrender.com/api/createmod",
+          "https://tiny-cow-capris.cyclic.cloud/api/createmod",
           dataForCreateMod
         )
         .then((res) => {

@@ -49,7 +49,7 @@ const ListItems = () => {
     setAnimIconStatus(true);
 
     axios
-      .get("https://fslatam-back.onrender.com/api/mods", {
+      .get("http://localhost:3000/api/mods", {
         params: params,
       })
       .then((res) => {

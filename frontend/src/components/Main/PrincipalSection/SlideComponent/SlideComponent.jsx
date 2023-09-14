@@ -39,7 +39,7 @@ const SlideComponent = () => {
 
   useEffect(() => {
     axios
-      .get("https://fslatam-back.onrender.com/api/sliderMods")
+      .get("http://localhost:3000/api/sliderMods")
       .then((res) => {
         setDataMod(res.data.mods);
       })

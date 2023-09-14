@@ -21,24 +21,17 @@ export const Home = () => {
 
   useEffect(() => {
     axios
-      .get("https://fslatam-back.onrender.com/api/modsCount")
+      .get("http://localhost:3000/api/modsCount")
       .then((res) => {
         setCategories(res.data.response);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  setTimeout(() => {
-    axios
-      .get("https://fslatam-back.onrender.com/api/active")
-      .then((res) => {})
-      .catch((err) => {});
-  }, 120000);
-
   if (isAuthenticated && userId) {
     useEffect(() => {
       axios
-        .get(`https://fslatam-back.onrender.com/api/userData/${userId}`)
+        .get(`http://localhost:3000/api/userData/${userId}`)
         .then((res) => {
           setCountMods(res.data.userData.countMods);
           setUserIicon(res.data.userData.user_icon);

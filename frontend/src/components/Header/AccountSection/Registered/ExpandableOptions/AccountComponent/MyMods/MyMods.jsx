@@ -16,7 +16,7 @@ const MyMods = () => {
   useEffect(() => {
     setmodsUserStatus(true);
     axios
-      .get(`https://fslatam-back.onrender.com/api/modsUser/${userId}`)
+      .get(`http://localhost:3000/api/modsUser/${userId}`)
       .then((res) => {
         setModsUser(res.data);
         setmodsUserStatus(false);
@@ -29,7 +29,7 @@ const MyMods = () => {
   const handleDeleteRequest = (mod_id) => {
     setDeleteProcessStatus(true);
     axios
-      .delete(`https://fslatam-back.onrender.com/api/modsUser/${mod_id}`)
+      .delete(`http://localhost:3000/api/modsUser/${mod_id}`)
       .then((res) => {
         setDeleteProcessStatus(false);
         setActionProcessMessage(res.data);
