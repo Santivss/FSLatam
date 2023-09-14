@@ -27,7 +27,14 @@ const app = express();
 
 app.set("key", key);
 
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:5173",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+
 app.use(json({ limit: "27mb" }));
 
 // Configurar el middleware para servir archivos estáticos
