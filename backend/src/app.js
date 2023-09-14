@@ -8,6 +8,7 @@ import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const PORT = process.env.PORT || 3000;
 const key = process.env.SECRET_KEY;
 
 import createModRoutes from "./routes/createMod.routes.js";
@@ -49,6 +50,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Ocurrió un error en el servidor" });
 });
 
-app.listen(3000, () => {
-  console.log(`Server on port ${3000}`);
+app.listen(PORT, () => {
+  console.log(`Server on port ${PORT}`);
 });
