@@ -10,7 +10,7 @@ const PrincipalSection = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/topModdersAndUsers")
+      .get("https://crowded-cyan-newt.cyclic.cloud/api/topModdersAndUsers")
       .then((res) => {
         setTopsData(res.data);
       })

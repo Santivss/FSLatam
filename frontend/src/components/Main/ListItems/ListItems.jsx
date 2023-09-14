@@ -49,7 +49,7 @@ const ListItems = () => {
     setAnimIconStatus(true);
 
     axios
-      .get("http://localhost:3000/api/mods", {
+      .get("https://crowded-cyan-newt.cyclic.cloud/api/mods", {
         params: params,
       })
       .then((res) => {

@@ -39,7 +39,7 @@ const SlideComponent = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/sliderMods")
+      .get("https://crowded-cyan-newt.cyclic.cloud/api/sliderMods")
       .then((res) => {
         setDataMod(res.data.mods);
       })

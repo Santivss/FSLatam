@@ -18,7 +18,9 @@ const ExpandedContent = ({ dataModSelected, setUnmountExpandedContent }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/modFullData/${dataModSelected}`)
+      .get(
+        `https://crowded-cyan-newt.cyclic.cloud/api/modFullData/${dataModSelected}`
+      )
       .then((res) => {
         setFullDataMod(res.data);
       })
