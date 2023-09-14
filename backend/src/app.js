@@ -28,7 +28,7 @@ const app = express();
 app.set("key", key);
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "https://fslatam-front.onrender.com"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   optionsSuccessStatus: 204,
 };
