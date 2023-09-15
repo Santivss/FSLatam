@@ -1,32 +1,42 @@
 import "./MenuCenterMobile.css";
-import categories_icon from "../../assets/uiIcons/categories_icon.svg";
+import account_settings_icon from "../../assets/uiIcons/account_settings_icon.svg";
+import lupa_icon_amarillo from "../../assets/uiIcons/lupa_icon_amarillo.svg";
+import fslatam_icon from "../../assets/uiIcons/fslatam_icon.svg";
+import burger_icon_amarilo from "../../assets/uiIcons/burger_icon_amarilo.svg";
 import upload_icon_amarillo from "../../assets/uiIcons/upload_icon_amarillo.svg";
-import user_icon from "../../assets/uiIcons/user_icon.svg";
-import notification_icon_amarillo from "../../assets/uiIcons/notification_icon_amarillo.svg";
+import { menuContainersStore } from "../../store/menuContainersStore";
+import { motion } from "framer-motion";
 
 const MenuCenterMobile = () => {
+  const { navContainerStatus, setNavContainerStatus } = menuContainersStore();
+
   return (
     <div className="homeMenu__container">
       <img
+        src={burger_icon_amarilo}
+        alt="burger_icon_amarilo"
+        className="homeMenuIcon"
+        onClick={() => setNavContainerStatus(!navContainerStatus)}
+      />
+      <img
+        src={lupa_icon_amarillo}
+        alt="lupa_icon_amarillo"
+        className="homeMenuIcon"
+      />
+      <img
+        src={fslatam_icon}
+        alt="fslatam_icon"
+        className="homeMenu__fslatamIcon"
+      />
+      <img
         src={upload_icon_amarillo}
         alt="upload_icon_amarillo"
-        className="header__categoriesBtnIcon"
+        className="homeMenuIcon"
       />
       <img
-        src={categories_icon}
-        alt="categories_icon.svg"
-        className="header__categoriesBtnIcon"
-      />
-
-      <img
-        src={user_icon}
-        alt="user_icon"
-        className="header__categoriesBtnIcon"
-      />
-      <img
-        src={notification_icon_amarillo}
-        alt="notification_icon_amarillo"
-        className="header__categoriesBtnIcon"
+        src={account_settings_icon}
+        alt="account_settings_icon"
+        className="homeMenuIcon"
       />
     </div>
   );

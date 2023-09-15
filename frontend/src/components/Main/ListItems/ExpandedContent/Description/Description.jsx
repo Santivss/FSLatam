@@ -1,7 +1,6 @@
 import "./Description.css";
 
 const Description = ({ fullDataMod }) => {
-  console.log(fullDataMod);
   const formatDate = (isolate) => {
     const date = new Date(isolate);
     const options = { year: "numeric", month: "numeric", day: "numeric" };

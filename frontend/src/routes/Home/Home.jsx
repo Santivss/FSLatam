@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Nav from "../../components/Nav/Nav";
 import { Header } from "../../components/Header/Header";
@@ -7,8 +7,11 @@ import axios from "axios";
 import { firstRequestData } from "../../store/firstRequestInformation";
 import { userInfoStore } from "../../store/userInfoStore";
 import MenuCenterMobile from "../../components/MenuCenterMobile/MenuCenterMobile";
+import { menuContainersStore } from "../../store/menuContainersStore";
 
 export const Home = () => {
+  const { navContainerStatus, setNavContainerStatus } = menuContainersStore();
+
   const { setCategories } = firstRequestData();
   const {
     isAuthenticated,
@@ -45,10 +48,13 @@ export const Home = () => {
   return (
     <>
       <div className="home">
-        <Nav />
+        <MenuCenterMobile setNavContainerStatus={setNavContainerStatus} />
+        <Nav
+          navContainerStatus={navContainerStatus}
+          setNavContainerStatus={setNavContainerStatus}
+        />
         <Header />
         <Main />
-        <MenuCenterMobile />
         <div className="bubbles__container">
           <div className="burbujas"></div>
           <div className="burbujas2"></div>

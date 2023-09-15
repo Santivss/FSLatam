@@ -25,3 +25,9 @@
 .hoal {
   width: 2rem;
 }
+
+@media (max-width: 880px) {
+  .levels__container {
+    display: none;
+  }
+}

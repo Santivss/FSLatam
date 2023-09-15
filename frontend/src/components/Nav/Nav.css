@@ -9,7 +9,15 @@
 }
 
 @media (max-width: 880px) {
-  /* .nav__container {
-    display: none;
-  } */
+  .nav__container {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 2;
+    width: 100vw;
+  }
+
+  .nc-active {
+    left: 0;
+  }
 }
